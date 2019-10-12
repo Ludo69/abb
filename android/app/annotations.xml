@@ -1,0 +1,6 @@
+<root>
+    <item name='android.app.Dialog void show()'>
+        <annotation name='org.jetbrains.annotations.Blocking' />
+        <annotation name='org.jetbrains.annotations.NonBlocking' />
+    </item>
+</root>
