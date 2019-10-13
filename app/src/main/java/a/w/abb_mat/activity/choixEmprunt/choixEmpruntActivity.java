@@ -1,7 +1,7 @@
 package a.w.abb_mat.activity.choixEmprunt;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.main.MainActivity;
+import a.w.abb_mat.activity.stab.StabActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -27,7 +27,7 @@ public class choixEmpruntActivity extends AppCompatActivity {
         CardView cardviewStabs = findViewById(R.id.stabs);
 
         cardviewStabs.setOnClickListener(view -> {
-            Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent2 = new Intent(getApplicationContext(), StabActivity.class);
             startActivity(intent2);
         });
     }

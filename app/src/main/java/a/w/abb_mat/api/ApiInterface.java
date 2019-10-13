@@ -5,6 +5,7 @@ import java.util.List;
 import a.w.abb_mat.model.Emprunt;
 import a.w.abb_mat.model.Note;
 import a.w.abb_mat.model.Sortie;
+import a.w.abb_mat.model.Stab;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -12,6 +13,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
+
+    @GET("stabs.php")
+    Call<List<Stab>> getStabs();
 
     @GET("listeemprunts.php")
     Call<List<Emprunt>> getEmprunts();
