@@ -3,6 +3,7 @@ package a.w.abb_mat.api;
 import java.util.List;
 
 import a.w.abb_mat.model.Emprunt;
+import a.w.abb_mat.model.Membre;
 import a.w.abb_mat.model.Note;
 import a.w.abb_mat.model.Sortie;
 import a.w.abb_mat.model.Stab;
@@ -14,14 +15,14 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
+    @GET("membres.php")
+    Call<List<Membre>> getMembres();
+
     @GET("stabs.php")
     Call<List<Stab>> getStabs();
 
     @GET("listeemprunts.php")
     Call<List<Emprunt>> getEmprunts();
-
-    @GET("sorties.php")
-    Call<List<Sortie>> getSorties();
 
     @FormUrlEncoded
     @POST("savesortie.php")

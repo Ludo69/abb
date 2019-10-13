@@ -14,35 +14,18 @@
     android:foreground="?attr/selectableItemBackground"
     android:id="@+id/card_item">
 
-    <LinearLayout
-        android:id="@+id/line"
-        android:layout_width="10dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#49000000"/>
-
     <RelativeLayout
         android:padding="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/nomsortie"
-            android:text="Nom de la sortie"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
+            android:id="@+id/nommembre"
+            android:text="Nom du membre"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/datesortie"
-            android:layout_below="@+id/nomsortie"
-            android:text="Date de la sortie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
 
     </RelativeLayout>
 

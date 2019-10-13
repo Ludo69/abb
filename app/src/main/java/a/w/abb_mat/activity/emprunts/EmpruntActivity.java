@@ -1,7 +1,6 @@
 package a.w.abb_mat.activity.emprunts;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.CRSortie.CRSortieActivity;
 import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
 import a.w.abb_mat.model.Emprunt;
 import androidx.annotation.Nullable;

@@ -1,10 +1,8 @@
-package a.w.abb_mat.activity.sortie;
+package a.w.abb_mat.activity.membre;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.CRSortie.CRSortieActivity;
-import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
 import a.w.abb_mat.activity.emprunts.EmpruntActivity;
-import a.w.abb_mat.model.Sortie;
+import a.w.abb_mat.model.Membre;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class SortieActivity extends AppCompatActivity implements SortieView{
+public class MembreActivity extends AppCompatActivity implements MembreView {
 
     private static final int INTENT_ADD = 100;
     private static final int INTENT_EDIT = 200;
@@ -27,29 +25,32 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefresh;
 
-    SortiePresenter presenter;
-    SortieAdapter adapter;
-    SortieAdapter.ItemClickListener itemClickListener;
+    MembrePresenter presenter;
+    MembreAdapter adapter;
+    MembreAdapter.ItemClickListener itemClickListener;
 
-    List<Sortie> sortie;
+    List<Membre> membre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sortie);
+        setContentView(R.layout.activity_membre);
+
+        //Récupération variables
+        Intent intentrécup = getIntent();
+        if (intentrécup != null){
+            String numstab = "";
+            if (intentrécup.hasExtra("numstab")){
+                numstab = intentrécup.getStringExtra("numstab");
+            }
+            Toast.makeText(this, numstab, Toast.LENGTH_SHORT).show();
+        }
 
         swipeRefresh = findViewById(R.id.swipe_refresh);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        fab=findViewById(R.id.add);
-        fab.setOnClickListener(view ->
-                startActivityForResult(
-                        new Intent(this, CRSortieActivity.class),
-                        INTENT_ADD)
-        );
-
-        presenter = new SortiePresenter((SortieView) this);
+        presenter = new MembrePresenter((MembreView) this);
         presenter.getData();
 
         swipeRefresh.setOnRefreshListener(
@@ -57,14 +58,10 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
         );
 
         itemClickListener = ((view, position) -> {
-            int idsortie = sortie.get(position).getIdsortie();
-            String nomsortie = sortie.get(position).getNomsortie();
-            String datesortie = sortie.get(position).getDatesortie();
+            String nommembre = membre.get(position).getNommembres();
 
             Intent intent = new Intent(this, EmpruntActivity.class);
-            intent.putExtra("id", idsortie);
-            intent.putExtra("nomsortie", nomsortie);
-            intent.putExtra("datesortie", datesortie);
+            intent.putExtra("nommembre", nommembre);
             startActivityForResult(intent, INTENT_EDIT);
         });
 
@@ -93,12 +90,12 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
     }
 
     @Override
-    public void onGetResult(List<Sortie> sorties) {
-        adapter = new SortieAdapter(this, sorties, itemClickListener);
+    public void onGetResult(List<Membre> membres) {
+        adapter = new MembreAdapter(this, membres, itemClickListener);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
-        sortie = sorties;
+        membre = membres;
     }
 
     @Override
@@ -106,3 +103,4 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
+

@@ -1,11 +1,7 @@
 package a.w.abb_mat.activity.stab;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.CRSortie.CRSortieActivity;
-import a.w.abb_mat.activity.emprunts.EmpruntActivity;
-import a.w.abb_mat.activity.stab.StabAdapter;
-import a.w.abb_mat.activity.stab.StabPresenter;
-import a.w.abb_mat.activity.stab.StabView;
+import a.w.abb_mat.activity.membre.MembreActivity;
 import a.w.abb_mat.model.Stab;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,7 +52,7 @@ public class StabActivity extends AppCompatActivity implements StabView {
             String txtnumstab = stab.get(position).getNumstab();
             String txtcommentairestab = stab.get(position).getCommentairestab();
 
-            Intent intent = new Intent(this, EmpruntActivity.class);
+            Intent intent = new Intent(this, MembreActivity.class);
             intent.putExtra("idstab", idstab);
             intent.putExtra("numstab", txtnumstab);
             intent.putExtra("commentairestab", txtcommentairestab);

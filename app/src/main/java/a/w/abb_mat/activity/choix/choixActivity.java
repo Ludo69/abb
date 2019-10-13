@@ -1,7 +1,6 @@
 package a.w.abb_mat.activity.choix;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.sortie.SortieActivity;
 import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;

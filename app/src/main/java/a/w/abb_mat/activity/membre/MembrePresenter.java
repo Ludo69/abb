@@ -1,31 +1,29 @@
-package a.w.abb_mat.activity.sortie;
+package a.w.abb_mat.activity.membre;
 
 import java.util.List;
 
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
-import a.w.abb_mat.model.Sortie;
+import a.w.abb_mat.model.Membre;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SortiePresenter {
+public class MembrePresenter {
 
-    private SortieView view;
+    private MembreView view;
 
-    public SortiePresenter(SortieView sortieView) {
-        this.view = sortieView;
-    }
+    public MembrePresenter(MembreView membreView) { this.view = membreView; }
 
     void getData() {
 
         view.showLoading();
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Sortie>> call = apiInterface.getSorties();
-        call.enqueue(new Callback<List<Sortie>>() {
+        Call<List<Membre>> call = apiInterface.getMembres();
+        call.enqueue(new Callback<List<Membre>>() {
             @Override
-            public void onResponse(Call<List<Sortie>> call, Response<List<Sortie>> response) {
+            public void onResponse(Call<List<Membre>> call, Response<List<Membre>> response) {
                 view.hideLoading();
                 if(response.isSuccessful() && response.body() != null) {
                     view.onGetResult(response.body());
@@ -33,7 +31,7 @@ public class SortiePresenter {
             }
 
             @Override
-            public void onFailure(Call<List<Sortie>> call, Throwable t) {
+            public void onFailure(Call<List<Membre>> call, Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }
@@ -42,3 +40,4 @@ public class SortiePresenter {
     }
 
 }
+
