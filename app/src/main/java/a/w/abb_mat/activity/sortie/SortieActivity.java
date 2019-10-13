@@ -2,6 +2,7 @@ package a.w.abb_mat.activity.sortie;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.CRSortie.CRSortieActivity;
+import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
 import a.w.abb_mat.model.Sortie;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,7 +60,7 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
             String nomsortie = sortie.get(position).getNomsortie();
             String datesortie = sortie.get(position).getDatesortie();
 
-            Intent intent = new Intent(this, CRSortieActivity.class);
+            Intent intent = new Intent(this, choixEmpruntActivity.class);
             intent.putExtra("id", idsortie);
             intent.putExtra("nomsortie", nomsortie);
             intent.putExtra("datesortie", datesortie);

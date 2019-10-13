@@ -1,13 +1,12 @@
 package a.w.abb_mat.activity.choix;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
+import a.w.abb_mat.activity.sortie.SortieActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 public class choixActivity extends AppCompatActivity {
@@ -24,7 +23,7 @@ public class choixActivity extends AppCompatActivity {
         CardView cardviewMaintenance = findViewById(R.id.maintenance);
 
         cardviewEmprunt.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), choixEmpruntActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SortieActivity.class);
             startActivity(intent);
         });
 

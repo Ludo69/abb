@@ -7,6 +7,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class choixEmpruntActivity extends AppCompatActivity {
 
@@ -14,12 +15,20 @@ public class choixEmpruntActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_emprunt);
+        Intent intent = getIntent();
+        if(intent != null){
+            String nomsortie = "";
+            if (intent.hasExtra("nomsortie")){ // vérifie qu'une valeur est associée à la clé “edittext”
+                nomsortie = intent.getStringExtra("nomsortie"); // on récupère la valeur associée à la clé
+                Toast.makeText(this, nomsortie, Toast.LENGTH_SHORT).show();
+            }
+        }
 
         CardView cardviewStabs = findViewById(R.id.stabs);
 
         cardviewStabs.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
+            Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent2);
         });
     }
 }
