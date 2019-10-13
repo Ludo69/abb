@@ -1,10 +1,9 @@
-package a.w.abb_mat.activity.sortie;
+package a.w.abb_mat.activity.emprunts;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.CRSortie.CRSortieActivity;
 import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
-import a.w.abb_mat.activity.emprunts.EmpruntActivity;
-import a.w.abb_mat.model.Sortie;
+import a.w.abb_mat.model.Emprunt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class SortieActivity extends AppCompatActivity implements SortieView{
+public class EmpruntActivity extends AppCompatActivity implements EmpruntView {
 
     private static final int INTENT_ADD = 100;
     private static final int INTENT_EDIT = 200;
@@ -27,16 +26,16 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefresh;
 
-    SortiePresenter presenter;
-    SortieAdapter adapter;
-    SortieAdapter.ItemClickListener itemClickListener;
+    EmpruntPresenter presenter;
+    EmpruntAdapter adapter;
+    EmpruntAdapter.ItemClickListener itemClickListener;
 
-    List<Sortie> sortie;
+    List<Emprunt> emprunt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sortie);
+        setContentView(R.layout.activity_emprunt);
 
         swipeRefresh = findViewById(R.id.swipe_refresh);
         recyclerView = findViewById(R.id.recycler_view);
@@ -45,11 +44,11 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
         fab=findViewById(R.id.add);
         fab.setOnClickListener(view ->
                 startActivityForResult(
-                        new Intent(this, CRSortieActivity.class),
+                        new Intent(this, choixEmpruntActivity.class),
                         INTENT_ADD)
         );
 
-        presenter = new SortiePresenter((SortieView) this);
+        presenter = new EmpruntPresenter((EmpruntView) this);
         presenter.getData();
 
         swipeRefresh.setOnRefreshListener(
@@ -57,14 +56,20 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
         );
 
         itemClickListener = ((view, position) -> {
-            int idsortie = sortie.get(position).getIdsortie();
-            String nomsortie = sortie.get(position).getNomsortie();
-            String datesortie = sortie.get(position).getDatesortie();
+            int idemprunt = emprunt.get(position).getIdemprunt();
+            String nomsortieemprunt = emprunt.get(position).getNomsortieemprunt();
+            String typeemprunt = emprunt.get(position).getTypeemprunt();
+            String numtype = emprunt.get(position).getNumtype();
+            String emprunteur = emprunt.get(position).getEmprunteur();
+            String dateemprunt = emprunt.get(position).getDateemprunt();
 
-            Intent intent = new Intent(this, EmpruntActivity.class);
-            intent.putExtra("id", idsortie);
-            intent.putExtra("nomsortie", nomsortie);
-            intent.putExtra("datesortie", datesortie);
+            Intent intent = new Intent(this, choixEmpruntActivity.class);
+            intent.putExtra("idemprunt", idemprunt);
+            intent.putExtra("nomsortieemprunt", nomsortieemprunt);
+            intent.putExtra("typeemprunt", typeemprunt);
+            intent.putExtra("numtype", numtype);
+            intent.putExtra("emprunteur", emprunteur);
+            intent.putExtra("dateemprunt", dateemprunt);
             startActivityForResult(intent, INTENT_EDIT);
         });
 
@@ -93,12 +98,12 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
     }
 
     @Override
-    public void onGetResult(List<Sortie> sorties) {
-        adapter = new SortieAdapter(this, sorties, itemClickListener);
+    public void onGetResult(List<Emprunt> emprunts) {
+        adapter = new EmpruntAdapter(this, emprunts, itemClickListener);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
-        sortie = sorties;
+        emprunt = emprunts;
     }
 
     @Override

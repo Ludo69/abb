@@ -2,6 +2,7 @@ package a.w.abb_mat.api;
 
 import java.util.List;
 
+import a.w.abb_mat.model.Emprunt;
 import a.w.abb_mat.model.Note;
 import a.w.abb_mat.model.Sortie;
 import retrofit2.Call;
@@ -11,6 +12,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
+
+    @GET("listeemprunts.php")
+    Call<List<Emprunt>> getEmprunts();
 
     @GET("sorties.php")
     Call<List<Sortie>> getSorties();
