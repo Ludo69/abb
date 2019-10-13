@@ -12,6 +12,30 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
+    @GET("sorties.php")
+    Call<List<Sortie>> getSorties();
+
+    @FormUrlEncoded
+    @POST("savesortie.php")
+    Call<Sortie> saveSortie(
+            @Field("nomsortie") String nomsortie,
+            @Field("datesortie") String datesortie
+    );
+
+    @FormUrlEncoded
+    @POST("updatesortie.php")
+    Call<Sortie> updateSortie(
+            @Field("idsortie") int idsortie,
+            @Field("nomsortie") String nomsortie,
+            @Field("datesortie") String datesortie
+    );
+
+    @FormUrlEncoded
+    @POST("deletesortie.php")
+    Call<Sortie> deleteSortie(
+            @Field("idsortie") int idsortie
+    );
+
     @FormUrlEncoded
     @POST("save.php")
     Call<Note> saveNote(
@@ -23,8 +47,6 @@ public interface ApiInterface {
     @GET("notes.php")
     Call<List<Note>> getNotes();
 
-    @GET("sorties.php")
-    Call<List<Sortie>> getSorties();
 
     @FormUrlEncoded
     @POST("update.php")

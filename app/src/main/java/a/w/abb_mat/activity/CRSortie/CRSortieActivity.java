@@ -1,4 +1,4 @@
-package a.w.abb_mat.activity.editor;
+package a.w.abb_mat.activity.CRSortie;
 
 import a.w.abb_mat.R;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,42 +14,35 @@ import android.widget.Toast;
 
 import com.thebluealliance.spectrum.SpectrumPalette;
 
-public class EditorActivity extends AppCompatActivity implements EditorView{
+public class CRSortieActivity extends AppCompatActivity implements CRSortieView {
 
-    EditText et_title, et_note;
+    EditText et_nomsortie, et_datesortie;
     ProgressDialog progressDialog;
-    SpectrumPalette palette;
 
-    EditorPresenter presenter;
+    CRSortiePresenter presenter;
 
-    int color, id;
-    String title, note;
+    int idsortie;
+    String nomsortie, datesortie;
 
     Menu actionMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editor);
+        setContentView(R.layout.activity_crsortie);
 
-        et_title = findViewById(R.id.title);
-        et_note = findViewById(R.id.note);
-        palette = findViewById(R.id.palette);
-
-        palette.setOnColorSelectedListener(
-                clr -> color = clr
-        );
+        et_nomsortie = findViewById(R.id.nomsortie);
+        et_datesortie = findViewById(R.id.datesortie);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
 
-        presenter = new EditorPresenter(this);
+        presenter = new CRSortiePresenter(this);
 
         Intent intent = getIntent();
-        id = intent.getIntExtra("id", 0);
-        title = intent.getStringExtra("title");
-        note = intent.getStringExtra("note");
-        color = intent.getIntExtra("color", 0);
+        idsortie = intent.getIntExtra("idsortie", 0);
+        nomsortie = intent.getStringExtra("nomsortie");
+        datesortie = intent.getStringExtra("datesortie");
 
         setDataFromIntentExtra();
 
@@ -63,7 +56,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
         inflater.inflate(R.menu.menu_editor, menu);
         actionMenu = menu;
 
-        if(id != 0) {
+        if(idsortie != 0) {
             actionMenu.findItem(R.id.edit).setVisible(true);
             actionMenu.findItem(R.id.delete).setVisible(true);
             actionMenu.findItem(R.id.save).setVisible(false);
@@ -81,19 +74,18 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        String title = et_title.getText().toString().trim();
-        String note = et_note.getText().toString().trim();
-        int color = this.color;
+        String nomsortie = et_nomsortie.getText().toString().trim();
+        String datesortie = et_datesortie.getText().toString().trim();
 
         switch (item.getItemId()) {
             case R.id.save:
                 //Save
-                if (title.isEmpty()) {
-                    et_title.setError("Please enter a title");
-                } else if (note.isEmpty()) {
-                    et_note.setError("Please enter a note");
+                if (nomsortie.isEmpty()) {
+                    et_nomsortie.setError("Entrez le nom de la sortie");
+                } else if (datesortie.isEmpty()) {
+                    et_datesortie.setError("Entrez la date de la sortie");
                 } else {
-                    presenter.saveNote(title, note, color);
+                    presenter.saveSortie(nomsortie, datesortie);
                 }
                 return true;
 
@@ -107,12 +99,12 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
 
             case R.id.update:
                 //Update
-                if (title.isEmpty()) {
-                    et_title.setError("Please enter a title");
-                } else if (note.isEmpty()) {
-                    et_note.setError("Please enter a note");
+                if (nomsortie.isEmpty()) {
+                    et_nomsortie.setError("Entrez le nom de la sortie");
+                } else if (datesortie.isEmpty()) {
+                    et_datesortie.setError("Entrez la date de la sortie");
                 } else {
-                    presenter.updateNote(id, title, note, color);
+                    presenter.updateSortie(idsortie, nomsortie, datesortie);
                 }
                 return true;
 
@@ -122,7 +114,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 alertDialog.setTitle("Confirm !");
                 alertDialog.setMessage("Are you sure?");
                 alertDialog.setNegativeButton("Yes ",
-                        (dialog, which) -> presenter.deleteNote(id));
+                        (dialog, which) -> presenter.deleteSortie(idsortie));
                 alertDialog.setPositiveButton("Cancel", ((dialog, which) -> {
                     dialog.dismiss();
                 }));
@@ -146,48 +138,43 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
 
     @Override
     public void onRequestSuccess(String message) {
-        Toast.makeText(EditorActivity.this,
+        Toast.makeText(a.w.abb_mat.activity.CRSortie.CRSortieActivity.this,
                 message,
                 Toast.LENGTH_SHORT).show();
-                finish();
+        finish();
     }
 
     @Override
     public void onRequestError(String message) {
-        Toast.makeText(EditorActivity.this,
+        Toast.makeText(a.w.abb_mat.activity.CRSortie.CRSortieActivity.this,
                 message,
                 Toast.LENGTH_SHORT).show();
     }
 
     private void setDataFromIntentExtra() {
 
-        if (id != 0) {
-            et_title.setText(title);
-            et_note.setText(note);
-            palette.setSelectedColor(color);
+        if (idsortie != 0) {
+            et_nomsortie.setText(nomsortie);
+            et_datesortie.setText(datesortie);
 
             getSupportActionBar().setTitle("Update Note");
             readMode();
 
         } else {
-            palette.setSelectedColor(getResources().getColor(R.color.white));
-            color = getResources().getColor(R.color.white);
             editMode();
         }
 
     }
 
     private void editMode() {
-        et_title.setFocusableInTouchMode(true);
-        et_note.setFocusableInTouchMode(true);
-        palette.setEnabled(true);
+        et_nomsortie.setFocusableInTouchMode(true);
+        et_datesortie.setFocusableInTouchMode(true);
     }
 
     private void readMode() {
-        et_title.setFocusableInTouchMode(false);
-        et_note.setFocusableInTouchMode(false);
-        et_title.setFocusable(false);
-        et_note.setFocusable(false);
-        palette.setEnabled(false);
+        et_nomsortie.setFocusableInTouchMode(false);
+        et_datesortie.setFocusableInTouchMode(false);
+        et_nomsortie.setFocusable(false);
+        et_datesortie.setFocusable(false);
     }
 }

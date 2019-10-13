@@ -19,23 +19,23 @@ public class SortiePresenter {
 
     void getData() {
 
-        view.showLoading2();
+        view.showLoading();
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<List<Sortie>> call = apiInterface.getSorties();
         call.enqueue(new Callback<List<Sortie>>() {
             @Override
             public void onResponse(Call<List<Sortie>> call, Response<List<Sortie>> response) {
-                view.hideLoading2();
+                view.hideLoading();
                 if(response.isSuccessful() && response.body() != null) {
-                    view.onGetResult2(response.body());
+                    view.onGetResult(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<List<Sortie>> call, Throwable t) {
-                view.hideLoading2();
-                view.onErrorLoading2(t.getLocalizedMessage());
+                view.hideLoading();
+                view.onErrorLoading(t.getLocalizedMessage());
             }
         });
 

@@ -1,7 +1,7 @@
 package a.w.abb_mat.activity.sortie;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.editor.EditorActivity;
+import a.w.abb_mat.activity.CRSortie.CRSortieActivity;
 import a.w.abb_mat.model.Sortie;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +43,7 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
         fab=findViewById(R.id.add);
         fab.setOnClickListener(view ->
                 startActivityForResult(
-                        new Intent(this, EditorActivity.class),
+                        new Intent(this, CRSortieActivity.class),
                         INTENT_ADD)
         );
 
@@ -59,7 +59,7 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
             String nomsortie = sortie.get(position).getNomsortie();
             String datesortie = sortie.get(position).getDatesortie();
 
-            Intent intent = new Intent(this, EditorActivity.class);
+            Intent intent = new Intent(this, CRSortieActivity.class);
             intent.putExtra("id", idsortie);
             intent.putExtra("nomsortie", nomsortie);
             intent.putExtra("datesortie", datesortie);
@@ -81,17 +81,17 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
     }
 
     @Override
-    public void showLoading2() {
+    public void showLoading() {
         swipeRefresh.setRefreshing(true);
     }
 
     @Override
-    public void hideLoading2() {
+    public void hideLoading() {
         swipeRefresh.setRefreshing(false);
     }
 
     @Override
-    public void onGetResult2(List<Sortie> sorties) {
+    public void onGetResult(List<Sortie> sorties) {
         adapter = new SortieAdapter(this, sorties, itemClickListener);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
@@ -100,7 +100,7 @@ public class SortieActivity extends AppCompatActivity implements SortieView{
     }
 
     @Override
-    public void onErrorLoading2(String message) {
+    public void onErrorLoading(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
