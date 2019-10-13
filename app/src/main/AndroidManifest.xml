@@ -11,25 +11,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.choixEmprunt.choixEmpruntActivity"></activity>
-        <activity android:name=".activity.stab.StabActivity"></activity>
-        <activity android:name=".activity.choix.choixActivity" />
-        <activity android:name=".activity.start.loginActivity">
+        <activity android:name=".activity.sortie.SortieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.choixEmprunt.choixEmpruntActivity" />
+        <activity android:name=".activity.choix.choixActivity" />
+        <activity android:name=".activity.start.loginActivity"></activity>
         <activity android:name=".activity.temporaire.modelActivity" />
-        <activity android:name=".activity.main.MainActivity" />
+        <activity android:name=".activity.main.MainActivity">
+
+        </activity>
         <activity
             android:name=".activity.editor.EditorActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 

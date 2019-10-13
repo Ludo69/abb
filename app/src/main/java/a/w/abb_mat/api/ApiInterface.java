@@ -3,6 +3,7 @@ package a.w.abb_mat.api;
 import java.util.List;
 
 import a.w.abb_mat.model.Note;
+import a.w.abb_mat.model.Sortie;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -21,6 +22,9 @@ public interface ApiInterface {
 
     @GET("notes.php")
     Call<List<Note>> getNotes();
+
+    @GET("sorties.php")
+    Call<List<Sortie>> getSorties();
 
     @FormUrlEncoded
     @POST("update.php")
