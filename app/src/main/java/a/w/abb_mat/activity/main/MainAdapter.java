@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.model.Stab;
+import a.w.abb_mat.model.Note;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,34 +17,34 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAdapter> {
 
     private Context context;
-    private List<Stab> stabs;
+    private List<Note> notes;
     private ItemClickListener itemClickListener;
 
-    public MainAdapter(Context context, List<Stab> stabs, ItemClickListener itemClickListener) {
+    public MainAdapter(Context context, List<Note> notes, ItemClickListener itemClickListener) {
         this.context = context;
-        this.stabs = stabs;
+        this.notes = notes;
         this.itemClickListener = itemClickListener;
     }
 
     @NonNull
     @Override
     public RecyclerViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_stab, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_note, parent, false);
         return new RecyclerViewAdapter(view, itemClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter holder, int position) {
-        Stab stab = stabs.get(position);
-        holder.tv_title.setText(stab.getTitle());
-        holder.tv_note.setText(stab.getNote());
-        holder.tv_date.setText(stab.getDate());
-        holder.card_item.setCardBackgroundColor(stab.getColor());
+        Note note = notes.get(position);
+        holder.tv_title.setText(note.getTitle());
+        holder.tv_note.setText(note.getNote());
+        holder.tv_date.setText(note.getDate());
+        holder.card_item.setCardBackgroundColor(note.getColor());
     }
 
     @Override
     public int getItemCount() {
-        return stabs.size();
+        return notes.size();
     }
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{

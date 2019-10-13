@@ -6,59 +6,79 @@ import com.google.gson.annotations.SerializedName;
 public class Stab {
 
     @Expose
-    @SerializedName("id") private int id;
+    @SerializedName("idstab") private int idstab;
     @Expose
-    @SerializedName("title") private String title;
+    @SerializedName("numstab") private String numstab;
     @Expose
-    @SerializedName("note") private String note;
+    @SerializedName("taillestab") private String taillestab;
     @Expose
-    @SerializedName("color") private int color;
+    @SerializedName("commentairestab") private String commentairestab;
     @Expose
-    @SerializedName("date") private String date;
+    @SerializedName("dispostab") private int dispostab;
+    @Expose
+    @SerializedName("emprunteurstab") private String emprunteurstab;
+    @Expose
+    @SerializedName("codeuniquestab") private String codeuniquestab;
     @Expose
     @SerializedName("success") private boolean success;
     @Expose
     @SerializedName("message") private String message;
 
 
-    public int getId() {
-        return id;
+    public int getIdstab() {
+        return idstab;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdstab(int idstab) {
+        this.idstab = idstab;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNumstab() {
+        return numstab;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNumstab(String numstab) {
+        this.numstab = numstab;
     }
 
-    public String getNote() {
-        return note;
+    public String getTaillestab() {
+        return taillestab;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setTaillestab(String taillestab) {
+        this.taillestab = taillestab;
     }
 
-    public int getColor() {
-        return color;
+    public String getCommentairestab() {
+        return commentairestab;
     }
 
-    public void setColor(int color) {
-        this.color = color;
+    public void setCommentairestab(String  commentairestab) {
+        this.commentairestab = commentairestab;
     }
 
-    public String getDate() {
-        return date;
+    public int getDispostab() {
+        return dispostab;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDispostab(int dispostab) {
+        this.dispostab = dispostab;
+    }
+
+    public String getEmprunteurstab() {
+        return emprunteurstab;
+    }
+
+    public void setEmprunteurstab(String emprunteurstab) {
+        this.emprunteurstab = emprunteurstab;
+    }
+
+    public String getCodeuniquestab() {
+        return codeuniquestab;
+    }
+
+    public void setCodeuniquestab(String codeuniquestab) {
+        this.codeuniquestab = codeuniquestab;
     }
 
     public boolean isSuccess() {

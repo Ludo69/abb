@@ -2,7 +2,7 @@ package a.w.abb_mat.api;
 
 import java.util.List;
 
-import a.w.abb_mat.model.Stab;
+import a.w.abb_mat.model.Note;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -13,18 +13,18 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("save.php")
-    Call<Stab> saveStab(
+    Call<Note> saveNote(
         @Field("title") String title,
         @Field("note") String note,
         @Field("color") int color
     );
 
     @GET("notes.php")
-    Call<List<Stab>> getStabs();
+    Call<List<Note>> getNotes();
 
     @FormUrlEncoded
     @POST("update.php")
-    Call<Stab> updateStab(
+    Call<Note> updateNote(
             @Field("id") int id,
             @Field("title") String title,
             @Field("note") String note,
@@ -33,7 +33,7 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("delete.php")
-    Call<Stab> deleteStab(
+    Call<Note> deleteNote(
             @Field("id") int id
     );
 

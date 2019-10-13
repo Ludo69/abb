@@ -4,7 +4,7 @@ import java.util.List;
 
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
-import a.w.abb_mat.model.Stab;
+import a.w.abb_mat.model.Note;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,10 +22,10 @@ public class MainPresenter {
         view.showLoading();
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Stab>> call = apiInterface.getStabs();
-        call.enqueue(new Callback<List<Stab>>() {
+        Call<List<Note>> call = apiInterface.getNotes();
+        call.enqueue(new Callback<List<Note>>() {
             @Override
-            public void onResponse(Call<List<Stab>> call, Response<List<Stab>> response) {
+            public void onResponse(Call<List<Note>> call, Response<List<Note>> response) {
                 view.hideLoading();
                 if(response.isSuccessful() && response.body() != null) {
                     view.onGetResult(response.body());
@@ -33,7 +33,7 @@ public class MainPresenter {
             }
 
             @Override
-            public void onFailure(Call<List<Stab>> call, Throwable t) {
+            public void onFailure(Call<List<Note>> call, Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }

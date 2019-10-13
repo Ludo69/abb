@@ -2,7 +2,7 @@ package a.w.abb_mat.activity.editor;
 
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
-import a.w.abb_mat.model.Stab;
+import a.w.abb_mat.model.Note;
 import androidx.annotation.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,15 +16,15 @@ public class EditorPresenter {
         this.view = view;
     }
 
-    void saveStab(final String title, final String note, final int color) {
+    void saveNote(final String title, final String note, final int color) {
         view.showProgress();
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        retrofit2.Call<Stab> call = apiInterface.saveStab(title, note, color);
+        retrofit2.Call<Note> call = apiInterface.saveNote(title, note, color);
 
-        call.enqueue(new Callback<Stab>() {
+        call.enqueue(new Callback<Note>() {
             @Override
-            public void onResponse(@NonNull Call<Stab> call, @NonNull Response<Stab> response) {
+            public void onResponse(@NonNull Call<Note> call, @NonNull Response<Note> response) {
                 view.hideProgress();
 
                 if(response.isSuccessful() && response.body() != null){
@@ -41,22 +41,22 @@ public class EditorPresenter {
 
             }
 
-            public void onFailure(@NonNull Call<Stab> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Note> call, @NonNull Throwable t) {
                 view.hideProgress();
                 view.onRequestError(t.getLocalizedMessage());
             }
         });
     }
 
-    void updateStab(int id, String title, String note, int color) {
+    void updateNote(int id, String title, String note, int color) {
 
         view.showProgress();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-        Call<Stab> call = apiInterface.updateStab(id, title, note, color);
-        call.enqueue(new Callback<Stab>() {
+        Call<Note> call = apiInterface.updateNote(id, title, note, color);
+        call.enqueue(new Callback<Note>() {
             @Override
-            public void onResponse(@NonNull Call<Stab> call,@NonNull Response<Stab> response) {
+            public void onResponse(@NonNull Call<Note> call,@NonNull Response<Note> response) {
                 view.hideProgress();
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
@@ -69,7 +69,7 @@ public class EditorPresenter {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Stab> call,@NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Note> call,@NonNull Throwable t) {
                 view.hideProgress();
                 view.onRequestError(t.getLocalizedMessage());
             }
@@ -77,13 +77,13 @@ public class EditorPresenter {
 
     }
 
-    void deleteStab(int id) {
+    void deleteNote(int id) {
         view.showProgress();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<Stab> call = apiInterface.deleteStab(id);
-        call.enqueue(new Callback<Stab>() {
+        Call<Note> call = apiInterface.deleteNote(id);
+        call.enqueue(new Callback<Note>() {
             @Override
-            public void onResponse(@NonNull Call<Stab> call,@NonNull Response<Stab> response) {
+            public void onResponse(@NonNull Call<Note> call,@NonNull Response<Note> response) {
                 view.hideProgress();
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
@@ -96,7 +96,7 @@ public class EditorPresenter {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Stab> call,@NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Note> call,@NonNull Throwable t) {
                 view.hideProgress();
                 view.onRequestError(t.getLocalizedMessage());
             }

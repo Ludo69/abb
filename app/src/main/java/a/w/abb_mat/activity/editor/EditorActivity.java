@@ -1,10 +1,18 @@
 package a.w.abb_mat.activity.editor;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.api.ApiClient;
+import a.w.abb_mat.api.ApiInterface;
+import a.w.abb_mat.model.Note;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -94,7 +102,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 } else if (note.isEmpty()) {
                     et_note.setError("Please enter a note");
                 } else {
-                    presenter.saveStab(title, note, color);
+                    presenter.saveNote(title, note, color);
                 }
                 return true;
 
@@ -113,7 +121,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 } else if (note.isEmpty()) {
                     et_note.setError("Please enter a note");
                 } else {
-                    presenter.updateStab(id, title, note, color);
+                    presenter.updateNote(id, title, note, color);
                 }
                 return true;
 
@@ -123,7 +131,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 alertDialog.setTitle("Confirm !");
                 alertDialog.setMessage("Are you sure?");
                 alertDialog.setNegativeButton("Yes ",
-                        (dialog, which) -> presenter.deleteStab(id));
+                        (dialog, which) -> presenter.deleteNote(id));
                 alertDialog.setPositiveButton("Cancel", ((dialog, which) -> {
                     dialog.dismiss();
                 }));

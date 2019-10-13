@@ -2,7 +2,7 @@ package a.w.abb_mat.activity.main;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.editor.EditorActivity;
-import a.w.abb_mat.model.Stab;
+import a.w.abb_mat.model.Note;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
     MainAdapter adapter;
     MainAdapter.ItemClickListener itemClickListener;
 
-    List<Stab> stab;
+    List<Note> note;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity implements MainView{
         );
 
         itemClickListener = ((view, position) -> {
-            int id = stab.get(position).getId();
-            String title = stab.get(position).getTitle();
-            String notes = stab.get(position).getNote();
-            int color = stab.get(position).getColor();
+            int id = note.get(position).getId();
+            String title = note.get(position).getTitle();
+            String notes = note.get(position).getNote();
+            int color = note.get(position).getColor();
 
             Intent intent = new Intent(this, EditorActivity.class);
             intent.putExtra("id", id);
@@ -93,12 +93,12 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
 
     @Override
-    public void onGetResult(List<Stab> stabs) {
-        adapter = new MainAdapter(this, stabs, itemClickListener);
+    public void onGetResult(List<Note> notes) {
+        adapter = new MainAdapter(this, notes, itemClickListener);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
-        stab = stabs;
+        note = notes;
     }
 
     @Override
