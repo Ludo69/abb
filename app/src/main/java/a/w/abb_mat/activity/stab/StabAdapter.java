@@ -1,9 +1,11 @@
 package a.w.abb_mat.activity.stab;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -39,7 +41,12 @@ public class StabAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stab.
         holder.tv_txtnumstab.setText("Stab n° : "+stab.getNumstab());
         holder.tv_txtcommentairestab.setText(stab.getCommentairestab());
         holder.tv_txtemprunteurstab.setText(stab.getEmprunteurstab());
-        holder.tv_txttaillestab.setText(stab.getTaillestab());
+        holder.tv_txttaillestab.setText("Taille : "+stab.getTaillestab());
+        if(stab.getDispostab() == 1) {
+            holder.tv_color.setBackgroundColor(Color.GREEN);
+        } else {
+            holder.tv_color.setBackgroundColor(Color.RED);
+        }
     }
 
     @Override
@@ -50,6 +57,7 @@ public class StabAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stab.
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tv_txtnumstab, tv_txtcommentairestab, tv_txtemprunteurstab, tv_txttaillestab;
+        LinearLayout tv_color;
         CardView card_item;
         a.w.abb_mat.activity.stab.StabAdapter.ItemClickListener itemClickListener;
 
@@ -60,6 +68,7 @@ public class StabAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stab.
             tv_txtcommentairestab = itemView.findViewById(R.id.txtcommentairestab);
             tv_txtemprunteurstab = itemView.findViewById(R.id.txtemprunteurstab);
             tv_txttaillestab = itemView.findViewById(R.id.txttailleStab);
+            tv_color = itemView.findViewById(R.id.colordispo);
             card_item = itemView.findViewById(R.id.card_item);
 
             this.itemClickListener = itemClickListener;

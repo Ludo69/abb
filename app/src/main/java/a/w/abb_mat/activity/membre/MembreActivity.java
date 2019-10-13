@@ -1,7 +1,7 @@
 package a.w.abb_mat.activity.membre;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.emprunts.EmpruntActivity;
+import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.model.Membre;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,7 +50,7 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        presenter = new MembrePresenter((MembreView) this);
+        presenter = new MembrePresenter(this);
         presenter.getData();
 
         swipeRefresh.setOnRefreshListener(
@@ -59,9 +59,12 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
 
         itemClickListener = ((view, position) -> {
             String nommembre = membre.get(position).getNommembres();
-
-            Intent intent = new Intent(this, EmpruntActivity.class);
-            intent.putExtra("nommembre", nommembre);
+            int idstab = (int)   getIntent().getSerializableExtra("idstab");
+            String numstab = (String) getIntent().getSerializableExtra("numstab");
+            presenter.updateStab(idstab, nommembre, "Ludo");
+            Toast.makeText(this, "Stab n° : " + numstab + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, StabActivity.class);
+            //intent.putExtra("nommembre", nommembre);
             startActivityForResult(intent, INTENT_EDIT);
         });
 

@@ -93,7 +93,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 } else if (note.isEmpty()) {
                     et_note.setError("Please enter a note");
                 } else {
-                    presenter.saveNote(title, note, color);
+                    //presenter.saveNote(title, note, color);
                 }
                 return true;
 
@@ -112,7 +112,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 } else if (note.isEmpty()) {
                     et_note.setError("Please enter a note");
                 } else {
-                    presenter.updateNote(id, title, note, color);
+                    //presenter.updateNote(id, title, note, color);
                 }
                 return true;
 
@@ -121,8 +121,8 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
                 alertDialog.setTitle("Confirm !");
                 alertDialog.setMessage("Are you sure?");
-                alertDialog.setNegativeButton("Yes ",
-                        (dialog, which) -> presenter.deleteNote(id));
+                //alertDialog.setNegativeButton("Yes ",
+                //        (dialog, which) -> presenter.deleteNote(id));
                 alertDialog.setPositiveButton("Cancel", ((dialog, which) -> {
                     dialog.dismiss();
                 }));
