@@ -1,4 +1,4 @@
-package a.w.abb_mat.activity.bloc;
+package a.w.abb_mat.activity.pressionbloc;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -16,13 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class BlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.bloc.BlocAdapter.RecyclerViewAdapter> {
+public class PressionBlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.RecyclerViewAdapter> {
 
     private Context context;
     private List<Bloc> blocs;
-    private a.w.abb_mat.activity.bloc.BlocAdapter.ItemClickListener itemClickListener;
+    private a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.ItemClickListener itemClickListener;
 
-    public BlocAdapter(Context context, List<Bloc> blocs, a.w.abb_mat.activity.bloc.BlocAdapter.ItemClickListener itemClickListener) {
+    public PressionBlocAdapter(Context context, List<Bloc> blocs, a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.ItemClickListener itemClickListener) {
         this.context = context;
         this.blocs = blocs;
         this.itemClickListener = itemClickListener;
@@ -30,27 +30,20 @@ public class BlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.bloc.
 
     @NonNull
     @Override
-    public a.w.abb_mat.activity.bloc.BlocAdapter.RecyclerViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_bloc, parent, false);
-        return new a.w.abb_mat.activity.bloc.BlocAdapter.RecyclerViewAdapter(view, itemClickListener);
+    public a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.RecyclerViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_pressionbloc, parent, false);
+        return new a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.RecyclerViewAdapter(view, itemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull a.w.abb_mat.activity.bloc.BlocAdapter.RecyclerViewAdapter holder, int position) {
+    public void onBindViewHolder(@NonNull a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.RecyclerViewAdapter holder, int position) {
         Bloc bloc = blocs.get(position);
-        holder.tv_txtnumbloc.setText("Bloc n° : "+bloc.getNumbloc());
-        holder.tv_txtcommentairebloc.setText(bloc.getCommentairebloc());
-        holder.tv_txtemprunteurbloc.setText(bloc.getEmprunteurbloc());
+        holder.tv_txtnumpressionbloc.setText("Bloc n° : "+bloc.getNumbloc());
         holder.tv_txtpressionbloc.setText(String.valueOf(bloc.getPressionbloc()));
         if(bloc.getPressionbloc() <= 100){
             holder.tv_txtpressionbloc.setTextColor(Color.parseColor("#FE0000"));
         }else{
             holder.tv_txtpressionbloc.setTextColor(Color.parseColor("#00C635"));
-        }
-        if(bloc.getDispobloc() == 1) {
-            holder.tv_color.setBackgroundColor(Color.GREEN);
-        } else {
-            holder.tv_color.setBackgroundColor(Color.RED);
         }
     }
 
@@ -61,17 +54,15 @@ public class BlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.bloc.
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tv_txtnumbloc, tv_txtcommentairebloc, tv_txtemprunteurbloc, tv_txtpressionbloc;
+        TextView tv_txtnumpressionbloc, tv_txtpressionbloc;
         LinearLayout tv_color;
         CardView card_item;
-        a.w.abb_mat.activity.bloc.BlocAdapter.ItemClickListener itemClickListener;
+        a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.ItemClickListener itemClickListener;
 
-        RecyclerViewAdapter(View itemView, a.w.abb_mat.activity.bloc.BlocAdapter.ItemClickListener itemClickListener) {
+        RecyclerViewAdapter(View itemView, a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.ItemClickListener itemClickListener) {
             super(itemView);
 
-            tv_txtnumbloc = itemView.findViewById(R.id.txtnumbloc);
-            tv_txtcommentairebloc = itemView.findViewById(R.id.txtcommentairebloc);
-            tv_txtemprunteurbloc = itemView.findViewById(R.id.txtemprunteurbloc);
+            tv_txtnumpressionbloc = itemView.findViewById(R.id.txtnumpressionbloc);
             tv_txtpressionbloc = itemView.findViewById(R.id.txtpressionbloc);
             tv_color = itemView.findViewById(R.id.colordispo);
             card_item = itemView.findViewById(R.id.card_item);
@@ -91,3 +82,4 @@ public class BlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.bloc.
         void onItemClick(View view, int position);
     }
 }
+

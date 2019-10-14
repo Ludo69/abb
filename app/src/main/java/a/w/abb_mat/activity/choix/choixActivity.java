@@ -2,6 +2,7 @@ package a.w.abb_mat.activity.choix;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
+import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -28,9 +29,9 @@ public class choixActivity extends AppCompatActivity {
         });
 
         cardviewPression.setOnClickListener(view -> {
-            Toast.makeText(getApplicationContext(), "En cours de développement...", Toast.LENGTH_SHORT).show();
-            //Intent intent = new Intent(getApplicationContext(), choixEmpruntActivity.class);
-            //startActivity(intent);
+            //Toast.makeText(getApplicationContext(), "En cours de développement...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), PressionBlocActivity.class);
+            startActivity(intent);
         });
 
         cardviewGonflage.setOnClickListener(view -> {

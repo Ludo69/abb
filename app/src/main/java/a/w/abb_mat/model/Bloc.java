@@ -16,7 +16,7 @@ public class Bloc {
     @Expose
     @SerializedName("emprunteurbloc") private String emprunteurbloc;
     @Expose
-    @SerializedName("pressionbloc") private String pressionbloc;
+    @SerializedName("pressionbloc") private int pressionbloc;
     @Expose
     @SerializedName("codeuniquebloc") private String codeuniquebloc;
     @Expose
@@ -65,11 +65,11 @@ public class Bloc {
         this.emprunteurbloc = emprunteurbloc;
     }
 
-    public String getPressionbloc() {
+    public int getPressionbloc() {
         return pressionbloc;
     }
 
-    public void setPressionbloc(String pressionbloc) {
+    public void setPressionbloc(int pressionbloc) {
         this.pressionbloc = pressionbloc;
     }
 
