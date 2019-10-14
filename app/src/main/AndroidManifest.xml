@@ -13,7 +13,6 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.membre.MembreActivity"></activity>
         <activity android:name=".activity.stab.StabActivity" />
-        <activity android:name=".activity.emprunts.EmpruntActivity" />
         <activity android:name=".activity.choixEmprunt.choixEmpruntActivity" />
         <activity android:name=".activity.choix.choixActivity" />
         <activity android:name=".activity.start.loginActivity">
@@ -24,7 +23,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.temporaire.modelActivity" />
-        <activity android:name=".activity.main.MainActivity" />
         <activity
             android:name=".activity.editor.EditorActivity"
             android:launchMode="singleTask"

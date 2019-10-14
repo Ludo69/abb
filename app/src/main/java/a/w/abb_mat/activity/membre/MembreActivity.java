@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import java.util.UUID;
 
 public class MembreActivity extends AppCompatActivity implements MembreView {
 
@@ -61,7 +62,10 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
             String nommembre = membre.get(position).getNommembres();
             int idstab = (int)   getIntent().getSerializableExtra("idstab");
             String numstab = (String) getIntent().getSerializableExtra("numstab");
-            presenter.updateStab(idstab, nommembre, "Ludo");
+            String codeunique = UUID.randomUUID().toString();
+            presenter.updateStab(idstab, nommembre, codeunique);
+            //Historisation
+            presenter.inserthistorique("Stab", numstab, "14102019", "0", nommembre, codeunique);
             Toast.makeText(this, "Stab n° : " + numstab + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, StabActivity.class);
             //intent.putExtra("nommembre", nommembre);

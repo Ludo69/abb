@@ -2,8 +2,8 @@ package a.w.abb_mat.api;
 
 import java.util.List;
 
+import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
-import a.w.abb_mat.model.Note;
 import a.w.abb_mat.model.Stab;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -19,10 +19,6 @@ public interface ApiInterface {
     @GET("stabs.php")
     Call<List<Stab>> getStabs();
 
-    @GET("notes.php")
-    Call<List<Note>> getNotes();
-
-
     @FormUrlEncoded
     @POST("updatestab.php")
     Call<Stab> updateStab(
@@ -35,6 +31,17 @@ public interface ApiInterface {
     @POST("updatestabrestitution.php")
     Call<Stab> updateStabRestitution(
             @Field("idstab") int idstab
+    );
+
+    @FormUrlEncoded
+    @POST("inserthistorique.php")
+    Call<Historique> inserthistorique(
+            @Field("typemat") String typemat,
+            @Field("nummat") String nummat,
+            @Field("datepret") String datepret,
+            @Field("daterestitution") String daterestitution,
+            @Field("emprunteur") String emprunteur,
+            @Field("codeunique") String codeunique
     );
 
 }
