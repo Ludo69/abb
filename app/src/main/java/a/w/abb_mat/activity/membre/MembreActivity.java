@@ -66,6 +66,7 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
             Intent intent = new Intent(this, StabActivity.class);
             //intent.putExtra("nommembre", nommembre);
             startActivityForResult(intent, INTENT_EDIT);
+            finish();
         });
 
     }

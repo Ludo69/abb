@@ -57,6 +57,7 @@ public class StabActivity extends AppCompatActivity implements StabView {
             intent.putExtra("numstab", txtnumstab);
             intent.putExtra("commentairestab", txtcommentairestab);
             startActivityForResult(intent, INTENT_EDIT);
+            finish();
         });
 
     }
