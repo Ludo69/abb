@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="a.w.abb_mat">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.membre.MembreActivity"></activity>
+        <activity android:name=".activity.detendeur.DetendeurActivity"></activity>
+        <activity android:name=".activity.membre.MembreActivity" />
         <activity android:name=".activity.stab.StabActivity" />
         <activity android:name=".activity.choixEmprunt.choixEmpruntActivity" />
         <activity android:name=".activity.choix.choixActivity" />
@@ -28,9 +33,5 @@
             android:launchMode="singleTask"
             android:theme="@style/AppTheme" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

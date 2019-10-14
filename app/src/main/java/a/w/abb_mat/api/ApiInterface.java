@@ -2,6 +2,7 @@ package a.w.abb_mat.api;
 
 import java.util.List;
 
+import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
 import a.w.abb_mat.model.Stab;
@@ -19,6 +20,9 @@ public interface ApiInterface {
     @GET("stabs.php")
     Call<List<Stab>> getStabs();
 
+    @GET("detendeurss.php")
+    Call<List<Detendeur>> getDetendeurs();
+
     @FormUrlEncoded
     @POST("updatestab.php")
     Call<Stab> updateStab(
@@ -31,6 +35,12 @@ public interface ApiInterface {
     @POST("updatestabrestitution.php")
     Call<Stab> updateStabRestitution(
             @Field("idstab") int idstab
+    );
+
+    @FormUrlEncoded
+    @POST("updatedetendeurrestitution.php")
+    Call<Detendeur> updateDetendeurRestitution(
+            @Field("iddetendeur") int iddetendeur
     );
 
     @FormUrlEncoded
