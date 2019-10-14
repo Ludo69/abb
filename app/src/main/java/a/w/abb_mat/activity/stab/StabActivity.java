@@ -54,6 +54,7 @@ public class StabActivity extends AppCompatActivity implements StabView {
             int idstab = stab.get(position).getIdstab();
             String txtnumstab = stab.get(position).getNumstab();
             String txtcommentairestab = stab.get(position).getCommentairestab();
+            String codeunique = stab.get(position).getCodeuniquestab();
             int dispostab = stab.get(position).getDispostab();
 
             if(dispostab == 1) {
@@ -64,14 +65,14 @@ public class StabActivity extends AppCompatActivity implements StabView {
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();
             } else {
-                ShowAlertDialog(this, idstab);
+                ShowAlertDialog(this, idstab, codeunique);
 
             }
         });
 
     }
 
-    public void ShowAlertDialog(StabActivity v, int idstab){
+    public void ShowAlertDialog(StabActivity v, int idstab, String codeunique){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Restitution");
             alert.setMessage("Confirmez-vous la restitution ?");
@@ -79,6 +80,7 @@ public class StabActivity extends AppCompatActivity implements StabView {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     presenter.updateStabRestitution(idstab);
+                    presenter.restitution(codeunique, "14102019");
                     Intent intent = getIntent();
                     finish();
                     startActivity(intent);

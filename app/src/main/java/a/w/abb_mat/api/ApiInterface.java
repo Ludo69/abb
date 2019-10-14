@@ -44,4 +44,11 @@ public interface ApiInterface {
             @Field("codeunique") String codeunique
     );
 
+    @FormUrlEncoded
+    @POST("restitution.php")
+    Call<Historique> restitution(
+            @Field("codeunique") String codeunique,
+            @Field("daterestitution") String daterestitution
+    );
+
 }
