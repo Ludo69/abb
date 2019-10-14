@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.membre;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.bloc.BlocActivity;
 import a.w.abb_mat.activity.detendeur.DetendeurActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.model.Membre;
@@ -84,6 +85,15 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
                 presenter.inserthistorique("Detendeur", nummat, "14102019", "0", nommembre, codeunique);
                 Toast.makeText(this, "Detendeur n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, DetendeurActivity.class);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
+            } else if(typemat == 2) {
+                Log.d("*******bloc", String.valueOf(typemat));
+                presenter.updateBloc(idmat, nommembre, codeunique);
+                //Historisation
+                presenter.inserthistorique("Bloc", nummat, "14102019", "0", nommembre, codeunique);
+                Toast.makeText(this, "Bloc n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, BlocActivity.class);
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();
             } else {

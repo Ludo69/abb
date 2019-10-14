@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.choixEmprunt;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.bloc.BlocActivity;
 import a.w.abb_mat.activity.detendeur.DetendeurActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +37,13 @@ public class choixEmpruntActivity extends AppCompatActivity {
 
         cardviewDetendeurs.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), DetendeurActivity.class);
+            startActivity(intent2);
+        });
+
+        CardView cardviewBlocs = findViewById(R.id.blocs);
+
+        cardviewBlocs.setOnClickListener(view -> {
+            Intent intent2 = new Intent(getApplicationContext(), BlocActivity.class);
             startActivity(intent2);
         });
     }

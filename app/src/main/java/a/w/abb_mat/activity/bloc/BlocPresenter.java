@@ -1,34 +1,35 @@
-package a.w.abb_mat.activity.stab;
+package a.w.abb_mat.activity.bloc;
 
 import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
 
+import a.w.abb_mat.activity.bloc.BlocView;
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
 import a.w.abb_mat.model.Historique;
-import a.w.abb_mat.model.Stab;
+import a.w.abb_mat.model.Bloc;
 import androidx.annotation.NonNull;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StabPresenter {
+public class BlocPresenter {
 
-    private StabView view;
+    private BlocView view;
 
-    public StabPresenter(StabView stabView) { this.view = stabView; }
+    public BlocPresenter(BlocView blocView) { this.view = blocView; }
 
     void getData() {
 
         view.showLoading();
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Stab>> call = apiInterface.getStabs();
-        call.enqueue(new Callback<List<Stab>>() {
+        Call<List<Bloc>> call = apiInterface.getBlocs();
+        call.enqueue(new Callback<List<Bloc>>() {
             @Override
-            public void onResponse(Call<List<Stab>> call, Response<List<Stab>> response) {
+            public void onResponse(Call<List<Bloc>> call, Response<List<Bloc>> response) {
                 view.hideLoading();
                 if(response.isSuccessful() && response.body() != null) {
                     view.onGetResult(response.body());
@@ -36,7 +37,7 @@ public class StabPresenter {
             }
 
             @Override
-            public void onFailure(Call<List<Stab>> call, Throwable t) {
+            public void onFailure(Call<List<Bloc>> call, Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }
@@ -44,15 +45,15 @@ public class StabPresenter {
 
     }
 
-    void updateStabRestitution(int idstab) {
+    void updateBlocRestitution(int idbloc) {
 
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
-        Call<Stab> call = apiInterface.updateStabRestitution(idstab);
-        call.enqueue(new Callback<Stab>() {
+        Call<Bloc> call = apiInterface.updateBlocRestitution(idbloc);
+        call.enqueue(new Callback<Bloc>() {
             @Override
-            public void onResponse(@NonNull Call<Stab> call, @NonNull Response<Stab> response) {
+            public void onResponse(@NonNull Call<Bloc> call, @NonNull Response<Bloc> response) {
                 view.hideLoading();
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
@@ -65,7 +66,7 @@ public class StabPresenter {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Stab> call,@NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Bloc> call,@NonNull Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }
@@ -103,3 +104,4 @@ public class StabPresenter {
     }
 
 }
+

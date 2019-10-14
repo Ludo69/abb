@@ -7,6 +7,7 @@ import java.util.List;
 
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
+import a.w.abb_mat.model.Bloc;
 import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
@@ -100,6 +101,36 @@ public class MembrePresenter {
 
             @Override
             public void onFailure(@NonNull Call<Detendeur> call,@NonNull Throwable t) {
+                view.hideLoading();
+                view.onErrorLoading(t.getLocalizedMessage());
+            }
+        });
+
+    }
+
+    void updateBloc(int idbloc, String emprunteurbloc, String codeuniquebloc) {
+
+        view.showLoading();
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Log.d("***********", idbloc+emprunteurbloc+codeuniquebloc);
+
+        Call<Bloc> call = apiInterface.updateBloc(idbloc, emprunteurbloc, codeuniquebloc);
+        call.enqueue(new Callback<Bloc>() {
+            @Override
+            public void onResponse(@NonNull Call<Bloc> call,@NonNull Response<Bloc> response) {
+                view.hideLoading();
+                if(response.isSuccessful() && response.body() != null) {
+                    Boolean success = response.body().getSuccess();
+                    if(success){
+                        //view.onGetResult(response.body().getMessage());
+                    } else {
+                        view.onErrorLoading(response.body().getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Bloc> call,@NonNull Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }

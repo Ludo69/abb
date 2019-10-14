@@ -2,6 +2,7 @@ package a.w.abb_mat.api;
 
 import java.util.List;
 
+import a.w.abb_mat.model.Bloc;
 import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
@@ -23,6 +24,9 @@ public interface ApiInterface {
     @GET("detendeurs.php")
     Call<List<Detendeur>> getDetendeurs();
 
+    @GET("blocs.php")
+    Call<List<Bloc>> getBlocs();
+
     @FormUrlEncoded
     @POST("updatestab.php")
     Call<Stab> updateStab(
@@ -40,6 +44,14 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("updatebloc.php")
+    Call<Bloc> updateBloc(
+            @Field("idbloc") int idbloc,
+            @Field("emprunteurbloc") String emprunteurbloc,
+            @Field("codeuniquebloc") String codeuniquebloc
+    );
+
+    @FormUrlEncoded
     @POST("updatestabrestitution.php")
     Call<Stab> updateStabRestitution(
             @Field("idstab") int idstab
@@ -49,6 +61,12 @@ public interface ApiInterface {
     @POST("updatedetendeurrestitution.php")
     Call<Detendeur> updateDetendeurRestitution(
             @Field("iddetendeur") int iddetendeur
+    );
+
+    @FormUrlEncoded
+    @POST("updateblocrestitution.php")
+    Call<Bloc> updateBlocRestitution(
+            @Field("idbloc") int idbloc
     );
 
     @FormUrlEncoded

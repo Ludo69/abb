@@ -74,7 +74,7 @@ public class DetendeurPresenter {
     }
 
     void restitution(String codeunique, String daterestitution) {
-        Log.d("*****", codeunique + " " + daterestitution);
+        Log.d("*****RESTITUTION", codeunique + " " + daterestitution);
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
