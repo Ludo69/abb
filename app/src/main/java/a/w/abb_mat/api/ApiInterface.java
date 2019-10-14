@@ -31,4 +31,10 @@ public interface ApiInterface {
             @Field("codeuniquestab") String codeuniquestab
     );
 
+    @FormUrlEncoded
+    @POST("updatestabrestitution.php")
+    Call<Stab> updateStabRestitution(
+            @Field("idstab") int idstab
+    );
+
 }

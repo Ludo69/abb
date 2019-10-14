@@ -64,20 +64,24 @@ public class StabActivity extends AppCompatActivity implements StabView {
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();
             } else {
-                ShowAlertDialog(this);
+                ShowAlertDialog(this, idstab);
 
             }
         });
 
     }
 
-    public void ShowAlertDialog(StabActivity v){
+    public void ShowAlertDialog(StabActivity v, int idstab){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setTitle("Restitution");
             alert.setMessage("Confirmez-vous la restitution ?");
             alert.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                    presenter.updateStabRestitution(idstab);
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                     Toast.makeText(StabActivity.this, "Restitution Confirmée !", Toast.LENGTH_SHORT).show();
                 }
             });
