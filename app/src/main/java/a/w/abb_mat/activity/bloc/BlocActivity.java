@@ -58,7 +58,6 @@ public class BlocActivity extends AppCompatActivity implements BlocView {
             String txtnumbloc = bloc.get(position).getNumbloc();
             String txtcommentairebloc = bloc.get(position).getCommentairebloc();
             String codeunique = bloc.get(position).getCodeuniquebloc();
-            Toast.makeText(this, codeunique, Toast.LENGTH_SHORT).show();
             String pressionbloc = bloc.get(position).getPressionbloc();
             String daterestitution = "14102019";
             int dispobloc = bloc.get(position).getDispobloc();

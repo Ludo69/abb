@@ -13,7 +13,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,16 +39,6 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_membre);
 
-        //Récupération variables
-        Intent intentrécup = getIntent();
-        if (intentrécup != null){
-            String nummat = "";
-            if (intentrécup.hasExtra("nummat")){
-                nummat = intentrécup.getStringExtra("nummat");
-            }
-            Toast.makeText(this, nummat, Toast.LENGTH_SHORT).show();
-        }
-
         swipeRefresh = findViewById(R.id.swipe_refresh);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -69,17 +58,14 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
             String codeunique = UUID.randomUUID().toString();
 
             if(typemat == 0) {
-                Log.d("*******stab", String.valueOf(typemat));
                 presenter.updateStab(idmat, nommembre, codeunique);
                 //Historisation
                 presenter.inserthistorique("Stab", nummat, "14102019", "0", nommembre, codeunique);
                 Toast.makeText(this, "Stab n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, StabActivity.class);
-                //intent.putExtra("nommembre", nommembre);
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();
             } else if(typemat == 1) {
-                Log.d("*******deten", String.valueOf(typemat));
                 presenter.updateDetendeur(idmat, nommembre, codeunique);
                 //Historisation
                 presenter.inserthistorique("Detendeur", nummat, "14102019", "0", nommembre, codeunique);
@@ -88,7 +74,6 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();
             } else if(typemat == 2) {
-                Log.d("*******bloc", String.valueOf(typemat));
                 presenter.updateBloc(idmat, nommembre, codeunique);
                 //Historisation
                 presenter.inserthistorique("Bloc", nummat, "14102019", "0", nommembre, codeunique);
@@ -97,7 +82,7 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();
             } else {
-                Log.d("*******rien", String.valueOf(typemat));
+                //...
             }
 
         });
