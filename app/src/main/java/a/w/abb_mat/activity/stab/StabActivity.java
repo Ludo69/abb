@@ -4,13 +4,16 @@ import a.w.abb_mat.R;
 import a.w.abb_mat.activity.membre.MembreActivity;
 import a.w.abb_mat.model.Stab;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -51,15 +54,40 @@ public class StabActivity extends AppCompatActivity implements StabView {
             int idstab = stab.get(position).getIdstab();
             String txtnumstab = stab.get(position).getNumstab();
             String txtcommentairestab = stab.get(position).getCommentairestab();
+            int dispostab = stab.get(position).getDispostab();
 
-            Intent intent = new Intent(this, MembreActivity.class);
-            intent.putExtra("idstab", idstab);
-            intent.putExtra("numstab", txtnumstab);
-            intent.putExtra("commentairestab", txtcommentairestab);
-            startActivityForResult(intent, INTENT_EDIT);
-            finish();
+            if(dispostab == 1) {
+                Intent intent = new Intent(this, MembreActivity.class);
+                intent.putExtra("idstab", idstab);
+                intent.putExtra("numstab", txtnumstab);
+                intent.putExtra("commentairestab", txtcommentairestab);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
+            } else {
+                ShowAlertDialog(this);
+
+            }
         });
 
+    }
+
+    public void ShowAlertDialog(StabActivity v){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Restitution");
+            alert.setMessage("Confirmez-vous la restitution ?");
+            alert.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(StabActivity.this, "Restitution Confirmée !", Toast.LENGTH_SHORT).show();
+                }
+            });
+            alert.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    Toast.makeText(StabActivity.this, "Restitution annulée !", Toast.LENGTH_SHORT).show();
+                }
+            });
+            alert.create().show();
     }
 
     @Override
