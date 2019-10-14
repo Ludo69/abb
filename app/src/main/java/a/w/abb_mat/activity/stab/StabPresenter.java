@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.stab;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class StabPresenter {
     }
 
     void restitution(String codeunique, String daterestitution) {
-
+        Log.d("*****", codeunique + " " + daterestitution);
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
