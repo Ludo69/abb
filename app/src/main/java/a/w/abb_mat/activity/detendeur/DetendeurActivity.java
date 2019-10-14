@@ -59,8 +59,9 @@ public class DetendeurActivity extends AppCompatActivity implements DetendeurVie
 
             if(dispodetendeur == 1) {
                 Intent intent = new Intent(this, MembreActivity.class);
-                intent.putExtra("iddetendeur", iddetendeur);
-                intent.putExtra("numdetendeur", txtnumdetendeur);
+                intent.putExtra("typemat", 1);
+                intent.putExtra("idmat", iddetendeur);
+                intent.putExtra("nummat", txtnumdetendeur);
                 intent.putExtra("commentairedetendeur", txtcommentairedetendeur);
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();

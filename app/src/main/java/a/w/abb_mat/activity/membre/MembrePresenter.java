@@ -7,6 +7,7 @@ import java.util.List;
 
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
+import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
 import a.w.abb_mat.model.Stab;
@@ -69,6 +70,36 @@ public class MembrePresenter {
 
             @Override
             public void onFailure(@NonNull Call<Stab> call,@NonNull Throwable t) {
+                view.hideLoading();
+                view.onErrorLoading(t.getLocalizedMessage());
+            }
+        });
+
+    }
+
+    void updateDetendeur(int iddetendeur, String emprunteurdetendeur, String codeuniquedetendeur) {
+
+        view.showLoading();
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Log.d("***********", iddetendeur+emprunteurdetendeur+codeuniquedetendeur);
+
+        Call<Detendeur> call = apiInterface.updateDetendeur(iddetendeur, emprunteurdetendeur, codeuniquedetendeur);
+        call.enqueue(new Callback<Detendeur>() {
+            @Override
+            public void onResponse(@NonNull Call<Detendeur> call,@NonNull Response<Detendeur> response) {
+                view.hideLoading();
+                if(response.isSuccessful() && response.body() != null) {
+                    Boolean success = response.body().getSuccess();
+                    if(success){
+                        //view.onGetResult(response.body().getMessage());
+                    } else {
+                        view.onErrorLoading(response.body().getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Detendeur> call,@NonNull Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }

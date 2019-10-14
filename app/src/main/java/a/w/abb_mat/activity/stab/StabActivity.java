@@ -59,8 +59,9 @@ public class StabActivity extends AppCompatActivity implements StabView {
 
             if(dispostab == 1) {
                 Intent intent = new Intent(this, MembreActivity.class);
-                intent.putExtra("idstab", idstab);
-                intent.putExtra("numstab", txtnumstab);
+                intent.putExtra("typemat", 0);
+                intent.putExtra("idmat", idstab);
+                intent.putExtra("nummat", txtnumstab);
                 intent.putExtra("commentairestab", txtcommentairestab);
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();

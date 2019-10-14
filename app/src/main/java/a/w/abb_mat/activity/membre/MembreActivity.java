@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.membre;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.detendeur.DetendeurActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.model.Membre;
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,11 +42,11 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
         //Récupération variables
         Intent intentrécup = getIntent();
         if (intentrécup != null){
-            String numstab = "";
-            if (intentrécup.hasExtra("numstab")){
-                numstab = intentrécup.getStringExtra("numstab");
+            String nummat = "";
+            if (intentrécup.hasExtra("nummat")){
+                nummat = intentrécup.getStringExtra("nummat");
             }
-            Toast.makeText(this, numstab, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, nummat, Toast.LENGTH_SHORT).show();
         }
 
         swipeRefresh = findViewById(R.id.swipe_refresh);
@@ -60,17 +62,34 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
 
         itemClickListener = ((view, position) -> {
             String nommembre = membre.get(position).getNommembres();
-            int idstab = (int)   getIntent().getSerializableExtra("idstab");
-            String numstab = (String) getIntent().getSerializableExtra("numstab");
+            int typemat = (int) getIntent().getSerializableExtra("typemat");
+            int idmat = (int)   getIntent().getSerializableExtra("idmat");
+            String nummat = (String) getIntent().getSerializableExtra("nummat");
             String codeunique = UUID.randomUUID().toString();
-            presenter.updateStab(idstab, nommembre, codeunique);
-            //Historisation
-            presenter.inserthistorique("Stab", numstab, "14102019", "0", nommembre, codeunique);
-            Toast.makeText(this, "Stab n° : " + numstab + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, StabActivity.class);
-            //intent.putExtra("nommembre", nommembre);
-            startActivityForResult(intent, INTENT_EDIT);
-            finish();
+
+            if(typemat == 0) {
+                Log.d("*******stab", String.valueOf(typemat));
+                presenter.updateStab(idmat, nommembre, codeunique);
+                //Historisation
+                presenter.inserthistorique("Stab", nummat, "14102019", "0", nommembre, codeunique);
+                Toast.makeText(this, "Stab n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, StabActivity.class);
+                //intent.putExtra("nommembre", nommembre);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
+            } else if(typemat == 1) {
+                Log.d("*******deten", String.valueOf(typemat));
+                presenter.updateDetendeur(idmat, nommembre, codeunique);
+                //Historisation
+                presenter.inserthistorique("Detendeur", nummat, "14102019", "0", nommembre, codeunique);
+                Toast.makeText(this, "Detendeur n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, DetendeurActivity.class);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
+            } else {
+                Log.d("*******rien", String.valueOf(typemat));
+            }
+
         });
 
     }

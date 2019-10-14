@@ -32,6 +32,14 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("updatedetendeur.php")
+    Call<Detendeur> updateDetendeur(
+            @Field("iddetendeur") int iddetendeur,
+            @Field("emprunteurdetendeur") String emprunteurdetendeur,
+            @Field("codeuniquedetendeur") String codeuniquedetendeur
+    );
+
+    @FormUrlEncoded
     @POST("updatestabrestitution.php")
     Call<Stab> updateStabRestitution(
             @Field("idstab") int idstab
