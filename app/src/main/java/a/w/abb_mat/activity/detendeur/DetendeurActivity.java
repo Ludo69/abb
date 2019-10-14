@@ -2,9 +2,6 @@ package a.w.abb_mat.activity.detendeur;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.membre.MembreActivity;
-import a.w.abb_mat.activity.detendeur.DetendeurAdapter;
-import a.w.abb_mat.activity.detendeur.DetendeurPresenter;
-import a.w.abb_mat.activity.detendeur.DetendeurView;
 import a.w.abb_mat.model.Detendeur;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -16,7 +13,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

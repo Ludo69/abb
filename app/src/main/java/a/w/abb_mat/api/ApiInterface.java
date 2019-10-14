@@ -20,7 +20,7 @@ public interface ApiInterface {
     @GET("stabs.php")
     Call<List<Stab>> getStabs();
 
-    @GET("detendeurss.php")
+    @GET("detendeurs.php")
     Call<List<Detendeur>> getDetendeurs();
 
     @FormUrlEncoded
