@@ -25,23 +25,27 @@ public class choixHistoriqueActivity extends AppCompatActivity {
 
         cardviewEnsemble.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), HistoriqueActivity.class);
+            intent2.putExtra("type", 3);
             startActivity(intent2);
         });
 
         cardviewStabs.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), HistoriqueActivity.class);
+            intent2.putExtra("type", 0);
             startActivity(intent2);
         });
 
 
         cardviewDetendeurs.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), HistoriqueActivity.class);
+            intent2.putExtra("type", 1);
             startActivity(intent2);
         });
 
 
         cardviewBlocs.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), HistoriqueActivity.class);
+            intent2.putExtra("type", 2);
             startActivity(intent2);
         });
     }

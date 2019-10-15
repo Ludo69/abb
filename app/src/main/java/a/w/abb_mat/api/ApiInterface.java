@@ -30,6 +30,15 @@ public interface ApiInterface {
     @GET("historiques.php")
     Call<List<Historique>> gethistoriques();
 
+    @GET("historiquesstabs.php")
+    Call<List<Historique>> gethistoriquesstabs();
+
+    @GET("historiquesdetendeurs.php")
+    Call<List<Historique>> gethistoriquesdetendeurs();
+
+    @GET("historiquesblocs.php")
+    Call<List<Historique>> gethistoriquesblocs();
+
     @FormUrlEncoded
     @POST("updatestab.php")
     Call<Stab> updateStab(

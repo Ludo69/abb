@@ -25,6 +25,7 @@ public class HistoriqueActivity extends AppCompatActivity implements HistoriqueV
 
     private static final int INTENT_ADD = 100;
     private static final int INTENT_EDIT = 200;
+    public static int type;
     FloatingActionButton fab;
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefresh;
@@ -38,17 +39,17 @@ public class HistoriqueActivity extends AppCompatActivity implements HistoriqueV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stab);
-
+        setContentView(R.layout.activity_historique);
+        type = getIntent().getIntExtra("type", 0);
         swipeRefresh = findViewById(R.id.swipe_refresh);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         presenter = new HistoriquePresenter((HistoriqueView) this);
-        presenter.getData();
+        presenter.getData(type);
 
         swipeRefresh.setOnRefreshListener(
-                () -> presenter.getData()
+                () -> presenter.getData(type)
         );
 
         itemClickListener = ((view, position) -> {
@@ -63,9 +64,9 @@ public class HistoriqueActivity extends AppCompatActivity implements HistoriqueV
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == INTENT_ADD && resultCode == RESULT_OK){
-            presenter.getData();
+            presenter.getData(type);
         } else if(requestCode == INTENT_EDIT && resultCode == RESULT_OK){
-            presenter.getData();
+            presenter.getData(type);
         }
 
     }
