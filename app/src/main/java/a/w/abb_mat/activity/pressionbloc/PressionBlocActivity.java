@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.pressionbloc;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.gestionPression.GestionPressionActivity;
 import a.w.abb_mat.activity.membre.MembreActivity;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocPresenter;
@@ -54,17 +55,13 @@ public class PressionBlocActivity extends AppCompatActivity implements PressionB
         );
 
         itemClickListener = ((view, position) -> {
-            int idbloc = bloc.get(position).getIdbloc();
-            String txtnumbloc = bloc.get(position).getNumbloc();
+            String numbloc = bloc.get(position).getNumbloc();
             int pressionbloc = bloc.get(position).getPressionbloc();
-            Toast.makeText(this, "Bientôt", Toast.LENGTH_SHORT).show();
-            //    Intent intent = new Intent(this, MembreActivity.class);
-            //    intent.putExtra("typemat", 2);
-            //    intent.putExtra("idmat", idbloc);
-            //    intent.putExtra("nummat", txtnumbloc);
-            //    intent.putExtra("commentairestab", txtcommentairebloc);
-            //    startActivityForResult(intent, INTENT_EDIT);
-            //    finish();
+            Intent intent = new Intent(this, GestionPressionActivity.class);
+            intent.putExtra("numbloc", numbloc);
+            intent.putExtra("pressionbloc", pressionbloc);
+            startActivityForResult(intent, INTENT_EDIT);
+            finish();
         });
     }
 
