@@ -15,10 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.historique.HistoriqueActivity"></activity>
         <activity
             android:name=".activity.gestionPression.GestionPressionActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".activity.pressionbloc.PressionBlocActivity" />
         <activity android:name=".activity.bloc.BlocActivity" />
         <activity android:name=".activity.detendeur.DetendeurActivity" />

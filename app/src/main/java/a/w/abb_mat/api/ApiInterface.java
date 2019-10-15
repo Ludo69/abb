@@ -27,6 +27,9 @@ public interface ApiInterface {
     @GET("blocs.php")
     Call<List<Bloc>> getBlocs();
 
+    @GET("historiques.php")
+    Call<List<Historique>> gethistoriques();
+
     @FormUrlEncoded
     @POST("updatestab.php")
     Call<Stab> updateStab(
