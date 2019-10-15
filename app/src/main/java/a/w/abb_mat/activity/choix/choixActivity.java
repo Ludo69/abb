@@ -2,6 +2,7 @@ package a.w.abb_mat.activity.choix;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
+import a.w.abb_mat.activity.choixhistorique.choixHistoriqueActivity;
 import a.w.abb_mat.activity.historique.HistoriqueActivity;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +44,7 @@ public class choixActivity extends AppCompatActivity {
 
         cardviewHistorique.setOnClickListener(view -> {
             //Toast.makeText(getApplicationContext(), "En cours de développement...", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(), HistoriqueActivity.class);
+            Intent intent = new Intent(getApplicationContext(), choixHistoriqueActivity.class);
             startActivity(intent);
         });
 

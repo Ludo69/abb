@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="a.w.abb_mat">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_acc"
@@ -15,30 +11,48 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.historique.HistoriqueActivity"></activity>
+        <activity android:name=".activity.choixhistorique.choixHistoriqueActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.historique.HistoriqueActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.gestionPression.GestionPressionActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activity.pressionbloc.PressionBlocActivity" />
-        <activity android:name=".activity.bloc.BlocActivity" />
-        <activity android:name=".activity.detendeur.DetendeurActivity" />
-        <activity android:name=".activity.membre.MembreActivity" />
-        <activity android:name=".activity.stab.StabActivity" />
-        <activity android:name=".activity.choixEmprunt.choixEmpruntActivity" />
-        <activity android:name=".activity.choix.choixActivity" />
-        <activity android:name=".activity.start.loginActivity">
+        <activity android:name=".activity.pressionbloc.PressionBlocActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.bloc.BlocActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.detendeur.DetendeurActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.membre.MembreActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.stab.StabActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.choixEmprunt.choixEmpruntActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.choix.choixActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.start.loginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.temporaire.modelActivity" />
+        <activity android:name=".activity.temporaire.modelActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.editor.EditorActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
