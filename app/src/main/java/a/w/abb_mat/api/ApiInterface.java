@@ -4,6 +4,7 @@ import java.util.List;
 
 import a.w.abb_mat.model.Bloc;
 import a.w.abb_mat.model.Detendeur;
+import a.w.abb_mat.model.Gonfleur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
 import a.w.abb_mat.model.Stab;
@@ -38,6 +39,9 @@ public interface ApiInterface {
 
     @GET("historiquesblocs.php")
     Call<List<Historique>> gethistoriquesblocs();
+
+    @GET("gonfleurs.php")
+    Call<List<Gonfleur>> getGonfleurs();
 
     @FormUrlEncoded
     @POST("updatestab.php")

@@ -38,34 +38,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal|center_vertical">
 
 
                     <TextView
-                        android:id="@+id/txtnumbloc"
+                        android:id="@+id/txtnumblocg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
                         android:textColor="@android:color/background_dark"
                         android:textSize="20sp"
                         android:textStyle="normal" />
-
-                    <TextView
-                        android:id="@+id/txtcommentairebloc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/txtemprunteurbloc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:textColor="@android:color/holo_blue_dark" />
-
-
 
                 </LinearLayout>
 
@@ -86,7 +70,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtpressionbloc"
+                        android:id="@+id/txtpressionblocg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
@@ -94,16 +78,6 @@
                         android:textSize="30sp" />
 
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/colordispo"
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                android:background="@color/green"
-                android:gravity="center_vertical|center_horizontal"
-                android:orientation="vertical">
 
             </LinearLayout>
 

@@ -46,7 +46,7 @@ public class loginActivity extends AppCompatActivity {
                     if(password.equals("")){
                         Toast.makeText(getApplicationContext(), "Mot de passe obligatoire", Toast.LENGTH_SHORT).show();
                     }else{
-                        if(password.equals("mdp")){
+                        if(password.equals("abb69")){
                             pb_loader.setVisibility(View.VISIBLE);
                             handler.postDelayed(new Runnable() {
                                 @Override
