@@ -60,7 +60,7 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
             if(typemat == 0) {
                 presenter.updateStab(idmat, nommembre, codeunique);
                 //Historisation
-                presenter.inserthistorique("Stab", nummat, "14102019", "0", nommembre, codeunique);
+                presenter.inserthistorique(0, nummat, "14102019", "0", nommembre, codeunique);
                 Toast.makeText(this, "Stab n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, StabActivity.class);
                 startActivityForResult(intent, INTENT_EDIT);
@@ -68,7 +68,7 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
             } else if(typemat == 1) {
                 presenter.updateDetendeur(idmat, nommembre, codeunique);
                 //Historisation
-                presenter.inserthistorique("Detendeur", nummat, "14102019", "0", nommembre, codeunique);
+                presenter.inserthistorique(1, nummat, "14102019", "0", nommembre, codeunique);
                 Toast.makeText(this, "Detendeur n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, DetendeurActivity.class);
                 startActivityForResult(intent, INTENT_EDIT);
@@ -76,7 +76,7 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
             } else if(typemat == 2) {
                 presenter.updateBloc(idmat, nommembre, codeunique);
                 //Historisation
-                presenter.inserthistorique("Bloc", nummat, "14102019", "0", nommembre, codeunique);
+                presenter.inserthistorique(2, nummat, "14102019", "0", nommembre, codeunique);
                 Toast.makeText(this, "Bloc n° : " + nummat + " attribué à : " + nommembre, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, BlocActivity.class);
                 startActivityForResult(intent, INTENT_EDIT);

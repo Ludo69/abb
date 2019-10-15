@@ -52,7 +52,6 @@ public class MembrePresenter {
 
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Log.d("***********", idstab+emprunteurstab+codeuniquestab);
 
         Call<Stab> call = apiInterface.updateStab(idstab, emprunteurstab, codeuniquestab);
         call.enqueue(new Callback<Stab>() {
@@ -82,7 +81,6 @@ public class MembrePresenter {
 
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Log.d("***********", iddetendeur+emprunteurdetendeur+codeuniquedetendeur);
 
         Call<Detendeur> call = apiInterface.updateDetendeur(iddetendeur, emprunteurdetendeur, codeuniquedetendeur);
         call.enqueue(new Callback<Detendeur>() {
@@ -112,7 +110,6 @@ public class MembrePresenter {
 
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Log.d("***********", idbloc+emprunteurbloc+codeuniquebloc);
 
         Call<Bloc> call = apiInterface.updateBloc(idbloc, emprunteurbloc, codeuniquebloc);
         call.enqueue(new Callback<Bloc>() {
@@ -138,7 +135,7 @@ public class MembrePresenter {
 
     }
 
-    void inserthistorique(String typemat, String nummat, String datepret, String daterestitution, String emprunteur, String codeunique) {
+    void inserthistorique(int typemat, String nummat, String datepret, String daterestitution, String emprunteur, String codeunique) {
 
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);

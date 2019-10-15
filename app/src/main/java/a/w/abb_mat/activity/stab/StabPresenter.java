@@ -74,7 +74,6 @@ public class StabPresenter {
     }
 
     void restitution(String codeunique, String daterestitution) {
-        Log.d("*****RESTITUTION", codeunique + " " + daterestitution);
         view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 

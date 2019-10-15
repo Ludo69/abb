@@ -82,7 +82,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("inserthistorique.php")
     Call<Historique> inserthistorique(
-            @Field("typemat") String typemat,
+            @Field("typemat") int typemat,
             @Field("nummat") String nummat,
             @Field("datepret") String datepret,
             @Field("daterestitution") String daterestitution,

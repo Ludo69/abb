@@ -8,7 +8,7 @@ public class Historique {
     @Expose
     @SerializedName("idhistorique") private int idhistorique;
     @Expose
-    @SerializedName("typemat") private String typemat;
+    @SerializedName("typemat") private int typemat;
     @Expose
     @SerializedName("nummat") private String nummat;
     @Expose
@@ -33,11 +33,11 @@ public class Historique {
         this.idhistorique = idhistorique;
     }
 
-    public String getTypemat() {
+    public int getTypemat() {
         return typemat;
     }
 
-    public void setTypemat(String typemat) {
+    public void setTypemat(int typemat) {
         this.typemat = typemat;
     }
 
