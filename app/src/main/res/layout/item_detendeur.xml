@@ -79,11 +79,11 @@
 
                     <TextView
                         android:id="@+id/txtrevisiondetendeur"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
                         android:textColor="@android:color/holo_red_dark"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -94,9 +94,10 @@
 
                     <TextView
                         android:id="@+id/txtemprunteurdetendeur"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:textSize="16sp"
                         android:textColor="@android:color/holo_blue_dark" />
 
 
