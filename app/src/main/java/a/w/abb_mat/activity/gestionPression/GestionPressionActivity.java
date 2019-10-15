@@ -1,11 +1,14 @@
 package a.w.abb_mat.activity.gestionPression;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
+import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.api.ApiInterface;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,11 +16,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class GestionPressionActivity extends AppCompatActivity {
+public class GestionPressionActivity extends AppCompatActivity implements GestionPressionView{
 
+    private static final int INTENT_EDIT = 200;
     EditText et_txtpression;
     TextView et_txtbloc;
+
+    GestionPressionPresenter presenter;
 
     ProgressDialog progressDialog;
     ApiInterface apiInterface;
@@ -39,6 +46,8 @@ public class GestionPressionActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
 
+        presenter = new GestionPressionPresenter(this);
+
     }
 
     @Override
@@ -52,7 +61,12 @@ public class GestionPressionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.valider:
-                updatePression();
+                int idbloc = (int) getIntent().getIntExtra("idbloc", 0);
+                Integer pressionbloc = Integer.parseInt(et_txtpression.getText().toString());
+                presenter.updatePression(idbloc, pressionbloc);
+                Intent intent = new Intent(this, PressionBlocActivity.class);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
                 return true;
             default:
 
@@ -61,9 +75,24 @@ public class GestionPressionActivity extends AppCompatActivity {
         }
     }
 
-    private void updatePression() {
+    @Override
+    public void showProgress() {
+        // progressDialog.show();
+    }
 
-        progressDialog.show();
+    @Override
+    public void hideProgress() {
+        progressDialog.hide();
+    }
 
+    @Override
+    public void onAddSuccess(String message) {
+        Toast.makeText(GestionPressionActivity.this, message, Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onAddError(String message) {
+        Toast.makeText(GestionPressionActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }

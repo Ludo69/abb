@@ -55,9 +55,11 @@ public class PressionBlocActivity extends AppCompatActivity implements PressionB
         );
 
         itemClickListener = ((view, position) -> {
+            int idbloc = bloc.get(position).getIdbloc();
             String numbloc = bloc.get(position).getNumbloc();
             int pressionbloc = bloc.get(position).getPressionbloc();
             Intent intent = new Intent(this, GestionPressionActivity.class);
+            intent.putExtra("idbloc", idbloc);
             intent.putExtra("numbloc", numbloc);
             intent.putExtra("pressionbloc", pressionbloc);
             startActivityForResult(intent, INTENT_EDIT);

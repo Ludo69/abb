@@ -70,6 +70,13 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("updatepression.php")
+    Call<Bloc> updatePression(
+        @Field("idbloc") int idbloc,
+        @Field("pressionbloc") int pressionbloc
+    );
+
+    @FormUrlEncoded
     @POST("inserthistorique.php")
     Call<Historique> inserthistorique(
             @Field("typemat") String typemat,
