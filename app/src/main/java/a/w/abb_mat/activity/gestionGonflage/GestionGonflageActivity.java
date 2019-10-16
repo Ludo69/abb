@@ -84,7 +84,6 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
             case R.id.valider:
                 int nbloc = getIntent().getIntExtra("numbloc",0);
                 String nomg = (String) getIntent().getSerializableExtra("gonfleur");
-                float coef = (float) 1.2;
                 Calendar c = Calendar.getInstance();
                 int year = c.get(Calendar.YEAR);
                 int saison = year;
@@ -98,7 +97,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
                 } else if (pressionbloc == 0){
                     et_pressionfinale.setError("Entrez la pression finale");
                 } else {
-                    presenter.insertGonflage(nbloc,nomg,dureegonflage,tempgonflage, coef,pressionbloc, year);
+                    //presenter.insertGonflage(nbloc,nomg,dureegonflage,tempgonflage, pressionbloc, year);
                 }
                 return true;
             default:

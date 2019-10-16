@@ -21,11 +21,11 @@ public class GestionGonflagePresenter {
     }
 
 
-    void insertGonflage(int numbloc, String gonfleur, int duree, int temperature, float coeff, int pressionfinale, int saison) {
+    void insertGonflage(int numbloc, String gonfleur, int duree, int temperature, int pressionfinale, int saison) {
         int dureemajoree = 0;
         view.showProgress();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        retrofit2.Call<Gonflage> call = apiInterface.insertgonflage(numbloc, gonfleur, duree, temperature, coeff, dureemajoree, pressionfinale, saison);
+        retrofit2.Call<Gonflage> call = apiInterface.insertgonflage(numbloc, gonfleur, duree, temperature, pressionfinale, saison);
         call.enqueue(new Callback<Gonflage>() {
             @Override
             public void onResponse(@NonNull retrofit2.Call<Gonflage> call, @NonNull Response<Gonflage> response) {

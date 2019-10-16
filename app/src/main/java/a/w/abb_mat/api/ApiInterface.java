@@ -118,8 +118,6 @@ public interface ApiInterface {
             @Field("gonfleur") String gonfleur,
             @Field("duree") int duree,
             @Field("temperature") int temperature,
-            @Field("coeff") float coeff,
-            @Field("dureemajoree") int dureemajoree,
             @Field("pressionfinale") int pressionfinale,
             @Field("saison") int saison
     );
