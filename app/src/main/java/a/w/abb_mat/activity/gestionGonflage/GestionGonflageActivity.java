@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class GestionGonflageActivity extends AppCompatActivity implements GestionGonflageView{
 
     private static final int INTENT_EDIT = 200;
-    TextView et_txtnomgonfleur, et_txtnumbloc, et_txtdategonflage;
+    TextView et_txtnomgonfleur, et_txtnumbloc, et_txtdategonflage, et_litre;
 
     GestionGonflagePresenter presenter;
 
@@ -40,13 +40,16 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
         et_txtnomgonfleur = findViewById(R.id.nomgonfleur);
         et_txtnumbloc = findViewById(R.id.numbloc);
         et_txtdategonflage = findViewById(R.id.dategonflage);
+        et_litre = findViewById(R.id.litre);
 
         String numbloc = (String) getIntent().getSerializableExtra("numbloc");
         String nomglonfleur = (String) getIntent().getSerializableExtra("gonfleur");
+        String litragebloc = (String) getIntent().getSerializableExtra("litragebloc");
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
         et_txtnomgonfleur.setText(nomglonfleur);
         et_txtnumbloc.setText(String.valueOf(numbloc));
+        et_litre.setText(litragebloc + " L");
         et_txtdategonflage.setText(currentDate);
 
         progressDialog = new ProgressDialog(this);

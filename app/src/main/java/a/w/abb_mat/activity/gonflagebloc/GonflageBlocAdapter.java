@@ -39,6 +39,7 @@ public class GonflageBlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activi
     public void onBindViewHolder(@NonNull a.w.abb_mat.activity.gonflagebloc.GonflageBlocAdapter.RecyclerViewAdapter holder, int position) {
         Bloc bloc = blocs.get(position);
         holder.tv_txtnumblocg.setText("Bloc n° : "+bloc.getNumbloc());
+        holder.tv_litrageblocg.setText(bloc.getLitragebloc()+" L");
         holder.tv_txtpressionblocg.setText(String.valueOf(bloc.getPressionbloc()));
         if(bloc.getPressionbloc() <= 100){
             holder.tv_txtpressionblocg.setTextColor(Color.parseColor("#FE0000"));
@@ -54,7 +55,7 @@ public class GonflageBlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activi
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tv_txtnumblocg, tv_txtpressionblocg;
+        TextView tv_txtnumblocg, tv_litrageblocg, tv_txtpressionblocg;
         LinearLayout tv_color;
         CardView card_item;
         a.w.abb_mat.activity.gonflagebloc.GonflageBlocAdapter.ItemClickListener itemClickListener;
@@ -63,6 +64,7 @@ public class GonflageBlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activi
             super(itemView);
 
             tv_txtnumblocg = itemView.findViewById(R.id.txtnumblocg);
+            tv_litrageblocg = itemView.findViewById(R.id.litrageblocg);
             tv_txtpressionblocg = itemView.findViewById(R.id.txtpressionblocg);
             tv_color = itemView.findViewById(R.id.colordispo);
             card_item = itemView.findViewById(R.id.card_item);

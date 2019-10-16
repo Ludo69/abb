@@ -10,6 +10,8 @@ public class Bloc {
     @Expose
     @SerializedName("numbloc") private String numbloc;
     @Expose
+    @SerializedName("litragebloc") private String litragebloc;
+    @Expose
     @SerializedName("commentairebloc") private String commentairebloc;
     @Expose
     @SerializedName("dispobloc") private int dispobloc;
@@ -39,6 +41,14 @@ public class Bloc {
 
     public void setNumbloc(String numbloc) {
         this.numbloc = numbloc;
+    }
+
+    public String getLitragebloc() {
+        return litragebloc;
+    }
+
+    public void setLitragebloc(String litragebloc) {
+        this.litragebloc = litragebloc;
     }
 
     public String getCommentairebloc() {

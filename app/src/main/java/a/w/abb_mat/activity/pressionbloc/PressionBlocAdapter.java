@@ -39,6 +39,7 @@ public class PressionBlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activi
     public void onBindViewHolder(@NonNull a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.RecyclerViewAdapter holder, int position) {
         Bloc bloc = blocs.get(position);
         holder.tv_txtnumpressionbloc.setText("Bloc n° : "+bloc.getNumbloc());
+        holder.tv_litragepressionbloc.setText(bloc.getLitragebloc()+" L");
         holder.tv_txtpressionbloc.setText(String.valueOf(bloc.getPressionbloc()));
         if(bloc.getPressionbloc() <= 100){
             holder.tv_txtpressionbloc.setTextColor(Color.parseColor("#FE0000"));
@@ -54,7 +55,7 @@ public class PressionBlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activi
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tv_txtnumpressionbloc, tv_txtpressionbloc;
+        TextView tv_txtnumpressionbloc, tv_litragepressionbloc, tv_txtpressionbloc;
         LinearLayout tv_color;
         CardView card_item;
         a.w.abb_mat.activity.pressionbloc.PressionBlocAdapter.ItemClickListener itemClickListener;
@@ -63,6 +64,7 @@ public class PressionBlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activi
             super(itemView);
 
             tv_txtnumpressionbloc = itemView.findViewById(R.id.txtnumpressionbloc);
+            tv_litragepressionbloc = itemView.findViewById(R.id.litragepressionbloc);
             tv_txtpressionbloc = itemView.findViewById(R.id.txtpressionbloc);
             tv_color = itemView.findViewById(R.id.colordispo);
             card_item = itemView.findViewById(R.id.card_item);

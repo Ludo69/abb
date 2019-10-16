@@ -36,17 +36,19 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:text="Date : "
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/dategonflage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="dategonflage"
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/blue"/>
 
         </LinearLayout>
 
@@ -57,17 +59,19 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:text="Nom du gonfleur : "
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/nomgonfleur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="gonfleur"
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/blue"/>
 
         </LinearLayout>
 
@@ -78,17 +82,19 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:text="N° du bloc : "
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/numbloc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="numbloc"
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/blue"/>
 
         </LinearLayout>
 
@@ -99,10 +105,34 @@
             android:layout_marginTop="10dp">
 
             <TextView
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:text="Litrage : "
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/litre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="litre"
+                android:textSize="24dp"
+                android:textColor="@color/blue"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
                 android:text="Durée en min : "
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/dureegonflage"
@@ -110,7 +140,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:textSize="24dp"
-                android:hint="000"/>
+                android:hint="00"
+                android:textColor="@color/blue"/>
 
         </LinearLayout>
 
@@ -121,10 +152,11 @@
             android:layout_marginTop="10dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="260dp"
                 android:layout_height="wrap_content"
                 android:text="Température finale : "
-                android:textSize="24dp"/>
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/temperaturegonflage"
@@ -132,13 +164,15 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:textSize="24dp"
-                android:hint="000"/>
+                android:hint="00"
+                android:textColor="@color/blue"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="°C"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 

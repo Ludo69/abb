@@ -39,6 +39,7 @@ public class BlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.bloc.
     public void onBindViewHolder(@NonNull a.w.abb_mat.activity.bloc.BlocAdapter.RecyclerViewAdapter holder, int position) {
         Bloc bloc = blocs.get(position);
         holder.tv_txtnumbloc.setText("Bloc n° : "+bloc.getNumbloc());
+        holder.tv_litragebloc.setText(bloc.getLitragebloc()+ " L");
         holder.tv_txtcommentairebloc.setText(bloc.getCommentairebloc());
         holder.tv_txtemprunteurbloc.setText(bloc.getEmprunteurbloc());
         holder.tv_txtpressionbloc.setText(String.valueOf(bloc.getPressionbloc()));
@@ -61,7 +62,7 @@ public class BlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.bloc.
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tv_txtnumbloc, tv_txtcommentairebloc, tv_txtemprunteurbloc, tv_txtpressionbloc;
+        TextView tv_txtnumbloc, tv_litragebloc, tv_txtcommentairebloc, tv_txtemprunteurbloc, tv_txtpressionbloc;
         LinearLayout tv_color;
         CardView card_item;
         a.w.abb_mat.activity.bloc.BlocAdapter.ItemClickListener itemClickListener;
@@ -70,6 +71,7 @@ public class BlocAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.bloc.
             super(itemView);
 
             tv_txtnumbloc = itemView.findViewById(R.id.txtnumbloc);
+            tv_litragebloc = itemView.findViewById(R.id.litragebloc);
             tv_txtcommentairebloc = itemView.findViewById(R.id.txtcommentairebloc);
             tv_txtemprunteurbloc = itemView.findViewById(R.id.txtemprunteurbloc);
             tv_txtpressionbloc = itemView.findViewById(R.id.txtpressionbloc);
