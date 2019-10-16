@@ -25,6 +25,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
 
     private static final int INTENT_EDIT = 200;
     TextView et_txtnomgonfleur, et_txtnumbloc, et_txtdategonflage, et_litre;
+    EditText et_pressionfinale;
 
     GestionGonflagePresenter presenter;
 
@@ -41,16 +42,19 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
         et_txtnumbloc = findViewById(R.id.numbloc);
         et_txtdategonflage = findViewById(R.id.dategonflage);
         et_litre = findViewById(R.id.litre);
+        et_pressionfinale = findViewById(R.id.txtpressionfinal);
 
         String numbloc = (String) getIntent().getSerializableExtra("numbloc");
         String nomglonfleur = (String) getIntent().getSerializableExtra("gonfleur");
         String litragebloc = (String) getIntent().getSerializableExtra("litragebloc");
+        int pressionbloc = (int) getIntent().getIntExtra("pressionbloc", 0);
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
         et_txtnomgonfleur.setText(nomglonfleur);
         et_txtnumbloc.setText(String.valueOf(numbloc));
-        et_litre.setText(litragebloc + " L");
+        et_litre.setText(" de " +litragebloc);
         et_txtdategonflage.setText(currentDate);
+        et_pressionfinale.setText(String.valueOf(pressionbloc));
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
