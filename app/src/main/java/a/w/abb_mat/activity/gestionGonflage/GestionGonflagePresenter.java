@@ -6,6 +6,7 @@ import android.util.Log;
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
 import a.w.abb_mat.model.Bloc;
+import a.w.abb_mat.model.Gonflage;
 import a.w.abb_mat.model.Stab;
 import androidx.annotation.NonNull;
 import retrofit2.Callback;
@@ -20,15 +21,14 @@ public class GestionGonflagePresenter {
     }
 
 
-    void insertGonflage(int idbloc, int pressionbloc) {
-
+    void insertGonflage(int numbloc, String gonfleur, int duree, int temperature, float coeff, int pressionfinale, int saison) {
+        int dureemajoree = 0;
         view.showProgress();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-
-        retrofit2.Call<Bloc> call = apiInterface.updatePression(idbloc, pressionbloc);
-        call.enqueue(new Callback<Bloc>() {
+        retrofit2.Call<Gonflage> call = apiInterface.insertgonflage(numbloc, gonfleur, duree, temperature, coeff, dureemajoree, pressionfinale, saison);
+        call.enqueue(new Callback<Gonflage>() {
             @Override
-            public void onResponse(@NonNull retrofit2.Call<Bloc> call, @NonNull Response<Bloc> response) {
+            public void onResponse(@NonNull retrofit2.Call<Gonflage> call, @NonNull Response<Gonflage> response) {
                 view.hideProgress();
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
@@ -41,11 +41,12 @@ public class GestionGonflagePresenter {
             }
 
             @Override
-            public void onFailure(@NonNull retrofit2.Call<Bloc> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull retrofit2.Call<Gonflage> call, @NonNull Throwable t) {
                 view.hideProgress();
                 view.onAddError(t.getLocalizedMessage());
             }
         });
 
     }
+
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import a.w.abb_mat.model.Bloc;
 import a.w.abb_mat.model.Detendeur;
+import a.w.abb_mat.model.Gonflage;
 import a.w.abb_mat.model.Gonfleur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
@@ -108,6 +109,19 @@ public interface ApiInterface {
     Call<Historique> restitution(
             @Field("codeunique") String codeunique,
             @Field("daterestitution") String daterestitution
+    );
+
+    @FormUrlEncoded
+    @POST("insertgonflage.php")
+    Call<Gonflage> insertgonflage(
+            @Field("numbloc") int numbloc,
+            @Field("gonfleur") String gonfleur,
+            @Field("duree") int duree,
+            @Field("temperature") int temperature,
+            @Field("coeff") float coeff,
+            @Field("dureemajoree") int dureemajoree,
+            @Field("pressionfinale") int pressionfinale,
+            @Field("saison") int saison
     );
 
 }

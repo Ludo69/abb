@@ -19,13 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.time.Year;
 import java.util.Calendar;
 
 public class GestionGonflageActivity extends AppCompatActivity implements GestionGonflageView{
 
     private static final int INTENT_EDIT = 200;
     TextView et_txtnomgonfleur, et_txtnumbloc, et_txtdategonflage, et_litre;
-    EditText et_pressionfinale;
+    EditText et_pressionfinale, et_dureegonflage, et_tempgonflage;
 
     GestionGonflagePresenter presenter;
 
@@ -43,11 +44,16 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
         et_txtdategonflage = findViewById(R.id.dategonflage);
         et_litre = findViewById(R.id.litre);
         et_pressionfinale = findViewById(R.id.txtpressionfinal);
+        et_dureegonflage = findViewById(R.id.dureegonflage);
+        et_tempgonflage = findViewById(R.id.temperaturegonflage);
+
 
         String numbloc = (String) getIntent().getSerializableExtra("numbloc");
         String nomglonfleur = (String) getIntent().getSerializableExtra("gonfleur");
         String litragebloc = (String) getIntent().getSerializableExtra("litragebloc");
-        int pressionbloc = (int) getIntent().getIntExtra("pressionbloc", 0);
+        int pressionbloc = getIntent().getIntExtra("pressionbloc", 0);
+        int dureegonflage = 0;
+        int tempgonflage = 0;
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
         et_txtnomgonfleur.setText(nomglonfleur);
@@ -55,6 +61,8 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
         et_litre.setText(" de " +litragebloc);
         et_txtdategonflage.setText(currentDate);
         et_pressionfinale.setText(String.valueOf(pressionbloc));
+        et_dureegonflage.setText(String.valueOf(dureegonflage));
+        et_tempgonflage.setText(String.valueOf(tempgonflage));
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
@@ -74,7 +82,24 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.valider:
-
+                int nbloc = getIntent().getIntExtra("numbloc",0);
+                String nomg = (String) getIntent().getSerializableExtra("gonfleur");
+                float coef = (float) 1.2;
+                Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int saison = year;
+                Integer pressionbloc = Integer.parseInt(et_pressionfinale.getText().toString());
+                Integer dureegonflage = Integer.parseInt(et_dureegonflage.getText().toString());
+                Integer tempgonflage = Integer.parseInt(et_tempgonflage.getText().toString());
+                if (dureegonflage == 0) {
+                    et_dureegonflage.setError("Entrez la durée");
+                } else if (tempgonflage == 0) {
+                    et_tempgonflage.setError("Entrez la température");
+                } else if (pressionbloc == 0){
+                    et_pressionfinale.setError("Entrez la pression finale");
+                } else {
+                    presenter.insertGonflage(nbloc,nomg,dureegonflage,tempgonflage, coef,pressionbloc, year);
+                }
                 return true;
             default:
 
