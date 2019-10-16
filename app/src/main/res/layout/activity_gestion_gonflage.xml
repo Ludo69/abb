@@ -30,7 +30,28 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date : "
+                android:textSize="24dp"/>
+
+            <TextView
+                android:id="@+id/dategonflage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dategonflage"
+                android:textSize="24dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
@@ -39,19 +60,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nom du gonfleur : "
-                android:textSize="20dp"/>
+                android:textSize="24dp"/>
 
             <TextView
                 android:id="@+id/nomgonfleur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="gonfleur"
-                android:textSize="18dp"/>
+                android:textSize="24dp"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp">
@@ -60,14 +81,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="N° du bloc : "
-                android:textSize="20dp"/>
+                android:textSize="24dp"/>
 
             <TextView
                 android:id="@+id/numbloc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="numbloc"
-                android:textSize="18dp"/>
+                android:textSize="24dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Durée en min : "
+                android:textSize="24dp"/>
+
+            <EditText
+                android:id="@+id/dureegonflage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="24dp"
+                android:hint="000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Température finale : "
+                android:textSize="24dp"/>
+
+            <EditText
+                android:id="@+id/temperaturegonflage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="24dp"
+                android:hint="000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="°C"
+                android:textSize="20dp"/>
 
         </LinearLayout>
 

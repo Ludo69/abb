@@ -18,10 +18,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 public class GestionGonflageActivity extends AppCompatActivity implements GestionGonflageView{
 
     private static final int INTENT_EDIT = 200;
-    TextView et_txtnomgonfleur, et_txtnumbloc;
+    TextView et_txtnomgonfleur, et_txtnumbloc, et_txtdategonflage;
 
     GestionGonflagePresenter presenter;
 
@@ -36,11 +39,15 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
 
         et_txtnomgonfleur = findViewById(R.id.nomgonfleur);
         et_txtnumbloc = findViewById(R.id.numbloc);
+        et_txtdategonflage = findViewById(R.id.dategonflage);
 
         String numbloc = (String) getIntent().getSerializableExtra("numbloc");
         String nomglonfleur = (String) getIntent().getSerializableExtra("gonfleur");
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
         et_txtnomgonfleur.setText(nomglonfleur);
         et_txtnumbloc.setText(String.valueOf(numbloc));
+        et_txtdategonflage.setText(currentDate);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
@@ -71,7 +78,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
 
     @Override
     public void showProgress() {
-        // progressDialog.show();
+        progressDialog.show();
     }
 
     @Override
