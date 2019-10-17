@@ -3,6 +3,7 @@ package a.w.abb_mat.api;
 import java.util.List;
 
 import a.w.abb_mat.model.Bloc;
+import a.w.abb_mat.model.Compteur;
 import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Gonflage;
 import a.w.abb_mat.model.Gonfleur;
@@ -121,6 +122,12 @@ public interface ApiInterface {
             @Field("temperature") int temperature,
             @Field("pressionfinale") int pressionfinale,
             @Field("saison") int saison
+    );
+
+    @FormUrlEncoded
+    @POST("updatecompteur.php")
+    Call<Compteur> updatecompteur(
+            @Field("compteur") float compteur
     );
 
 }

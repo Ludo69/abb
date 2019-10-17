@@ -107,6 +107,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
                 }else {
                     presenter.insertGonflage(nbloc,nomg,compteurfinal,nbrbloc, tempgonflage, pressionblocf, year);
                     presenter.updatePression(idbloc, pressionblocf);
+                    presenter.updateCompteur(compteurfinal);
                     Intent intent = new Intent(this, GonflageBlocActivity.class);
                     startActivityForResult(intent, INTENT_EDIT);
                     finish();
