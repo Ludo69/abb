@@ -33,6 +33,9 @@ public interface ApiInterface {
     @GET("historiques.php")
     Call<List<Historique>> gethistoriques();
 
+    @GET("gonflages.php")
+    Call<List<Gonflage>> getgonflages();
+
     @GET("historiquesstabs.php")
     Call<List<Historique>> gethistoriquesstabs();
 

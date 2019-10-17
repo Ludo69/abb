@@ -12,6 +12,8 @@ public class Gonflage {
     @Expose
     @SerializedName("gonfleur") private String gonfleur;
     @Expose
+    @SerializedName("dategonflage") String dategonflage;
+    @Expose
     @SerializedName("nbrblocbranche") int nbrblocbranche;
     @Expose
     @SerializedName("departcompteur") float departcompteur;
@@ -56,6 +58,22 @@ public class Gonflage {
 
     public void setGonfleur(String gonfleur) {
         this.gonfleur = gonfleur;
+    }
+
+    public String getDategonflage() {
+        return dategonflage;
+    }
+
+    public void setDategonflage(String dategonflage) {
+        this.dategonflage = dategonflage;
+    }
+
+    public void setDepartcompteur(float departcompteur) {
+        this.departcompteur = departcompteur;
+    }
+
+    public void setFincompteur(float fincompteur) {
+        this.fincompteur = fincompteur;
     }
 
     public int getNbrblocbranche() {

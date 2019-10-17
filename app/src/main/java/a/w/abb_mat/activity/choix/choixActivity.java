@@ -2,6 +2,7 @@ package a.w.abb_mat.activity.choix;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
+import a.w.abb_mat.activity.choixgonflage.ChoixGonflageActivity;
 import a.w.abb_mat.activity.choixhistorique.choixHistoriqueActivity;
 import a.w.abb_mat.activity.gonfleur.GonfleurActivity;
 import a.w.abb_mat.activity.historique.HistoriqueActivity;
@@ -39,7 +40,7 @@ public class choixActivity extends AppCompatActivity {
 
         cardviewGonflage.setOnClickListener(view -> {
             //Toast.makeText(getApplicationContext(), "En cours de développement...", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(), GonfleurActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ChoixGonflageActivity.class);
             startActivity(intent);
         });
 
