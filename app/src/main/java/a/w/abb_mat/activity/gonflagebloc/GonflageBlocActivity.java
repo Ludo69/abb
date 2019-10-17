@@ -47,11 +47,13 @@ public class GonflageBlocActivity extends AppCompatActivity implements GonflageB
         );
 
         itemClickListener = ((view, position) -> {
+            int idbloc = bloc.get(position).getIdbloc();
             String numbloc = bloc.get(position).getNumbloc();
             int pressionbloc = bloc.get(position).getPressionbloc();
             String litragebloc = bloc.get(position).getLitragebloc();
             String gonfleur = (String) getIntent().getSerializableExtra("gonfleur");
             Intent intent = new Intent(this, GestionGonflageActivity.class);
+            intent.putExtra("idbloc", idbloc);
             intent.putExtra("numbloc", numbloc);
             intent.putExtra("litragebloc", litragebloc);
             intent.putExtra("pressionbloc", pressionbloc);

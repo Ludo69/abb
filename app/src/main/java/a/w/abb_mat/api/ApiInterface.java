@@ -116,7 +116,8 @@ public interface ApiInterface {
     Call<Gonflage> insertgonflage(
             @Field("numbloc") int numbloc,
             @Field("gonfleur") String gonfleur,
-            @Field("duree") int duree,
+            @Field("compteurfinal") float compteurfinal,
+            @Field("nbrbloc") int nbrbloc,
             @Field("temperature") int temperature,
             @Field("pressionfinale") int pressionfinale,
             @Field("saison") int saison

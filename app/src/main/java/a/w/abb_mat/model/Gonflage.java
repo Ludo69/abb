@@ -12,6 +12,12 @@ public class Gonflage {
     @Expose
     @SerializedName("gonfleur") private String gonfleur;
     @Expose
+    @SerializedName("nbrblocbranche") int nbrblocbranche;
+    @Expose
+    @SerializedName("departcompteur") float departcompteur;
+    @Expose
+    @SerializedName("fincompteur") float fincompteur;
+    @Expose
     @SerializedName("duree") private int duree;
     @Expose
     @SerializedName("temperature") private int temperature;
@@ -50,6 +56,30 @@ public class Gonflage {
 
     public void setGonfleur(String gonfleur) {
         this.gonfleur = gonfleur;
+    }
+
+    public int getNbrblocbranche() {
+        return nbrblocbranche;
+    }
+
+    public void setNbrblocbranche(int nbrblocbranche) {
+        this.nbrblocbranche = nbrblocbranche;
+    }
+
+    public float getDepartcompteur() {
+        return departcompteur;
+    }
+
+    public void setDepartcompteur(int departcompteur) {
+        this.departcompteur = departcompteur;
+    }
+
+    public float getFincompteur() {
+        return fincompteur;
+    }
+
+    public void setFincompteur(int fincompteur) {
+        this.fincompteur = fincompteur;
     }
 
     public int getDuree() {

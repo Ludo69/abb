@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.gestionGonflage;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.gonflagebloc.GonflageBlocActivity;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.api.ApiInterface;
@@ -26,7 +27,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
 
     private static final int INTENT_EDIT = 200;
     TextView et_txtnomgonfleur, et_txtnumbloc, et_txtdategonflage, et_litre;
-    EditText et_pressionfinale, et_dureegonflage, et_tempgonflage;
+    EditText et_pressionfinale, et_compteurfinal, et_tempgonflage, et_nbrbloc;
 
     GestionGonflagePresenter presenter;
 
@@ -44,15 +45,16 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
         et_txtdategonflage = findViewById(R.id.dategonflage);
         et_litre = findViewById(R.id.litre);
         et_pressionfinale = findViewById(R.id.txtpressionfinal);
-        et_dureegonflage = findViewById(R.id.dureegonflage);
+        et_compteurfinal = findViewById(R.id.compteurfin);
         et_tempgonflage = findViewById(R.id.temperaturegonflage);
+        et_nbrbloc = findViewById(R.id.nbrbloc);
 
 
         String numbloc = (String) getIntent().getSerializableExtra("numbloc");
         String nomglonfleur = (String) getIntent().getSerializableExtra("gonfleur");
         String litragebloc = (String) getIntent().getSerializableExtra("litragebloc");
         int pressionbloc = getIntent().getIntExtra("pressionbloc", 0);
-        int dureegonflage = 0;
+        float compteurfin = 0;
         int tempgonflage = 0;
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
@@ -61,8 +63,9 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
         et_litre.setText(" de " +litragebloc);
         et_txtdategonflage.setText(currentDate);
         et_pressionfinale.setText(String.valueOf(pressionbloc));
-        et_dureegonflage.setText(String.valueOf(dureegonflage));
+        et_compteurfinal.setText(String.valueOf(compteurfin));
         et_tempgonflage.setText(String.valueOf(tempgonflage));
+        et_nbrbloc.setText("2");
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
@@ -82,22 +85,31 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.valider:
+                int idbloc = getIntent().getIntExtra("idbloc", 0);
                 int nbloc = getIntent().getIntExtra("numbloc",0);
                 String nomg = (String) getIntent().getSerializableExtra("gonfleur");
                 Calendar c = Calendar.getInstance();
                 int year = c.get(Calendar.YEAR);
                 int saison = year;
-                Integer pressionbloc = Integer.parseInt(et_pressionfinale.getText().toString());
-                Integer dureegonflage = Integer.parseInt(et_dureegonflage.getText().toString());
+                Integer pressionblocf = Integer.parseInt(et_pressionfinale.getText().toString());
+                Float compteurfinal = Float.parseFloat(et_compteurfinal.getText().toString());
                 Integer tempgonflage = Integer.parseInt(et_tempgonflage.getText().toString());
-                if (dureegonflage == 0) {
-                    et_dureegonflage.setError("Entrez la durée");
+                Integer nbrbloc = Integer.parseInt(et_nbrbloc.getText().toString());
+                Log.d("TEMP : ", String.valueOf(tempgonflage));
+                if (compteurfinal == 0) {
+                    et_compteurfinal.setError("Entrez le compteur");
                 } else if (tempgonflage == 0) {
                     et_tempgonflage.setError("Entrez la température");
-                } else if (pressionbloc == 0){
+                } else if (pressionblocf == 0){
                     et_pressionfinale.setError("Entrez la pression finale");
-                } else {
-                    //presenter.insertGonflage(nbloc,nomg,dureegonflage,tempgonflage, pressionbloc, year);
+                } else if (nbrbloc == 0) {
+                    et_nbrbloc.setError("Entrez le nombre de bloc");
+                }else {
+                    presenter.insertGonflage(nbloc,nomg,compteurfinal,nbrbloc, tempgonflage, pressionblocf, year);
+                    presenter.updatePression(idbloc, pressionblocf);
+                    Intent intent = new Intent(this, GonflageBlocActivity.class);
+                    startActivityForResult(intent, INTENT_EDIT);
+                    finish();
                 }
                 return true;
             default:
