@@ -7,6 +7,8 @@ import a.w.abb_mat.activity.gestionGonflage.GestionGonflageActivity;
 import a.w.abb_mat.activity.gonfleur.GonfleurActivity;
 import a.w.abb_mat.activity.listegonflage.ListeGonflageActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
+import a.w.abb_mat.activity.stats.StatsActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -33,6 +35,14 @@ public class ChoixGonflageActivity extends AppCompatActivity {
 
         cardviewListegonflage.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), ListeGonflageActivity.class);
+            startActivity(intent2);
+        });
+
+        CardView cardviewStatistiques = findViewById(R.id.statistiques);
+
+        cardviewStatistiques.setOnClickListener(view -> {
+            Toast.makeText(this, "Bientôt...", Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(getApplicationContext(), StatsActivity.class);
             startActivity(intent2);
         });
 

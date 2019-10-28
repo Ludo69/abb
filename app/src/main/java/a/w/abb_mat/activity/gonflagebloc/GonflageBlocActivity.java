@@ -53,6 +53,7 @@ public class GonflageBlocActivity extends AppCompatActivity implements GonflageB
             String litragebloc = bloc.get(position).getLitragebloc();
             String gonfleur = (String) getIntent().getSerializableExtra("gonfleur");
             Intent intent = new Intent(this, GestionGonflageActivity.class);
+            intent.putExtra("type", 0);
             intent.putExtra("idbloc", idbloc);
             intent.putExtra("numbloc", numbloc);
             intent.putExtra("litragebloc", litragebloc);

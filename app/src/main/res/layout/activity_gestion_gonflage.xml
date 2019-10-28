@@ -77,21 +77,6 @@
                 android:textSize="24dp"
                 android:textColor="@color/blue"/>
 
-            <TextView
-                android:id="@+id/litre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="litre"
-                android:textSize="24dp"
-                android:textColor="@color/blue"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" L"
-                android:textSize="24dp"
-                android:textColor="@color/blue"/>
-
         </LinearLayout>
 
         <LinearLayout

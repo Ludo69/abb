@@ -37,38 +37,61 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nom du gonfleur :"
-                        android:textSize="12sp" />
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp">
 
                     <TextView
                         android:id="@+id/nomgonfleur"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date du gonflage :"
-                        android:textSize="12sp" />
+                        android:layout_marginRight="20dp"/>
 
                     <TextView
                         android:id="@+id/dategonflage"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_marginRight="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Durée réelle : "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/duree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Durée retenue : "
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/dureeretenue"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/temperature"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right" />
 
                 </LinearLayout>
 
@@ -76,20 +99,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp">
 
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pressionfinale :"
+                        android:text="Pression finale :"
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/pressionfinale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+ />
+
+                    <TextView
+                        android:id="@+id/numbloc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold" />
+
                 </LinearLayout>
             </LinearLayout>
 

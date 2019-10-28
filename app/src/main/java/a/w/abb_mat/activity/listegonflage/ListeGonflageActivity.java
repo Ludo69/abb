@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.listegonflage;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.gestionGonflage.GestionGonflageActivity;
 import a.w.abb_mat.model.Gonflage;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +47,27 @@ public class ListeGonflageActivity extends AppCompatActivity implements ListeGon
 
         itemClickListener = ((view, position) -> {
            // int idhistorique = gonflages.get(position).getIdhistorique();
+            Toast.makeText(this, "Ouverture pour modification", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, GestionGonflageActivity.class);
+            intent.putExtra("type", 1);
+            int id = gonflage.get(position).getId();
+            String date = gonflage.get(position).getDate();
+            String gonfleur = gonflage.get(position).getGonfleur();
+            int numbloc = gonflage.get(position).getNumbloc();
+            int nbrbloc = gonflage.get(position).getNbrblocbranche();
+            float compteur = gonflage.get(position).getFincompteur();
+            int temperature = gonflage.get(position).getTemperature();
+            int pression = gonflage.get(position).getPressionfinale();
+            intent.putExtra("id", id);
+            intent.putExtra("date", date);
+            intent.putExtra("gonfleur", gonfleur);
+            intent.putExtra("numbloc", numbloc);
+            intent.putExtra("nbrbloc", nbrbloc);
+            intent.putExtra("compteur", compteur);
+            intent.putExtra("temperature", temperature);
+            intent.putExtra("pression", pression);
+            startActivityForResult(intent, INTENT_EDIT);
+            finish();
 
         });
 

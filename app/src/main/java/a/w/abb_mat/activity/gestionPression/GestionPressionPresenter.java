@@ -1,12 +1,8 @@
 package a.w.abb_mat.activity.gestionPression;
 
-import android.telecom.Call;
-import android.util.Log;
-
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
 import a.w.abb_mat.model.Bloc;
-import a.w.abb_mat.model.Stab;
 import androidx.annotation.NonNull;
 import retrofit2.Callback;
 import retrofit2.Response;

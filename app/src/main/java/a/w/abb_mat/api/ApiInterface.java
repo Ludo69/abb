@@ -10,6 +10,7 @@ import a.w.abb_mat.model.Gonfleur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
 import a.w.abb_mat.model.Stab;
+import a.w.abb_mat.model.Stat;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -47,6 +48,9 @@ public interface ApiInterface {
 
     @GET("gonfleurs.php")
     Call<List<Gonfleur>> getGonfleurs();
+
+    @GET("count.php")
+    Call<Stat> GetCount();
 
     @FormUrlEncoded
     @POST("updatestab.php")
@@ -98,6 +102,13 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("selectgonflage.php")
+    Call<Gonflage> selectgonflage(
+            @Field("id") int id
+    );
+
+
+    @FormUrlEncoded
     @POST("inserthistorique.php")
     Call<Historique> inserthistorique(
             @Field("typemat") int typemat,
@@ -118,6 +129,19 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("insertgonflage.php")
     Call<Gonflage> insertgonflage(
+            @Field("numbloc") int numbloc,
+            @Field("gonfleur") String gonfleur,
+            @Field("compteurfinal") float compteurfinal,
+            @Field("nbrbloc") int nbrbloc,
+            @Field("temperature") int temperature,
+            @Field("pressionfinale") int pressionfinale,
+            @Field("saison") int saison
+    );
+
+    @FormUrlEncoded
+    @POST("updategonflage.php")
+    Call<Gonflage> updategonflage(
+            @Field("id") int id,
             @Field("numbloc") int numbloc,
             @Field("gonfleur") String gonfleur,
             @Field("compteurfinal") float compteurfinal,

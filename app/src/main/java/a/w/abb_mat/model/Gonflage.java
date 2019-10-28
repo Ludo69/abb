@@ -3,6 +3,8 @@ package a.w.abb_mat.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class Gonflage {
 
     @Expose
@@ -12,7 +14,7 @@ public class Gonflage {
     @Expose
     @SerializedName("gonfleur") private String gonfleur;
     @Expose
-    @SerializedName("dategonflage") String dategonflage;
+    @SerializedName("date") String date;
     @Expose
     @SerializedName("nbrblocbranche") int nbrblocbranche;
     @Expose
@@ -60,12 +62,12 @@ public class Gonflage {
         this.gonfleur = gonfleur;
     }
 
-    public String getDategonflage() {
-        return dategonflage;
+    public String getDate() {
+        return date;
     }
 
-    public void setDategonflage(String dategonflage) {
-        this.dategonflage = dategonflage;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setDepartcompteur(float departcompteur) {

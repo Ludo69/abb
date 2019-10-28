@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.listegonflage;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,8 +39,12 @@ public class ListeGonflageAdapter extends RecyclerView.Adapter<a.w.abb_mat.activ
     public void onBindViewHolder(@NonNull a.w.abb_mat.activity.listegonflage.ListeGonflageAdapter.RecyclerViewAdapter holder, int position) {
         Gonflage gonflage = gonflages.get(position);
         holder.tv_nomgonfleur.setText(gonflage.getGonfleur());
-        holder.tv_dategonflage.setText(gonflage.getDategonflage());
-        holder.tv_pressionfinale.setText(gonflage.getPressionfinale());
+        holder.tv_date.setText(gonflage.getDate());
+        holder.tv_pressionfinale.setText(String.valueOf(gonflage.getPressionfinale()));
+        holder.tv_duree.setText(String.valueOf(gonflage.getDuree()) + " min");
+        holder.tv_temperature.setText(String.valueOf(gonflage.getTemperature()) + " °C");
+        holder.tv_dureeretenue.setText(String.valueOf(gonflage.getDureemajoree()) + " min");
+        holder.tv_numbloc.setText("Bloc n° " +String.valueOf(gonflage.getNumbloc()));
     }
 
     @Override
@@ -49,7 +54,8 @@ public class ListeGonflageAdapter extends RecyclerView.Adapter<a.w.abb_mat.activ
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tv_nomgonfleur, tv_dategonflage, tv_pressionfinale;
+        TextView tv_nomgonfleur, tv_date, tv_pressionfinale, tv_numbloc;
+        TextView tv_duree, tv_temperature, tv_dureeretenue;
         CardView card_item;
         a.w.abb_mat.activity.listegonflage.ListeGonflageAdapter.ItemClickListener itemClickListener;
 
@@ -57,8 +63,12 @@ public class ListeGonflageAdapter extends RecyclerView.Adapter<a.w.abb_mat.activ
             super(itemView);
 
             tv_nomgonfleur = itemView.findViewById(R.id.nomgonfleur);
-            tv_dategonflage = itemView.findViewById(R.id.dategonflage);
+            tv_date = itemView.findViewById(R.id.dategonflage);
             tv_pressionfinale = itemView.findViewById(R.id.pressionfinale);
+            tv_duree = itemView.findViewById(R.id.duree);
+            tv_temperature = itemView.findViewById(R.id.temperature);
+            tv_dureeretenue = itemView.findViewById(R.id.dureeretenue);
+            tv_numbloc = itemView.findViewById(R.id.numbloc);
             card_item = itemView.findViewById(R.id.card_item);
 
             this.itemClickListener = itemClickListener;

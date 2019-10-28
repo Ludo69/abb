@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.listegonflage.ListeGonflageActivity"></activity>
+        <activity android:name=".activity.stats.StatsActivity"></activity>
+        <activity android:name=".activity.listegonflage.ListeGonflageActivity" />
         <activity android:name=".activity.choixgonflage.ChoixGonflageActivity" />
         <activity android:name=".activity.gestionGonflage.GestionGonflageActivity" />
         <activity android:name=".activity.gonflagebloc.GonflageBlocActivity" />
