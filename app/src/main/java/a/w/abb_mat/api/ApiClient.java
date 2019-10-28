@@ -5,8 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    //private static final String BASE_URL = "http://gestionmatabb.alwaysdata.net/";
-    private static final String BASE_URL = "http://10.0.2.2:8888/";
+    private static final String BASE_URL = "http://gestionmatabb.alwaysdata.net/";
+    //private static final String BASE_URL = "http://10.0.2.2:8888/";
     private static Retrofit retrofit;
 
     public static Retrofit getApiClient() {
