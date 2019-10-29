@@ -16,6 +16,9 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -50,7 +53,7 @@ public interface ApiInterface {
     Call<List<Gonfleur>> getGonfleurs();
 
     @GET("count.php")
-    Call<Stat> GetCount();
+    Call<List<Stat>> GetNbr();
 
     @FormUrlEncoded
     @POST("updatestab.php")

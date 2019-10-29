@@ -44,7 +44,7 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
 
         presenter = new StatsPresenter(this);
         presenter.recupstats();
-        et_nbrgonflage.setText(stat.getNbrgonflage());
+//        et_nbrgonflage.setText(stat.getNbrgonflage());
 
     }
 

@@ -6,33 +6,36 @@ import com.google.gson.annotations.SerializedName;
 public class Stat {
 
     @Expose
-    @SerializedName("nbrgonflage") private String nbrgonflage;
+    @SerializedName("id") private int id;
     @Expose
-    @SerializedName("success") private boolean success;
-    @Expose
-    @SerializedName("message") private String message;
+    @SerializedName("nbrgonflage") private int nbrgonflage;
 
-    public String getNbrgonflage() {
-        return nbrgonflage;
-    }
-
-    public void setNbrgonflage(String nbrgonflage) {
+    public Stat(int id, int nbrgonflage) {
+        this.id = id;
         this.nbrgonflage = nbrgonflage;
     }
 
-    public boolean isSuccess() {
-        return success;
+    public int getId() {
+        return id;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public int getNbrgonflage() {
+        return nbrgonflage;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setNbrgonflage(int nbrgonflage) {
+        this.nbrgonflage = nbrgonflage;
+    }
+
+    @Override
+    public String toString() {
+        return "Stat{" +
+                "id=" + id +
+                ", nbrgonflage=" + nbrgonflage +
+                '}';
     }
 }
