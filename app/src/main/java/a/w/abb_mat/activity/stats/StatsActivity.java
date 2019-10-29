@@ -4,6 +4,7 @@ import a.w.abb_mat.R;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.api.ApiInterface;
+import a.w.abb_mat.model.Stat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -18,16 +19,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class StatsActivity extends AppCompatActivity implements StatsView{
 
     private static final int INTENT_EDIT = 200;
-    EditText et_txtpression;
-    TextView et_txtbloc;
+    TextView et_nbrgonflage;
 
     StatsPresenter presenter;
+    private Stat stat;
 
     ProgressDialog progressDialog;
-    ApiInterface apiInterface;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -35,19 +37,14 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        et_txtbloc = findViewById(R.id.txtnumbloc);
-        et_txtpression = findViewById(R.id.txtpression);
-
-        String numbloc = (String) getIntent().getSerializableExtra("numbloc");
-        int pressionbloc = (int) getIntent().getIntExtra("pressionbloc", 0);
-//        et_txtbloc.setText("Bloc n° " + numbloc);
-//        et_txtpression.setText(String.valueOf(pressionbloc));
+        et_nbrgonflage = findViewById(R.id.nbrgonflage);;
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
 
         presenter = new StatsPresenter(this);
         presenter.recupstats();
+        et_nbrgonflage.setText(stat.getNbrgonflage());
 
     }
 
@@ -62,9 +59,6 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.valider:
-                int idbloc = (int) getIntent().getIntExtra("idbloc", 0);
-                Integer pressionbloc = Integer.parseInt(et_txtpression.getText().toString());
-                presenter.recupstats();
                 //Intent intent = new Intent(this, PressionBlocActivity.class);
                 //startActivityForResult(intent, INTENT_EDIT);
                 //finish();
@@ -87,8 +81,8 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     }
 
     @Override
-    public void onAddSuccess(String message) {
-        Toast.makeText(StatsActivity.this, message, Toast.LENGTH_SHORT).show();
+    public void onAddSuccess(List<Stat> stats) {
+        //Toast.makeText(StatsActivity.this, stats, Toast.LENGTH_SHORT).show();
         finish();
     }
 

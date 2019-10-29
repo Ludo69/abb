@@ -5,6 +5,9 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.List;
+
+import a.w.abb_mat.activity.stab.StabView;
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
 import androidx.annotation.NonNull;
@@ -26,20 +29,20 @@ public class StatsPresenter {
     void recupstats() {
 
         view.showProgress();
+
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call call = apiInterface.GetCount();
-        call.enqueue(new Callback() {
+        Call<Stat> call = apiInterface.GetCount();
+        call.enqueue(new Callback<Stat>() {
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call<Stat> call, Response<Stat> response) {
                 view.hideProgress();
-                Log.d("TEST","TEST");                //if(response.body() != null) {
-                    Stat stat = (Stat) response.body();
-                    Log.d("RETOUR COUNT : ", String.valueOf(stat));
-                //}
+                if(response.isSuccessful() && response.body() != null) {
+                   // view.onAddSuccess(response.body());
+                }
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
+            public void onFailure(Call<Stat> call, Throwable t) {
                 view.hideProgress();
                 view.onAddError(t.getLocalizedMessage());
             }

@@ -13,38 +13,50 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="50dp"
-            android:layout_weight="1"
-            android:src="@drawable/logo_abb" />
-
-        <TextView
-            android:id="@+id/txtnumbloc"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/first"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageView2"
-            android:layout_centerHorizontal="true"
-            android:text="Count : "
-            android:textSize="25sp"/>
+            >
 
-        <EditText
-            android:id="@+id/txtcount"
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/logo_abb" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/second"
+            android:layout_below="@id/first"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtnumbloc"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"
-            android:textColor="@color/blue"
-            android:gravity="center_vertical|center_horizontal"
-            android:inputType="number"
-            android:textSize="70dp"
-            />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtnbrgonflage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView2"
+                android:layout_centerHorizontal="true"
+                android:text="Nombre de gonflage : "
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/nbrgonflage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/blue"
+                android:textSize="30sp"
+                android:text="10"
+                android:layout_marginLeft="20dp"
+                />
+        </LinearLayout>
+
 
     </RelativeLayout>
 

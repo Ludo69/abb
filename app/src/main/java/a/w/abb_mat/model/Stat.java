@@ -6,18 +6,18 @@ import com.google.gson.annotations.SerializedName;
 public class Stat {
 
     @Expose
-    @SerializedName("count") private String count;
+    @SerializedName("nbrgonflage") private String nbrgonflage;
     @Expose
     @SerializedName("success") private boolean success;
     @Expose
     @SerializedName("message") private String message;
 
-    public String getCount() {
-        return count;
+    public String getNbrgonflage() {
+        return nbrgonflage;
     }
 
-    public void setCount(String count) {
-        this.count = count;
+    public void setNbrgonflage(String nbrgonflage) {
+        this.nbrgonflage = nbrgonflage;
     }
 
     public boolean isSuccess() {
