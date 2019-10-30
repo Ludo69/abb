@@ -36,16 +36,21 @@ public class StatsPresenter {
         view.showProgress();
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Stat>> call = apiInterface.GetNbr();
-        call.enqueue(new Callback<List<Stat>>() {
+        Call<Stat> call = apiInterface.GetNbr();
+        call.enqueue(new Callback<Stat>() {
             @Override
-            public void onResponse(Call<List<Stat>> call, Response<List<Stat>> response) {
-                Log.e(TAG, "onResponse" + response.body());
+            public void onResponse(Call<Stat> call, Response<Stat> response) {
+                Boolean succes = response.body().getSuccess();
+                if(succes){
+                    view.onSuccess(response.body().getMessage());
+                    Log.d("retour OK : ", response.body().getMessage());
+                }
             }
 
             @Override
-            public void onFailure(Call<List<Stat>> call, Throwable t) {
-                Log.e(TAG, "onResponse" + t.getLocalizedMessage());
+            public void onFailure(Call<Stat> call, Throwable t) {
+                view.onAddError(t.getLocalizedMessage());
+                Log.d("retour KO : ", "ERREUR");
             }
         });
 

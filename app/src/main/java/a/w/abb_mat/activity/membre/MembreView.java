@@ -7,6 +7,7 @@ import a.w.abb_mat.model.Membre;
 public interface MembreView {
     void showLoading();
     void hideLoading();
+    void onGetResult2(String message);
     void onGetResult(List<Membre> membres);
     void onErrorLoading(String message);
 }

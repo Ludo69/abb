@@ -81,6 +81,11 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     }
 
     @Override
+    public void onSuccess(String message) {
+        et_nbrgonflage.setText(message);
+    }
+
+    @Override
     public void onAddSuccess(List<Stat> stats) {
         //Toast.makeText(StatsActivity.this, stats, Toast.LENGTH_SHORT).show();
         finish();

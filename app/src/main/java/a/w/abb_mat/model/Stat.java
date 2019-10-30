@@ -9,6 +9,10 @@ public class Stat {
     @SerializedName("id") private int id;
     @Expose
     @SerializedName("nbrgonflage") private int nbrgonflage;
+    @Expose
+    @SerializedName("success") private boolean success;
+    @Expose
+    @SerializedName("message") private String message;
 
     public Stat(int id, int nbrgonflage) {
         this.id = id;
@@ -29,6 +33,26 @@ public class Stat {
 
     public void setNbrgonflage(int nbrgonflage) {
         this.nbrgonflage = nbrgonflage;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Boolean getSuccess() {
+        return success;
     }
 
     @Override

@@ -53,7 +53,7 @@ public interface ApiInterface {
     Call<List<Gonfleur>> getGonfleurs();
 
     @GET("count.php")
-    Call<List<Stat>> GetNbr();
+    Call<Stat> GetNbr();
 
     @FormUrlEncoded
     @POST("updatestab.php")

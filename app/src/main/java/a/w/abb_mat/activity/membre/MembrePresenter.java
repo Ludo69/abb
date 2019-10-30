@@ -61,7 +61,7 @@ public class MembrePresenter {
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if(success){
-                        //view.onGetResult(response.body().getMessage());
+                        view.onGetResult2(response.body().getMessage());
                     } else {
                         view.onErrorLoading(response.body().getMessage());
                     }
@@ -90,7 +90,7 @@ public class MembrePresenter {
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if(success){
-                        //view.onGetResult(response.body().getMessage());
+                        view.onGetResult2(response.body().getMessage());
                     } else {
                         view.onErrorLoading(response.body().getMessage());
                     }
@@ -119,7 +119,7 @@ public class MembrePresenter {
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if(success){
-                        //view.onGetResult(response.body().getMessage());
+                        view.onGetResult2(response.body().getMessage());
                     } else {
                         view.onErrorLoading(response.body().getMessage());
                     }
@@ -148,7 +148,7 @@ public class MembrePresenter {
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if(success){
-                        //view.onGetResult(response.body().getMessage());
+                        view.onGetResult2(response.body().getMessage());
                     } else {
                         view.onErrorLoading(response.body().getMessage());
                     }

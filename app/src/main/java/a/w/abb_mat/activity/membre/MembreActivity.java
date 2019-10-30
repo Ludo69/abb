@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -109,6 +110,12 @@ public class MembreActivity extends AppCompatActivity implements MembreView {
     @Override
     public void hideLoading() {
         swipeRefresh.setRefreshing(false);
+    }
+
+    @Override
+    public void onGetResult2(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Log.d("***************!!!", message);
     }
 
     @Override

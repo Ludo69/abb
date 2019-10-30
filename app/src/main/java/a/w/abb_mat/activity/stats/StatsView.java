@@ -7,6 +7,7 @@ public interface StatsView {
 
     void showProgress();
     void hideProgress();
+    void onSuccess(String message);
     void onAddSuccess(List<Stat> stats);
     void onAddError(String message);
 }
