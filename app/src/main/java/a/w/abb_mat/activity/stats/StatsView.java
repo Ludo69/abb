@@ -7,7 +7,7 @@ public interface StatsView {
 
     void showProgress();
     void hideProgress();
-    void onSuccess(String message);
+    void onSuccess(String nbrgonflage, String dureegonflage);
     void onAddSuccess(List<Stat> stats);
     void onAddError(String message);
 }

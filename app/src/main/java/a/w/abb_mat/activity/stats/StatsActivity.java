@@ -24,10 +24,9 @@ import java.util.List;
 public class StatsActivity extends AppCompatActivity implements StatsView{
 
     private static final int INTENT_EDIT = 200;
-    TextView et_nbrgonflage;
+    TextView et_nbrgonflage, et_dureegonflage;
 
     StatsPresenter presenter;
-    private Stat stat;
 
     ProgressDialog progressDialog;
 
@@ -37,14 +36,14 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
 
-        et_nbrgonflage = findViewById(R.id.nbrgonflage);;
+        et_nbrgonflage = findViewById(R.id.nbrgonflage);
+        et_dureegonflage = findViewById(R.id.dureegonflage);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
 
         presenter = new StatsPresenter(this);
         presenter.recupstats();
-//        et_nbrgonflage.setText(stat.getNbrgonflage());
 
     }
 
@@ -81,8 +80,16 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     }
 
     @Override
-    public void onSuccess(String message) {
-        et_nbrgonflage.setText(message);
+    public void onSuccess(String nbrgonflage, String dureegonflage) {
+        et_nbrgonflage.setText(nbrgonflage);
+        int duree = 0;
+        try {
+            duree = Integer.parseInt(dureegonflage);
+        } catch(NumberFormatException nfe) {
+            // Handle parse error.
+        }
+        String dureeTotale = formatHoursAndMinutes(duree);
+        et_dureegonflage.setText(dureeTotale);
     }
 
     @Override
@@ -95,5 +102,13 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     public void onAddError(String message) {
         Toast.makeText(StatsActivity.this, message, Toast.LENGTH_SHORT).show();
     }
+
+    public static String formatHoursAndMinutes(int totalMinutes) {
+        String minutes = Integer.toString(totalMinutes % 60);
+        minutes = minutes.length() == 1 ? "0" + minutes : minutes;
+        return (totalMinutes / 60) + "h" + minutes + " min";
+    }
+
+
 }
 

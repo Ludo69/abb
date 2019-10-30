@@ -40,11 +40,8 @@ public class StatsPresenter {
         call.enqueue(new Callback<Stat>() {
             @Override
             public void onResponse(Call<Stat> call, Response<Stat> response) {
-                Boolean succes = response.body().getSuccess();
-                if(succes){
-                    view.onSuccess(response.body().getMessage());
-                    Log.d("retour OK : ", response.body().getMessage());
-                }
+                    view.onSuccess(response.body().getNbrgonflage(), response.body().getDureegonflage());
+                    Log.d("retour OK : ", response.body().getNbrgonflage());
             }
 
             @Override

@@ -7,17 +7,14 @@ public class Stat {
 
     @Expose
     @SerializedName("id") private int id;
-    @Expose
-    @SerializedName("nbrgonflage") private int nbrgonflage;
+    //@Expose
+    //@SerializedName("nbrgonflage") private int nbrgonflage;
     @Expose
     @SerializedName("success") private boolean success;
     @Expose
-    @SerializedName("message") private String message;
-
-    public Stat(int id, int nbrgonflage) {
-        this.id = id;
-        this.nbrgonflage = nbrgonflage;
-    }
+    @SerializedName("nbrgonflage") private String nbrgonflage;
+    @Expose
+    @SerializedName("dureegonflage") private String dureegonflage;
 
     public int getId() {
         return id;
@@ -25,14 +22,6 @@ public class Stat {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getNbrgonflage() {
-        return nbrgonflage;
-    }
-
-    public void setNbrgonflage(int nbrgonflage) {
-        this.nbrgonflage = nbrgonflage;
     }
 
     public boolean isSuccess() {
@@ -43,12 +32,20 @@ public class Stat {
         this.success = success;
     }
 
-    public String getMessage() {
-        return message;
+    public String getNbrgonflage() {
+        return nbrgonflage;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setNbrgonflage(String nbrgonflage) {
+        this.nbrgonflage = nbrgonflage;
+    }
+
+    public String getDureegonflage() {
+        return dureegonflage;
+    }
+
+    public void setDureegonflage(String dureegonflage) {
+        this.dureegonflage = dureegonflage;
     }
 
     public Boolean getSuccess() {
