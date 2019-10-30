@@ -8,7 +8,7 @@
     tools:context=".activity.temporaire.modelActivity"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="#fefefe"
+    android:background="#FFFFFF"
     android:gravity="center"
     android:id="@+id/ll">
 

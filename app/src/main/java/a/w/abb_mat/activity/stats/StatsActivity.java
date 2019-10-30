@@ -24,7 +24,7 @@ import java.util.List;
 public class StatsActivity extends AppCompatActivity implements StatsView{
 
     private static final int INTENT_EDIT = 200;
-    TextView et_nbrgonflage, et_dureegonflage;
+    TextView et_nbrgonflage, et_tpsgonflage, et_tpsmajoree, et_tempmoy ;
 
     StatsPresenter presenter;
 
@@ -37,7 +37,9 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
         setContentView(R.layout.activity_stats);
 
         et_nbrgonflage = findViewById(R.id.nbrgonflage);
-        et_dureegonflage = findViewById(R.id.dureegonflage);
+        et_tpsgonflage = findViewById(R.id.tpsgonflage);
+        et_tpsmajoree = findViewById(R.id.tpsmajoree);
+        et_tempmoy = findViewById(R.id.tempmoy);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Patientez svp...");
@@ -80,16 +82,25 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     }
 
     @Override
-    public void onSuccess(String nbrgonflage, String dureegonflage) {
+    public void onSuccess(String nbrgonflage, String tpsgonflage, String tpsmajoree, String moytemp) {
         et_nbrgonflage.setText(nbrgonflage);
-        int duree = 0;
+        int duree1 = 0;
         try {
-            duree = Integer.parseInt(dureegonflage);
+            duree1 = Integer.parseInt(tpsgonflage);
         } catch(NumberFormatException nfe) {
             // Handle parse error.
         }
-        String dureeTotale = formatHoursAndMinutes(duree);
-        et_dureegonflage.setText(dureeTotale);
+        String tpsgonflageT = formatHoursAndMinutes(duree1);
+        et_tpsgonflage.setText(tpsgonflageT);
+        int duree2 = 0;
+        try {
+            duree2 = Integer.parseInt(tpsmajoree);
+        } catch(NumberFormatException nfe) {
+            // Handle parse error.
+        }
+        String tpsmajoreeT = formatHoursAndMinutes(duree2);
+        et_tpsmajoree.setText(tpsmajoreeT);
+        et_tempmoy.setText(moytemp + "°C");
     }
 
     @Override

@@ -7,14 +7,16 @@ public class Stat {
 
     @Expose
     @SerializedName("id") private int id;
-    //@Expose
-    //@SerializedName("nbrgonflage") private int nbrgonflage;
     @Expose
     @SerializedName("success") private boolean success;
     @Expose
     @SerializedName("nbrgonflage") private String nbrgonflage;
     @Expose
-    @SerializedName("dureegonflage") private String dureegonflage;
+    @SerializedName("tpsgonflage") private String tpsgonflage;
+    @Expose
+    @SerializedName("tpsmajoree") private String tpsmajoree;
+    @Expose
+    @SerializedName("moytemp") private String moytemp;
 
     public int getId() {
         return id;
@@ -40,12 +42,28 @@ public class Stat {
         this.nbrgonflage = nbrgonflage;
     }
 
-    public String getDureegonflage() {
-        return dureegonflage;
+    public String getTpsgonflage() {
+        return tpsgonflage;
     }
 
-    public void setDureegonflage(String dureegonflage) {
-        this.dureegonflage = dureegonflage;
+    public void setTpsgonflage(String tpsgonflage) {
+        this.tpsgonflage = tpsgonflage;
+    }
+
+    public String getTpsmajoree() {
+        return tpsmajoree;
+    }
+
+    public void setTpsmajoree(String tpsmajoree) {
+        this.tpsmajoree = tpsmajoree;
+    }
+
+    public String getMoytemp() {
+        return moytemp;
+    }
+
+    public void setMoytemp(String moytemp) {
+        this.moytemp = moytemp;
     }
 
     public Boolean getSuccess() {

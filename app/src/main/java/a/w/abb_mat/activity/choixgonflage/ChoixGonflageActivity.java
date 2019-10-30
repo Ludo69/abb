@@ -41,7 +41,6 @@ public class ChoixGonflageActivity extends AppCompatActivity {
         CardView cardviewStatistiques = findViewById(R.id.statistiques);
 
         cardviewStatistiques.setOnClickListener(view -> {
-            Toast.makeText(this, "Bientôt...", Toast.LENGTH_SHORT).show();
             Intent intent2 = new Intent(getApplicationContext(), StatsActivity.class);
             startActivity(intent2);
         });

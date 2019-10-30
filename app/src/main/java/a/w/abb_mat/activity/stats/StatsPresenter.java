@@ -40,7 +40,7 @@ public class StatsPresenter {
         call.enqueue(new Callback<Stat>() {
             @Override
             public void onResponse(Call<Stat> call, Response<Stat> response) {
-                    view.onSuccess(response.body().getNbrgonflage(), response.body().getDureegonflage());
+                    view.onSuccess(response.body().getNbrgonflage(), response.body().getTpsgonflage(), response.body().getTpsmajoree(), response.body().getMoytemp());
                     Log.d("retour OK : ", response.body().getNbrgonflage());
             }
 

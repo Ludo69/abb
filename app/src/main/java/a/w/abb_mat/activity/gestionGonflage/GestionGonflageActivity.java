@@ -128,6 +128,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
                         et_nbrbloc.setError("Entrez le nombre de bloc");
                     }else {
                         presenter.insertGonflage(nbloc,nomg,compteurfinal,nbrbloc, tempgonflage, pressionblocf, year);
+                        Log.d("UPDATE PRESSION CR : ", idbloc + " " + pressionblocf);
                         presenter.updatePression(idbloc, pressionblocf);
                         presenter.updateCompteur(compteurfinal);
                         Intent intent = new Intent(this, GonflageBlocActivity.class);
@@ -137,7 +138,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
                     return true;
                 } else if(type == 1) {
                     int id = getIntent().getIntExtra("id", 0);
-                    int idbloc = getIntent().getIntExtra("idbloc", 0);
+                    int idbloc = getIntent().getIntExtra("numbloc", 0);
                     String nomg = (String) getIntent().getSerializableExtra("gonfleur");
                     Calendar c = Calendar.getInstance();
                     int year = c.get(Calendar.YEAR);
@@ -156,8 +157,9 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
                         et_nbrbloc.setError("Entrez le nombre de bloc");
                     }else {
                         presenter.updateGonflage(id, nbloc,nomg,compteurfinal,nbrbloc, tempgonflage, pressionblocf, year);
-                        //presenter.updatePression(idbloc, pressionblocf);
-                        //presenter.updateCompteur(compteurfinal);
+                        Log.d("UPDATE PRESSION UP: ", idbloc + " " + pressionblocf);
+                        presenter.updatePression(idbloc, pressionblocf);
+                        presenter.updateCompteur(compteurfinal);
                         //Intent intent = new Intent(this, GonflageBlocActivity.class);
                         //startActivityForResult(intent, INTENT_EDIT);
                         //finish();
