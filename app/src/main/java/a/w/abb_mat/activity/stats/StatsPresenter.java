@@ -53,6 +53,28 @@ public class StatsPresenter {
 
     }
 
+    void mailgonflage() {
+
+        view.showProgress();
+
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<Stat> call = apiInterface.GetMail();
+        call.enqueue(new Callback<Stat>() {
+            @Override
+            public void onResponse(Call<Stat> call, Response<Stat> response) {
+                view.onMail();
+                Log.d("retour MAIL OK : ", " OK");
+            }
+
+            @Override
+            public void onFailure(Call<Stat> call, Throwable t) {
+                view.onAddError(t.getLocalizedMessage());
+                Log.d("retour MAIL KO : ", " KO");
+            }
+        });
+
+    }
+
 
 }
 

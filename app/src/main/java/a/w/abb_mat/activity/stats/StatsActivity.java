@@ -52,7 +52,7 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_gestionpressionbloc, menu);
+        inflater.inflate(R.menu.menu_stats, menu);
         return true;
     }
 
@@ -60,9 +60,10 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.valider:
+                presenter.mailgonflage();
                 //Intent intent = new Intent(this, PressionBlocActivity.class);
                 //startActivityForResult(intent, INTENT_EDIT);
-                //finish();
+                finish();
                 return true;
             default:
 
@@ -112,6 +113,11 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     @Override
     public void onAddError(String message) {
         Toast.makeText(StatsActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMail() {
+        Toast.makeText(StatsActivity.this, "Mail envoyé", Toast.LENGTH_SHORT).show();
     }
 
     public static String formatHoursAndMinutes(int totalMinutes) {

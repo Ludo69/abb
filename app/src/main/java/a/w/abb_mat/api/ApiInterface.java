@@ -52,8 +52,11 @@ public interface ApiInterface {
     @GET("gonfleurs.php")
     Call<List<Gonfleur>> getGonfleurs();
 
-    @GET("count.php")
+    @GET("stats.php")
     Call<Stat> GetNbr();
+
+    @GET("mailgonflage.php")
+    Call<Stat> GetMail();
 
     @FormUrlEncoded
     @POST("updatestab.php")

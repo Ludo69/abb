@@ -10,4 +10,5 @@ public interface StatsView {
     void onSuccess(String nbrgonflage, String tpsgonflage, String tpsmajoree, String moytemp);
     void onAddSuccess(List<Stat> stats);
     void onAddError(String message);
+    void onMail();
 }
