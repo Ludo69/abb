@@ -122,7 +122,7 @@ public class EditorActivity extends AppCompatActivity implements EditorView{
                 alertDialog.setTitle("Confirm !");
                 alertDialog.setMessage("Are you sure?");
                 //alertDialog.setNegativeButton("Yes ",
-                //        (dialog, which) -> presenter.deleteNote(id));
+                //        (Dialog, which) -> presenter.deleteNote(id));
                 alertDialog.setPositiveButton("Cancel", ((dialog, which) -> {
                     dialog.dismiss();
                 }));

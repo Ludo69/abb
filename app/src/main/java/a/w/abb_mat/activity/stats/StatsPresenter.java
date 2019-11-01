@@ -57,8 +57,10 @@ public class StatsPresenter {
 
         view.showProgress();
 
+        String email = "ludo36@orange.fr";
+
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<Stat> call = apiInterface.GetMail();
+        Call<Stat> call = apiInterface.GetMail(email);
         call.enqueue(new Callback<Stat>() {
             @Override
             public void onResponse(Call<Stat> call, Response<Stat> response) {

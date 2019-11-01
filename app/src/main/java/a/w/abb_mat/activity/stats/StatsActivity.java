@@ -1,21 +1,16 @@
 package a.w.abb_mat.activity.stats;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
-import a.w.abb_mat.activity.stab.StabActivity;
-import a.w.abb_mat.api.ApiInterface;
+import a.w.abb_mat.activity.dialog.Dialog;
 import a.w.abb_mat.model.Stat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,16 +55,23 @@ public class StatsActivity extends AppCompatActivity implements StatsView{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.valider:
-                presenter.mailgonflage();
+                openDialog();
+
+                //presenter.mailgonflage();
                 //Intent intent = new Intent(this, PressionBlocActivity.class);
                 //startActivityForResult(intent, INTENT_EDIT);
-                finish();
+                //finish();
                 return true;
             default:
 
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    private void openDialog() {
+        Dialog dialog = new Dialog();
+        dialog.show(getSupportFragmentManager(), "Dialog");
     }
 
     @Override
