@@ -15,15 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.stats.StatsActivity"></activity>
-        <activity android:name=".activity.listegonflage.ListeGonflageActivity" />
-        <activity android:name=".activity.choixgonflage.ChoixGonflageActivity" />
-        <activity android:name=".activity.gestionGonflage.GestionGonflageActivity" />
-        <activity android:name=".activity.gonflagebloc.GonflageBlocActivity" />
-        <activity android:name=".activity.gonfleur.GonfleurActivity" />
-        <activity
-            android:name=".activity.historiquesStabs.HistoriquesStabsActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".activity.stats.StatsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.listegonflage.ListeGonflageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.choixgonflage.ChoixGonflageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.gestionGonflage.GestionGonflageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.gonflagebloc.GonflageBlocActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.gonfleur.GonfleurActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.choixhistorique.choixHistoriqueActivity"
             android:screenOrientation="portrait" />
