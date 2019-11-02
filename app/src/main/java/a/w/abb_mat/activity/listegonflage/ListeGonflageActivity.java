@@ -1,6 +1,8 @@
 package a.w.abb_mat.activity.listegonflage;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.dialog.Dialog2;
+import a.w.abb_mat.activity.dialog.Dialog3;
 import a.w.abb_mat.activity.gestionGonflage.GestionGonflageActivity;
 import a.w.abb_mat.model.Gonflage;
 import androidx.annotation.Nullable;
@@ -10,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
@@ -71,6 +76,32 @@ public class ListeGonflageActivity extends AppCompatActivity implements ListeGon
 
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_stats, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.valider:
+                openDialog();
+                //presenter.mailgonflage();
+                return true;
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    private void openDialog() {
+        Dialog3 dialog3 = new Dialog3();
+        dialog3.show(getSupportFragmentManager(), "Dialog3");
     }
 
     @Override

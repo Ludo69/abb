@@ -61,6 +61,9 @@ public interface ApiInterface {
     @GET("fichier.php")
     Call<Stat> Getmail2(@Query("mail") String mail2);
 
+    @GET("histogonflage.php")
+    Call<Stat> Getmail3(@Query("mail") String mail3);
+
     @FormUrlEncoded
     @POST("updatestab.php")
     Call<Stab> updateStab(
