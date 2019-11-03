@@ -31,7 +31,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@drawable/my_border"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -100,20 +102,21 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="5dp">
+                    android:layout_marginLeft="5dp"
+                    >
 
                     <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pression finale :"
+                        android:text="Pression finale : "
                         android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/pressionfinale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
- />
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/numbloc"

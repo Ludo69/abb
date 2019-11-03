@@ -52,7 +52,7 @@ public class ListeGonflageActivity extends AppCompatActivity implements ListeGon
 
         itemClickListener = ((view, position) -> {
            // int idhistorique = gonflages.get(position).getIdhistorique();
-            Toast.makeText(this, "Ouverture pour modification", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Ouverture pour modification", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, GestionGonflageActivity.class);
             intent.putExtra("type", 1);
             int id = gonflage.get(position).getId();

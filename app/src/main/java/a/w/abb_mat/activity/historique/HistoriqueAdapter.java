@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.historique;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +58,7 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tv_emprunteur, tv_nummat, tv_dateemprunt, tv_daterestitution;
+        TextView tv_emprunteur, tv_nummat, tv_dateemprunt, tv_daterestitution, tv_restitutiontext;
         ImageView tv_imagemat;
         CardView card_item;
         a.w.abb_mat.activity.historique.HistoriqueAdapter.ItemClickListener itemClickListener;
@@ -71,6 +72,7 @@ public class HistoriqueAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity
             tv_daterestitution = itemView.findViewById(R.id.daterestitution);
             tv_imagemat = itemView.findViewById(R.id.imagemat);
             card_item = itemView.findViewById(R.id.card_item);
+            tv_restitutiontext = itemView.findViewById(R.id.textView12);
 
             this.itemClickListener = itemClickListener;
             card_item.setOnClickListener(this);
