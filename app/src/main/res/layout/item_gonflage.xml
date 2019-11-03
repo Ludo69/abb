@@ -67,7 +67,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Durée réelle : "
-                        android:textSize="12sp"/>
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"/>
 
                     <TextView
                         android:id="@+id/duree"
@@ -110,7 +111,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Pression finale : "
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:layout_marginLeft="5dp"/>
 
                     <TextView
                         android:id="@+id/pressionfinale"
