@@ -29,6 +29,7 @@ public class ChoixGonflageActivity extends AppCompatActivity {
         cardviewAjoutgonflage.setOnClickListener(view -> {
             Intent intent2 = new Intent(getApplicationContext(), GonfleurActivity.class);
             startActivity(intent2);
+            finish();
         });
 
         CardView cardviewListegonflage = findViewById(R.id.listegonflage);

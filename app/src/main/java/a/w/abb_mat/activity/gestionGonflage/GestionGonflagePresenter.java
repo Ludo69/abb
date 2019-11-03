@@ -23,10 +23,10 @@ public class GestionGonflagePresenter {
     }
 
 
-    void insertGonflage(int numbloc, String gonfleur, float compteurfinal, int nbrbloc, int temperature, int pressionfinale, int saison) {
+    void insertGonflage(int numbloc, int numbloc2, String gonfleur, float compteurfinal, int nbrbloc, int temperature, int pressionfinale, int saison) {
         view.showProgress();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        retrofit2.Call<Gonflage> call = apiInterface.insertgonflage(numbloc, gonfleur, compteurfinal, nbrbloc, temperature, pressionfinale, saison);
+        retrofit2.Call<Gonflage> call = apiInterface.insertgonflage(numbloc, numbloc2, gonfleur, compteurfinal, nbrbloc, temperature, pressionfinale, saison);
         call.enqueue(new Callback<Gonflage>() {
             @Override
             public void onResponse(@NonNull retrofit2.Call<Gonflage> call, @NonNull Response<Gonflage> response) {
@@ -90,7 +90,7 @@ public class GestionGonflagePresenter {
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if(success){
-                        view.onAddSuccess(response.body().getMessage());
+                        //view.onAddSuccess(response.body().getMessage());
                     } else {
                         view.onAddError(response.body().getMessage());
                     }
@@ -119,7 +119,7 @@ public class GestionGonflagePresenter {
                 if(response.isSuccessful() && response.body() != null) {
                     Boolean success = response.body().getSuccess();
                     if(success){
-                        view.onAddSuccess(response.body().getMessage());
+                        //view.onAddSuccess(response.body().getMessage());
                     } else {
                         view.onAddError(response.body().getMessage());
                     }

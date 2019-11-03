@@ -71,8 +71,8 @@ public class ListeGonflageActivity extends AppCompatActivity implements ListeGon
             intent.putExtra("compteur", compteur);
             intent.putExtra("temperature", temperature);
             intent.putExtra("pression", pression);
-            startActivityForResult(intent, INTENT_EDIT);
-            finish();
+            //startActivityForResult(intent, INTENT_EDIT);
+            //finish();
 
         });
 

@@ -1,7 +1,9 @@
 package a.w.abb_mat.activity.gestionGonflage;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.choixgonflage.ChoixGonflageActivity;
 import a.w.abb_mat.activity.gonflagebloc.GonflageBlocActivity;
+import a.w.abb_mat.activity.gonfleur.GonfleurActivity;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.api.ApiInterface;
@@ -31,7 +33,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
     private static final int INTENT_EDIT = 200;
     private List<Gonflage> gonflages;
     TextView et_txtnomgonfleur, et_txtnumbloc, et_txtdategonflage;
-    EditText et_pressionfinale, et_compteurfinal, et_tempgonflage, et_nbrbloc;
+    EditText et_pressionfinale, et_compteurfinal, et_tempgonflage, et_nbrbloc, et_numbloc2;
 
     GestionGonflagePresenter presenter;
 
@@ -53,6 +55,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
         et_compteurfinal = findViewById(R.id.compteurfin);
         et_tempgonflage = findViewById(R.id.temperaturegonflage);
         et_nbrbloc = findViewById(R.id.nbrbloc);
+        et_numbloc2 = findViewById(R.id.numbloc2);
         int type = getIntent().getIntExtra("type", 0);
         if(type == 0) {
             String numbloc = (String) getIntent().getSerializableExtra("numbloc");
@@ -69,6 +72,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
             et_compteurfinal.setText(String.valueOf(compteurfin));
             et_tempgonflage.setText(String.valueOf(tempgonflage));
             et_nbrbloc.setText("2");
+            et_numbloc2.setText("0");
         } else if(type == 1) {
             int id = getIntent().getIntExtra("id", 0);
             String dategonflage = (String) getIntent().getSerializableExtra("date");
@@ -118,20 +122,24 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
                     Float compteurfinal = Float.parseFloat(et_compteurfinal.getText().toString());
                     Integer tempgonflage = Integer.parseInt(et_tempgonflage.getText().toString());
                     Integer nbrbloc = Integer.parseInt(et_nbrbloc.getText().toString());
-                    if (compteurfinal == 0) {
-                        et_compteurfinal.setError("Entrez le compteur");
+                    Integer numbloc2 =Integer.parseInt(et_numbloc2.getText().toString());
+                    if (nbrbloc > 1 & numbloc2 == 0) {
+                        et_numbloc2.setError("Entrez le second bloc");
                     } else if (tempgonflage == 0) {
                         et_tempgonflage.setError("Entrez la température");
                     } else if (pressionblocf == 0){
                         et_pressionfinale.setError("Entrez la pression finale");
                     } else if (nbrbloc == 0) {
                         et_nbrbloc.setError("Entrez le nombre de bloc");
+                    } else if (compteurfinal == 0) {
+                        et_compteurfinal.setError("Entrez le compteur");
                     }else {
-                        presenter.insertGonflage(nbloc,nomg,compteurfinal,nbrbloc, tempgonflage, pressionblocf, year);
+                        presenter.insertGonflage(nbloc,numbloc2, nomg,compteurfinal,nbrbloc, tempgonflage, pressionblocf, year);
                         Log.d("UPDATE PRESSION CR : ", idbloc + " " + pressionblocf);
                         presenter.updatePression(idbloc, pressionblocf);
-                        presenter.updateCompteur(compteurfinal);
-                        Intent intent = new Intent(this, GonflageBlocActivity.class);
+                        presenter.updatePression(numbloc2, pressionblocf);
+                        //presenter.updateCompteur(compteurfinal);
+                        Intent intent = new Intent(this, ChoixGonflageActivity.class);
                         startActivityForResult(intent, INTENT_EDIT);
                         finish();
                     }
@@ -187,6 +195,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
     @Override
     public void onAddSuccess(String message) {
         //Toast.makeText(GestionGonflageActivity.this, message, Toast.LENGTH_SHORT).show();
+        Log.d("RETOUR API", message);
         finish();
     }
 

@@ -78,6 +78,22 @@
                 android:textSize="24dp"
                 android:textColor="@color/blue"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" et bloc N° "
+                android:textSize="24dp"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:id="@+id/numbloc2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="24dp"
+                android:hint=""
+                android:textColor="@color/blue"/>
+
         </LinearLayout>
 
         <LinearLayout
