@@ -4,6 +4,8 @@ import a.w.abb_mat.R;
 import a.w.abb_mat.activity.choixEmprunt.choixEmpruntActivity;
 import a.w.abb_mat.activity.choixgonflage.ChoixGonflageActivity;
 import a.w.abb_mat.activity.choixhistorique.choixHistoriqueActivity;
+import a.w.abb_mat.activity.choixmaintenance.choixMaintenanceActivity;
+import a.w.abb_mat.activity.dialog.DialogPass;
 import a.w.abb_mat.activity.gonfleur.GonfleurActivity;
 import a.w.abb_mat.activity.historique.HistoriqueActivity;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
@@ -51,9 +53,15 @@ public class choixActivity extends AppCompatActivity {
         });
 
         cardviewMaintenance.setOnClickListener(view -> {
-            Toast.makeText(getApplicationContext(), "En cours de développement...", Toast.LENGTH_SHORT).show();
-            //Intent intent = new Intent(getApplicationContext(), choixEmpruntActivity.class);
+            //Toast.makeText(getApplicationContext(), "En cours de développement...", Toast.LENGTH_SHORT).show();
+            //Intent intent = new Intent(getApplicationContext(), choixMaintenanceActivity.class);
             //startActivity(intent);
+            openDialogPass();
         });
+    }
+
+    private void openDialogPass() {
+        DialogPass dialogPass = new DialogPass();
+        dialogPass.show(getSupportFragmentManager(), "DialogPass");
     }
 }

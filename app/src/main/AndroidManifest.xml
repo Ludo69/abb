@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="a.w.abb_mat">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_acc"
@@ -15,18 +11,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.stats.StatsActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.listegonflage.ListeGonflageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.choixgonflage.ChoixGonflageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.gestionGonflage.GestionGonflageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.gonflagebloc.GonflageBlocActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.gonfleur.GonfleurActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.choixmaintenance.choixMaintenanceActivity"></activity>
+        <activity
+            android:name=".activity.stats.StatsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.listegonflage.ListeGonflageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.choixgonflage.ChoixGonflageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.gestionGonflage.GestionGonflageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.gonflagebloc.GonflageBlocActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.gonfleur.GonfleurActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.choixhistorique.choixHistoriqueActivity"
             android:screenOrientation="portrait" />
@@ -77,5 +80,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
