@@ -1,4 +1,4 @@
-package a.w.abb_mat.activity.stab;
+package a.w.abb_mat.activity.stabm;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -16,13 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class StabAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stab.StabAdapter.RecyclerViewAdapter> {
+public class StabMAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stabm.StabMAdapter.RecyclerViewAdapter> {
 
     private Context context;
     private List<Stab> stabs;
-    private a.w.abb_mat.activity.stab.StabAdapter.ItemClickListener itemClickListener;
+    private a.w.abb_mat.activity.stabm.StabMAdapter.ItemClickListener itemClickListener;
 
-    public StabAdapter(Context context, List<Stab> stabs, a.w.abb_mat.activity.stab.StabAdapter.ItemClickListener itemClickListener) {
+    public StabMAdapter(Context context, List<Stab> stabs, a.w.abb_mat.activity.stabm.StabMAdapter.ItemClickListener itemClickListener) {
         this.context = context;
         this.stabs = stabs;
         this.itemClickListener = itemClickListener;
@@ -30,13 +30,13 @@ public class StabAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stab.
 
     @NonNull
     @Override
-    public a.w.abb_mat.activity.stab.StabAdapter.RecyclerViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public a.w.abb_mat.activity.stabm.StabMAdapter.RecyclerViewAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_stab, parent, false);
-        return new a.w.abb_mat.activity.stab.StabAdapter.RecyclerViewAdapter(view, itemClickListener);
+        return new a.w.abb_mat.activity.stabm.StabMAdapter.RecyclerViewAdapter(view, itemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull a.w.abb_mat.activity.stab.StabAdapter.RecyclerViewAdapter holder, int position) {
+    public void onBindViewHolder(@NonNull a.w.abb_mat.activity.stabm.StabMAdapter.RecyclerViewAdapter holder, int position) {
         Stab stab = stabs.get(position);
         holder.tv_txtnumstab.setText("Stab n° : "+stab.getNumstab());
         holder.tv_txtcommentairestab.setText(stab.getCommentairestab());
@@ -59,9 +59,9 @@ public class StabAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stab.
         TextView tv_txtnumstab, tv_txtcommentairestab, tv_txtemprunteurstab, tv_txttaillestab;
         LinearLayout tv_color;
         CardView card_item;
-        a.w.abb_mat.activity.stab.StabAdapter.ItemClickListener itemClickListener;
+        a.w.abb_mat.activity.stabm.StabMAdapter.ItemClickListener itemClickListener;
 
-        RecyclerViewAdapter(View itemView, a.w.abb_mat.activity.stab.StabAdapter.ItemClickListener itemClickListener) {
+        RecyclerViewAdapter(View itemView, a.w.abb_mat.activity.stabm.StabMAdapter.ItemClickListener itemClickListener) {
             super(itemView);
 
             tv_txtnumstab = itemView.findViewById(R.id.txtnumstab);
@@ -86,6 +86,7 @@ public class StabAdapter extends RecyclerView.Adapter<a.w.abb_mat.activity.stab.
         void onItemClick(View view, int position);
     }
 }
+
 
 
 

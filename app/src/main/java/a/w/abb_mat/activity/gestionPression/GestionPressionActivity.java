@@ -27,7 +27,6 @@ public class GestionPressionActivity extends AppCompatActivity implements Gestio
     GestionPressionPresenter presenter;
 
     ProgressDialog progressDialog;
-    ApiInterface apiInterface;
 
     @SuppressLint("WrongViewCast")
     @Override
