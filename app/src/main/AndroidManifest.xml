@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.stabmaintenance.StabMaintenanceActivity"></activity>
+        <activity android:name=".activity.detendeurmaintenance.DetendeurMaintenanceActivity"></activity>
+        <activity android:name=".activity.detendeurm.DetendeurMActivity" />
+        <activity android:name=".activity.stabmaintenance.StabMaintenanceActivity" />
         <activity android:name=".activity.stabm.StabMActivity" />
         <activity android:name=".activity.choixmaintenance.choixMaintenanceActivity" />
         <activity

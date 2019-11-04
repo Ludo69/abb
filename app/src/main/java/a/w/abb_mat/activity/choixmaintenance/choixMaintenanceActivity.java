@@ -3,6 +3,7 @@ package a.w.abb_mat.activity.choixmaintenance;
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.bloc.BlocActivity;
 import a.w.abb_mat.activity.detendeur.DetendeurActivity;
+import a.w.abb_mat.activity.detendeurm.DetendeurMActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.activity.stabm.StabMActivity;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,9 +39,9 @@ public class choixMaintenanceActivity extends AppCompatActivity {
         CardView cardviewDetendeursMaintenance = findViewById(R.id.detendeursmaintenance);
 
         cardviewDetendeursMaintenance.setOnClickListener(view -> {
-            Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
-            //Intent intent2 = new Intent(getApplicationContext(), DetendeurActivity.class);
-            //startActivity(intent2);
+            //Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(getApplicationContext(), DetendeurMActivity.class);
+            startActivity(intent2);
         });
 
         CardView cardviewBlocsMaintenance = findViewById(R.id.blocsmaintenance);

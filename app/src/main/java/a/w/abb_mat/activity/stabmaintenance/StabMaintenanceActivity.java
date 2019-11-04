@@ -2,6 +2,7 @@ package a.w.abb_mat.activity.stabmaintenance;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
+import a.w.abb_mat.activity.stabm.StabMActivity;
 import a.w.abb_mat.model.Stab;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 public class StabMaintenanceActivity extends AppCompatActivity implements StabMaintenanceView{
 
+    private static final int INTENT_EDIT = 200;
     TextView et_numstab;
     EditText et_txtcommentairestabM;
     private RadioGroup radioGroup;
@@ -40,8 +42,8 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
         radioButtonOui = findViewById(R.id.radioboutonoui);
         radioButtonNon = findViewById(R.id.radioboutonnon);
 
-        int idstab = (int) getIntent().getIntExtra("idmat", 0);
-        String numstab = (String) getIntent().getSerializableExtra("nummat");
+        int idstab = (int) getIntent().getIntExtra("idstab", 0);
+        String numstab = (String) getIntent().getSerializableExtra("numstab");
         String comstab = (String) getIntent().getSerializableExtra("commentairestab");
         int dispostab = (int) getIntent().getIntExtra("dispostab", 0);
 
@@ -70,7 +72,16 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.valider:
-                Toast.makeText(this, "Validation", Toast.LENGTH_SHORT).show();
+                int idstab = (int) getIntent().getIntExtra("idstab", 0);
+                String commentairestab = et_txtcommentairestabM.getText().toString();
+                int dispostab = 1;
+                if(radioButtonNon.isChecked()){
+                    dispostab = 0;
+                }
+                presenter.updateStabM(idstab, commentairestab, dispostab);
+                Intent intent = new Intent(this, StabMActivity.class);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

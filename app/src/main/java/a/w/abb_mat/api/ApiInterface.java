@@ -74,8 +74,8 @@ public interface ApiInterface {
     @POST("updatestabM.php")
     Call<Stab> updateStabM(
             @Field("idstab") int idstab,
-            @Field("commentairestab") String emprunteurstab,
-            @Field("dispostab") String codeuniquestab
+            @Field("commentairestab") String commentairestab,
+            @Field("dispostab") int dispostab
     );
 
     @FormUrlEncoded
@@ -84,6 +84,14 @@ public interface ApiInterface {
             @Field("iddetendeur") int iddetendeur,
             @Field("emprunteurdetendeur") String emprunteurdetendeur,
             @Field("codeuniquedetendeur") String codeuniquedetendeur
+    );
+
+    @FormUrlEncoded
+    @POST("updatedetendeurM.php")
+    Call<Detendeur> updateDetendeurM(
+            @Field("iddetendeur") int iddetendeur,
+            @Field("commentairedetendeur") String commentairedetendeur,
+            @Field("dispodetendeur") int dispodetendeur
     );
 
     @FormUrlEncoded

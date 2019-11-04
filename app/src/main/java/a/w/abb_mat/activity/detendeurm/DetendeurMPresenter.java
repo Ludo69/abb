@@ -1,31 +1,29 @@
-package a.w.abb_mat.activity.stabm;
+package a.w.abb_mat.activity.detendeurm;
 
 import java.util.List;
 
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
-import a.w.abb_mat.model.Historique;
-import a.w.abb_mat.model.Stab;
-import androidx.annotation.NonNull;
+import a.w.abb_mat.model.Detendeur;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StabMPresenter {
+public class DetendeurMPresenter {
 
-    private StabMView view;
+    private DetendeurMView view;
 
-    public StabMPresenter(StabMView stabView) { this.view = stabView; }
+    public DetendeurMPresenter(DetendeurMView detendeurMView) { this.view = detendeurMView; }
 
     void getData() {
 
         view.showLoading();
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<List<Stab>> call = apiInterface.getStabs();
-        call.enqueue(new Callback<List<Stab>>() {
+        Call<List<Detendeur>> call = apiInterface.getDetendeurs();
+        call.enqueue(new Callback<List<Detendeur>>() {
             @Override
-            public void onResponse(Call<List<Stab>> call, Response<List<Stab>> response) {
+            public void onResponse(Call<List<Detendeur>> call, Response<List<Detendeur>> response) {
                 view.hideLoading();
                 if(response.isSuccessful() && response.body() != null) {
                     view.onGetResult(response.body());
@@ -33,7 +31,7 @@ public class StabMPresenter {
             }
 
             @Override
-            public void onFailure(Call<List<Stab>> call, Throwable t) {
+            public void onFailure(Call<List<Detendeur>> call, Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading(t.getLocalizedMessage());
             }

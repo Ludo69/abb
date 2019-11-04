@@ -1,7 +1,9 @@
-package a.w.abb_mat.activity.stabm;
+package a.w.abb_mat.activity.detendeurm;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.detendeurmaintenance.DetendeurMaintenanceActivity;
 import a.w.abb_mat.activity.stabmaintenance.StabMaintenanceActivity;
+import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Stab;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class StabMActivity extends AppCompatActivity implements StabMView {
+public class DetendeurMActivity extends AppCompatActivity implements DetendeurMView {
 
     private static final int INTENT_ADD = 100;
     private static final int INTENT_EDIT = 200;
@@ -24,22 +26,22 @@ public class StabMActivity extends AppCompatActivity implements StabMView {
     RecyclerView recyclerView;
     SwipeRefreshLayout swipeRefresh;
 
-    StabMPresenter presenter;
-    StabMAdapter adapter;
-    StabMAdapter.ItemClickListener itemClickListener;
+    DetendeurMPresenter presenter;
+    DetendeurMAdapter adapter;
+    DetendeurMAdapter.ItemClickListener itemClickListener;
 
-    List<Stab> stab;
+    List<Detendeur> detendeur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stab);
+        setContentView(R.layout.activity_detendeur);
 
         swipeRefresh = findViewById(R.id.swipe_refresh);
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        presenter = new StabMPresenter((StabMView) this);
+        presenter = new DetendeurMPresenter((DetendeurMView) this);
         presenter.getData();
 
         swipeRefresh.setOnRefreshListener(
@@ -47,15 +49,15 @@ public class StabMActivity extends AppCompatActivity implements StabMView {
         );
 
         itemClickListener = ((view, position) -> {
-            int idstab = stab.get(position).getIdstab();
-            String txtnumstab = stab.get(position).getNumstab();
-            String txtcommentairestab = stab.get(position).getCommentairestab();
-            int dispostab = stab.get(position).getDispostab();
-            Intent intent = new Intent(this, StabMaintenanceActivity.class);
-            intent.putExtra("idstab", idstab);
-            intent.putExtra("numstab", txtnumstab);
-            intent.putExtra("commentairestab", txtcommentairestab);
-            intent.putExtra("dispostab", dispostab);
+            int iddetendeur = detendeur.get(position).getIddetendeur();
+            String txtnumdetendeur = detendeur.get(position).getNumdetendeur();
+            String txtcommentairedetendeur = detendeur.get(position).getCommentairedetendeur();
+            int dispodetendeur = detendeur.get(position).getDispodetendeur();
+            Intent intent = new Intent(this, DetendeurMaintenanceActivity.class);
+            intent.putExtra("iddetendeur", iddetendeur);
+            intent.putExtra("numdetendeur", txtnumdetendeur);
+            intent.putExtra("commentairedetendeur", txtcommentairedetendeur);
+            intent.putExtra("dispodetendeur", dispodetendeur);
             startActivityForResult(intent, INTENT_EDIT);
             finish();
 
@@ -87,12 +89,12 @@ public class StabMActivity extends AppCompatActivity implements StabMView {
     }
 
     @Override
-    public void onGetResult(List<Stab> stabs) {
-        adapter = new StabMAdapter(this, stabs, itemClickListener);
+    public void onGetResult(List<Detendeur> detendeurs) {
+        adapter = new DetendeurMAdapter(this, detendeurs, itemClickListener);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
-        stab = stabs;
+        detendeur = detendeurs;
     }
 
     @Override
