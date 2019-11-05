@@ -103,6 +103,14 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("updateblocM.php")
+    Call<Bloc> updateBlocM(
+            @Field("idbloc") int idbloc,
+            @Field("commentairebloc") String commentairebloc,
+            @Field("dispobloc") int dispobloc
+    );
+
+    @FormUrlEncoded
     @POST("updatestabrestitution.php")
     Call<Stab> updateStabRestitution(
             @Field("idstab") int idstab
