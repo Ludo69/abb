@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.stabmaintenance;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.dialog.DialogSupp;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import a.w.abb_mat.activity.stabm.StabMActivity;
 import a.w.abb_mat.model.Stab;
@@ -13,7 +14,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -24,6 +27,7 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
     private static final int INTENT_EDIT = 200;
     TextView et_numstab;
     EditText et_txtcommentairestabM;
+    ImageView et_img_supp;
     private RadioGroup radioGroup;
     private RadioButton radioButtonOui;
     private RadioButton radioButtonNon;
@@ -38,6 +42,7 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
 
         et_numstab = findViewById(R.id.numstabM);
         et_txtcommentairestabM = findViewById(R.id.txtcommentairestabM);
+        et_img_supp = findViewById(R.id.suppression);
         radioGroup = findViewById(R.id.radiogroup);
         radioButtonOui = findViewById(R.id.radioboutonoui);
         radioButtonNon = findViewById(R.id.radioboutonnon);
@@ -57,8 +62,20 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
             radioButtonOui.setChecked(true);
         }
 
+        et_img_supp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialogSupp();
+            }
+        });
+
         presenter = new StabMaintenancePresenter(this);
 
+    }
+
+    private void openDialogSupp() {
+        DialogSupp dialogSupp = new DialogSupp();
+        dialogSupp.show(getSupportFragmentManager(), "DialogSupp");
     }
 
     @Override
