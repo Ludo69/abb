@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.stabm;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.creationstab.CreerStabActivity;
 import a.w.abb_mat.activity.stabmaintenance.StabMaintenanceActivity;
 import a.w.abb_mat.model.Stab;
 import androidx.annotation.Nullable;
@@ -77,7 +78,9 @@ public class StabMActivity extends AppCompatActivity implements StabMView {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ajouter:
-                Toast.makeText(this, "Ajouter", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, CreerStabActivity.class);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
                 return true;
             default:
 

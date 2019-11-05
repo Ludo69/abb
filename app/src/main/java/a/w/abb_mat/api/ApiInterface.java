@@ -154,6 +154,15 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("insertstab.php")
+    Call<Stab> insertstab(
+            @Field("numstab") String numstab,
+            @Field("taillestab") String taillestab,
+            @Field("commentairestab") String commentairestab,
+            @Field("dispostab") int dispostab
+    );
+
+    @FormUrlEncoded
     @POST("restitution.php")
     Call<Historique> restitution(
             @Field("codeunique") String codeunique,
@@ -191,5 +200,4 @@ public interface ApiInterface {
     Call<Compteur> updatecompteur(
             @Field("compteur") float compteur
     );
-
 }
