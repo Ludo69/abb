@@ -91,7 +91,8 @@ public interface ApiInterface {
     Call<Detendeur> updateDetendeurM(
             @Field("iddetendeur") int iddetendeur,
             @Field("commentairedetendeur") String commentairedetendeur,
-            @Field("dispodetendeur") int dispodetendeur
+            @Field("dispodetendeur") int dispodetendeur,
+            @Field("daterevision") String daterevision
     );
 
     @FormUrlEncoded
@@ -108,7 +109,7 @@ public interface ApiInterface {
             @Field("idbloc") int idbloc,
             @Field("commentairebloc") String commentairebloc,
             @Field("dispobloc") int dispobloc
-    );
+            );
 
     @FormUrlEncoded
     @POST("updatestabrestitution.php")
@@ -163,10 +164,45 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
+    @POST("insertdetendeur.php")
+    Call<Stab> insertdetendeur(
+            @Field("numdetendeur") String numdetendeur,
+            @Field("commentairedetendeur") String commentairedetendeur,
+            @Field("dispodetendeur") int dispodetendeur
+    );
+
+    @FormUrlEncoded
+    @POST("insertbloc.php")
+    Call<Bloc> insertbloc(
+            @Field("numbloc") String numbloc,
+            @Field("litragebloc") String litragebloc,
+            @Field("commentairebloc") String commentairebloc,
+            @Field("dispobloc") int dispobloc
+    );
+
+    @FormUrlEncoded
     @POST("restitution.php")
     Call<Historique> restitution(
             @Field("codeunique") String codeunique,
             @Field("daterestitution") String daterestitution
+    );
+
+    @FormUrlEncoded
+    @POST("suppstab.php")
+    Call<Stab> suppstab(
+            @Field("idstab") int idstab
+    );
+
+    @FormUrlEncoded
+    @POST("suppdetendeur.php")
+    Call<Detendeur> suppdetendeur(
+            @Field("iddetendeur") int iddetendeur
+    );
+
+    @FormUrlEncoded
+    @POST("suppbloc.php")
+    Call<Bloc> suppbloc(
+            @Field("idbloc") int idbloc
     );
 
     @FormUrlEncoded

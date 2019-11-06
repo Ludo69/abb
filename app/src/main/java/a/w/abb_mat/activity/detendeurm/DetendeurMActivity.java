@@ -1,10 +1,9 @@
 package a.w.abb_mat.activity.detendeurm;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.creationdetendeur.CreerDetendeurActivity;
 import a.w.abb_mat.activity.detendeurmaintenance.DetendeurMaintenanceActivity;
-import a.w.abb_mat.activity.stabmaintenance.StabMaintenanceActivity;
 import a.w.abb_mat.model.Detendeur;
-import a.w.abb_mat.model.Stab;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -53,16 +55,40 @@ public class DetendeurMActivity extends AppCompatActivity implements DetendeurMV
             String txtnumdetendeur = detendeur.get(position).getNumdetendeur();
             String txtcommentairedetendeur = detendeur.get(position).getCommentairedetendeur();
             int dispodetendeur = detendeur.get(position).getDispodetendeur();
+            String daterevision = detendeur.get(position).getRevisiondetendeur();
             Intent intent = new Intent(this, DetendeurMaintenanceActivity.class);
             intent.putExtra("iddetendeur", iddetendeur);
             intent.putExtra("numdetendeur", txtnumdetendeur);
             intent.putExtra("commentairedetendeur", txtcommentairedetendeur);
             intent.putExtra("dispodetendeur", dispodetendeur);
+            intent.putExtra("daterevision", daterevision);
             startActivityForResult(intent, INTENT_EDIT);
             finish();
 
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_ajouter, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ajouter:
+                Intent intent = new Intent(this, CreerDetendeurActivity.class);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
+                return true;
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 

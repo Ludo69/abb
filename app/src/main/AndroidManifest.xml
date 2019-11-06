@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.creationstab.CreerStabActivity"></activity>
+        <activity android:name=".activity.creationbloc.CreerBlocActivity"></activity>
+        <activity android:name=".activity.creationdetendeur.CreerDetendeurActivity" />
+        <activity android:name=".activity.creationstab.CreerStabActivity" />
         <activity android:name=".activity.blocmaintenance.BlocMaintenanceActivity" />
         <activity android:name=".activity.blocm.BlocMActivity" />
         <activity android:name=".activity.detendeurmaintenance.DetendeurMaintenanceActivity" />
@@ -87,8 +89,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 

@@ -2,22 +2,18 @@ package a.w.abb_mat.activity.blocm;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.blocmaintenance.BlocMaintenanceActivity;
-import a.w.abb_mat.activity.membre.MembreActivity;
-import a.w.abb_mat.activity.bloc.BlocAdapter;
-import a.w.abb_mat.activity.bloc.BlocPresenter;
-import a.w.abb_mat.activity.bloc.BlocView;
+import a.w.abb_mat.activity.creationbloc.CreerBlocActivity;
 import a.w.abb_mat.model.Bloc;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -68,6 +64,28 @@ public class BlocMActivity extends AppCompatActivity implements BlocMView {
             finish();
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_ajouter, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ajouter:
+                Intent intent = new Intent(this, CreerBlocActivity.class);
+                startActivityForResult(intent, INTENT_EDIT);
+                finish();
+                return true;
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
     @Override

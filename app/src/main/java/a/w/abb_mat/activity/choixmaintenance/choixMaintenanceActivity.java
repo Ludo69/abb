@@ -35,7 +35,7 @@ public class choixMaintenanceActivity extends AppCompatActivity {
             //Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
             Intent intent2 = new Intent(getApplicationContext(), StabMActivity.class);
             startActivity(intent2);
-            finish();
+            //finish();
         });
 
         CardView cardviewDetendeursMaintenance = findViewById(R.id.detendeursmaintenance);
@@ -44,7 +44,7 @@ public class choixMaintenanceActivity extends AppCompatActivity {
             //Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
             Intent intent2 = new Intent(getApplicationContext(), DetendeurMActivity.class);
             startActivity(intent2);
-            finish();
+            //finish();
         });
 
         CardView cardviewBlocsMaintenance = findViewById(R.id.blocsmaintenance);
@@ -53,7 +53,7 @@ public class choixMaintenanceActivity extends AppCompatActivity {
             //Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
             Intent intent2 = new Intent(getApplicationContext(), BlocMActivity.class);
             startActivity(intent2);
-            finish();
+            //finish();
         });
     }
 }

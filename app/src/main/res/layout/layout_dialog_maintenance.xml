@@ -20,6 +20,7 @@
         android:layout_below="@+id/image"
         android:hint="Mot de passe"
         android:id="@+id/txtpass"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

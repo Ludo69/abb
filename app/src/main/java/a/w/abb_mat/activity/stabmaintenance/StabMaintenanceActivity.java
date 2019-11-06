@@ -1,10 +1,8 @@
 package a.w.abb_mat.activity.stabmaintenance;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.dialog.DialogSupp;
-import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
+import a.w.abb_mat.activity.dialog.DialogSuppS;
 import a.w.abb_mat.activity.stabm.StabMActivity;
-import a.w.abb_mat.model.Stab;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -20,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class StabMaintenanceActivity extends AppCompatActivity implements StabMaintenanceView{
 
@@ -47,7 +44,6 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
         radioButtonOui = findViewById(R.id.radioboutonoui);
         radioButtonNon = findViewById(R.id.radioboutonnon);
 
-        int idstab = (int) getIntent().getIntExtra("idstab", 0);
         String numstab = (String) getIntent().getSerializableExtra("numstab");
         String comstab = (String) getIntent().getSerializableExtra("commentairestab");
         int dispostab = (int) getIntent().getIntExtra("dispostab", 0);
@@ -55,27 +51,27 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
         et_numstab.setText(numstab);
         et_txtcommentairestabM.setText(comstab);
         if (dispostab == 0) {
-            Log.d("****************NON ", String.valueOf(dispostab));
             radioButtonNon.setChecked(true);
         } else {
-            Log.d("****************OUI ", String.valueOf(dispostab));
             radioButtonOui.setChecked(true);
         }
 
         et_img_supp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialogSupp();
+                //openDialogSupp();
+                int idstab = (int) getIntent().getIntExtra("idstab", 0);
+                Log.d("CREATION DIALOG ", String.valueOf(idstab));
+                DialogSuppS dialog = new DialogSuppS();
+                Bundle bundle = new Bundle();
+                bundle.putInt("idstab", idstab);
+                dialog.setArguments(bundle);
+                dialog.show(getSupportFragmentManager(), "DialogSuppS");
             }
         });
 
         presenter = new StabMaintenancePresenter(this);
 
-    }
-
-    private void openDialogSupp() {
-        DialogSupp dialogSupp = new DialogSupp();
-        dialogSupp.show(getSupportFragmentManager(), "DialogSupp");
     }
 
     @Override

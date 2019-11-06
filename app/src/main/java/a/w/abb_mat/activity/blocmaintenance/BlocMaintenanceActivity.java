@@ -3,6 +3,7 @@ package a.w.abb_mat.activity.blocmaintenance;
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.blocm.BlocMActivity;
 import a.w.abb_mat.activity.detendeurm.DetendeurMActivity;
+import a.w.abb_mat.activity.dialog.DialogSuppB;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import a.w.abb_mat.activity.stabm.StabMActivity;
 import a.w.abb_mat.model.Stab;
@@ -15,7 +16,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ public class BlocMaintenanceActivity extends AppCompatActivity implements BlocMa
     private static final int INTENT_EDIT = 200;
     TextView et_numbloc;
     EditText et_txtcommentaireblocM;
+    ImageView et_img_supp;
     private RadioGroup radioGroupB;
     private RadioButton radioButtonBOui;
     private RadioButton radioButtonBNon;
@@ -40,6 +44,7 @@ public class BlocMaintenanceActivity extends AppCompatActivity implements BlocMa
 
         et_numbloc = findViewById(R.id.numblocM);
         et_txtcommentaireblocM = findViewById(R.id.txtcommentaireblocM);
+        et_img_supp = findViewById(R.id.suppression);
         radioGroupB = findViewById(R.id.radiogroupB);
         radioButtonBOui = findViewById(R.id.radioboutonBoui);
         radioButtonBNon = findViewById(R.id.radioboutonBnon);
@@ -56,6 +61,19 @@ public class BlocMaintenanceActivity extends AppCompatActivity implements BlocMa
         } else {
             radioButtonBOui.setChecked(true);
         }
+
+        et_img_supp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int idbloc = (int) getIntent().getIntExtra("idbloc", 0);
+                Log.d("CREATION DIALOG ", String.valueOf(idbloc));
+                DialogSuppB dialog = new DialogSuppB();
+                Bundle bundle = new Bundle();
+                bundle.putInt("idbloc", idbloc);
+                dialog.setArguments(bundle);
+                dialog.show(getSupportFragmentManager(), "DialogSuppB");
+            }
+        });
 
         presenter = new BlocMaintenancePresenter(this);
 

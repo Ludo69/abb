@@ -2,21 +2,27 @@ package a.w.abb_mat.activity.dialog;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import a.w.abb_mat.R;
+import a.w.abb_mat.activity.detendeurm.DetendeurMActivity;
+import a.w.abb_mat.activity.stabm.StabMActivity;
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
-import a.w.abb_mat.model.Stat;
+import a.w.abb_mat.model.Detendeur;
+import a.w.abb_mat.model.Stab;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DialogSupp extends AppCompatDialogFragment {
+public class DialogSuppD extends AppCompatDialogFragment {
+
 
     @Override
     public android.app.Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -24,6 +30,7 @@ public class DialogSupp extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.layout_dialog_suppression, null);
+
 
         builder.setView(view);
         builder.setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
@@ -35,33 +42,33 @@ public class DialogSupp extends AppCompatDialogFragment {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //String email = txtmail.getText().toString();
-                //mailgonflage(email);
+                Bundle arg = getArguments();
+                int iddetendeur = arg.getInt("iddetendeur");
+                Toast.makeText(getActivity(), "Détendeur supprimé !", Toast.LENGTH_SHORT).show();
+                suppdetendeur(iddetendeur);
+                Intent intent = new Intent(getActivity(), DetendeurMActivity.class);
+                startActivity(intent);
             }
         });
 
         return builder.create();
     }
 
-    void mailgonflage(String email) {
+    void suppdetendeur(int iddetendeur) {
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<Stat> call = apiInterface.Getmail3(email);
-        call.enqueue(new Callback<Stat>() {
+        Call<Detendeur> call = apiInterface.suppdetendeur(iddetendeur);
+        call.enqueue(new Callback<Detendeur>() {
             @Override
-            public void onResponse(Call<Stat> call, Response<Stat> response) {
+            public void onResponse(Call<Detendeur> call, Response<Detendeur> response) {
 
             }
 
             @Override
-            public void onFailure(Call<Stat> call, Throwable t) {
+            public void onFailure(Call<Detendeur> call, Throwable t) {
+
             }
         });
 
-    }
-
-
-    public interface dialogListener {
-        void envoimail(String email);
     }
 }
