@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.start;
 
 import a.w.abb_mat.activity.choix.choixActivity;
+import a.w.abb_mat.model.Password;
 import androidx.appcompat.app.AppCompatActivity;
 import a.w.abb_mat.R;
 
@@ -18,13 +19,18 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class loginActivity extends AppCompatActivity {
+import java.util.List;
+
+public class loginActivity extends AppCompatActivity implements loginView{
 
     //private Button btn_Send;
     private ImageView btnGo;
     private Handler handler;
     private ProgressBar pb_loader;
     private EditText pass;
+    private String passlog;
+
+    loginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,9 @@ public class loginActivity extends AppCompatActivity {
 
         btnGo = (ImageView) findViewById(R.id.btnGo);
 
+        presenter = new loginPresenter(this);
+        presenter.recuppass();
+
         btnGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,7 +55,7 @@ public class loginActivity extends AppCompatActivity {
                     if(password.equals("")){
                         Toast.makeText(getApplicationContext(), "Mot de passe obligatoire", Toast.LENGTH_SHORT).show();
                     }else{
-                        if(password.equals("abb69")){
+                        if(password.equals(passlog)){
                             pb_loader.setVisibility(View.VISIBLE);
                             handler.postDelayed(new Runnable() {
                                 @Override
@@ -88,4 +97,33 @@ public class loginActivity extends AppCompatActivity {
             else return false;
         }
     }
+
+    @Override
+    public void showProgress() {
+        // progressDialog.show();
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void onSuccess(String pass) {
+        passlog = pass;
+       Log.d("mdp = ", passlog);
+
+    }
+
+    @Override
+    public void onAddSuccess(List<Password> passwords) {
+        //Toast.makeText(loginActivity.this, (CharSequence) passwords, Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onAddError(String message) {
+        //Toast.makeText(loginActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
 }

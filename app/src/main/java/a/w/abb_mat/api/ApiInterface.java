@@ -9,6 +9,7 @@ import a.w.abb_mat.model.Gonflage;
 import a.w.abb_mat.model.Gonfleur;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
+import a.w.abb_mat.model.Password;
 import a.w.abb_mat.model.Stab;
 import a.w.abb_mat.model.Stat;
 import retrofit2.Call;
@@ -52,6 +53,9 @@ public interface ApiInterface {
 
     @GET("stats.php")
     Call<Stat> GetNbr();
+
+    @GET("passlogin.php")
+    Call<Password> getPass();
 
     @GET("mailgonflage.php")
     Call<Stat> GetMail(@Query("mail") String mail);
