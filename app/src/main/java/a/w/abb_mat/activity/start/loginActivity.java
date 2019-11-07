@@ -1,6 +1,7 @@
 package a.w.abb_mat.activity.start;
 
 import a.w.abb_mat.activity.choix.choixActivity;
+import a.w.abb_mat.activity.dialog.DialogCopyright;
 import a.w.abb_mat.model.Password;
 import androidx.appcompat.app.AppCompatActivity;
 import a.w.abb_mat.R;
@@ -29,6 +30,7 @@ public class loginActivity extends AppCompatActivity implements loginView{
     private ProgressBar pb_loader;
     private EditText pass;
     private String passlog;
+    private ImageView copyright;
 
     loginPresenter presenter;
 
@@ -38,6 +40,7 @@ public class loginActivity extends AppCompatActivity implements loginView{
         setContentView(R.layout.activity_login);
         pb_loader = (ProgressBar) findViewById(R.id.pb_loader);
         pass = (EditText) findViewById(R.id.txtAccueilPass);
+        copyright = findViewById(R.id.copyright);
         handler = new Handler();
         pb_loader.setVisibility(View.INVISIBLE);
 
@@ -74,6 +77,14 @@ public class loginActivity extends AppCompatActivity implements loginView{
                 {
                     Toast.makeText(getApplicationContext(), "Vérifiez votre connexion internet", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        copyright.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogCopyright dialogCopyright = new DialogCopyright();
+                dialogCopyright.show(getSupportFragmentManager(), "DialogCopyright");
             }
         });
 
