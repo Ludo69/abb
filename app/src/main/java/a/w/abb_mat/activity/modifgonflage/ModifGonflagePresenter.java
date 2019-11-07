@@ -1,27 +1,27 @@
-package a.w.abb_mat.activity.gestionGonflage;
+package a.w.abb_mat.activity.modifgonflage;
 
 import a.w.abb_mat.api.ApiClient;
 import a.w.abb_mat.api.ApiInterface;
 import a.w.abb_mat.model.Bloc;
 import a.w.abb_mat.model.Compteur;
 import a.w.abb_mat.model.Gonflage;
+import a.w.abb_mat.model.Stab;
 import androidx.annotation.NonNull;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GestionGonflagePresenter {
+public class ModifGonflagePresenter {
 
-    private  GestionGonflageView view;
+    private  ModifGonflageView view;
 
-    public GestionGonflagePresenter(GestionGonflageView view) {
+    public ModifGonflagePresenter(ModifGonflageView view) {
         this.view = view;
     }
 
-
-    void insertGonflage(int numbloc, int numbloc2, String gonfleur, float compteurfinal, int nbrbloc, int temperature, int pressionfinale, int saison) {
+    void updateGonflageM(int id, int numbloc, int nbrbloc, float compteurdep, float compteurfinal, int temperature, int pressionfinale) {
         view.showProgress();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        retrofit2.Call<Gonflage> call = apiInterface.insertgonflage(numbloc, numbloc2, gonfleur, compteurfinal, nbrbloc, temperature, pressionfinale, saison);
+        retrofit2.Call<Gonflage> call = apiInterface.updategonflageM(id, numbloc, nbrbloc, compteurdep, compteurfinal, temperature, pressionfinale);
         call.enqueue(new Callback<Gonflage>() {
             @Override
             public void onResponse(@NonNull retrofit2.Call<Gonflage> call, @NonNull Response<Gonflage> response) {
@@ -74,33 +74,5 @@ public class GestionGonflagePresenter {
 
     }
 
-    void updateCompteur(float compteur) {
-
-        view.showProgress();
-        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-
-        retrofit2.Call<Compteur> call = apiInterface.updatecompteur(compteur);
-        call.enqueue(new Callback<Compteur>() {
-            @Override
-            public void onResponse(@NonNull retrofit2.Call<Compteur> call, @NonNull Response<Compteur> response) {
-                view.hideProgress();
-                if(response.isSuccessful() && response.body() != null) {
-                    Boolean success = response.body().getSuccess();
-                    if(success){
-                        //view.onAddSuccess(response.body().getMessage());
-                    } else {
-                        view.onAddError(response.body().getMessage());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull retrofit2.Call<Compteur> call, @NonNull Throwable t) {
-                view.hideProgress();
-                view.onAddError(t.getLocalizedMessage());
-            }
-        });
-
-    }
-
 }
+

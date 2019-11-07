@@ -2,10 +2,6 @@ package a.w.abb_mat.activity.gestionGonflage;
 
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.choixgonflage.ChoixGonflageActivity;
-import a.w.abb_mat.activity.gonflagebloc.GonflageBlocActivity;
-import a.w.abb_mat.activity.gonfleur.GonfleurActivity;
-import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
-import a.w.abb_mat.activity.stab.StabActivity;
 import a.w.abb_mat.api.ApiInterface;
 import a.w.abb_mat.model.Gonflage;
 
@@ -21,10 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.text.DateFormat;
-import java.time.Year;
 import java.util.Calendar;
 import java.util.List;
 
@@ -38,7 +31,6 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
     GestionGonflagePresenter presenter;
 
     ProgressDialog progressDialog;
-    ApiInterface apiInterface;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -145,33 +137,7 @@ public class GestionGonflageActivity extends AppCompatActivity implements Gestio
                     }
                     return true;
                 } else if(type == 1) {
-                    int id = getIntent().getIntExtra("id", 0);
-                    int idbloc = getIntent().getIntExtra("numbloc", 0);
-                    String nomg = (String) getIntent().getSerializableExtra("gonfleur");
-                    Calendar c = Calendar.getInstance();
-                    int year = c.get(Calendar.YEAR);
-                    Integer nbloc = Integer.parseInt(et_txtnumbloc.getText().toString());
-                    Integer pressionblocf = Integer.parseInt(et_pressionfinale.getText().toString());
-                    Float compteurfinal = Float.parseFloat(et_compteurfinal.getText().toString());
-                    Integer tempgonflage = Integer.parseInt(et_tempgonflage.getText().toString());
-                    Integer nbrbloc = Integer.parseInt(et_nbrbloc.getText().toString());
-                    if (compteurfinal == 0) {
-                        et_compteurfinal.setError("Entrez le compteur");
-                    } else if (tempgonflage == 0) {
-                        et_tempgonflage.setError("Entrez la température");
-                    } else if (pressionblocf == 0){
-                        et_pressionfinale.setError("Entrez la pression finale");
-                    } else if (nbrbloc == 0) {
-                        et_nbrbloc.setError("Entrez le nombre de bloc");
-                    }else {
-                        presenter.updateGonflage(id, nbloc,nomg,compteurfinal,nbrbloc, tempgonflage, pressionblocf, year);
-                        Log.d("UPDATE PRESSION UP: ", idbloc + " " + pressionblocf);
-                        presenter.updatePression(idbloc, pressionblocf);
-                        presenter.updateCompteur(compteurfinal);
-                        //Intent intent = new Intent(this, GonflageBlocActivity.class);
-                        //startActivityForResult(intent, INTENT_EDIT);
-                        //finish();
-                    }
+
                     return true;
                 }
 

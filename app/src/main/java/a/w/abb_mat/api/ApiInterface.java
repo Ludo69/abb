@@ -219,17 +219,18 @@ public interface ApiInterface {
     );
 
     @FormUrlEncoded
-    @POST("updategonflage.php")
-    Call<Gonflage> updategonflage(
+    @POST("updategonflageM.php")
+    Call<Gonflage> updategonflageM(
             @Field("id") int id,
             @Field("numbloc") int numbloc,
-            @Field("gonfleur") String gonfleur,
-            @Field("compteurfinal") float compteurfinal,
             @Field("nbrbloc") int nbrbloc,
+            @Field("compteurdep") float compteurdep,
+            @Field("compteurfinal") float compteurfinal,
             @Field("temperature") int temperature,
-            @Field("pressionfinale") int pressionfinale,
-            @Field("saison") int saison
+            @Field("pressionfinale") int pressionfinale
     );
+
+
 
     @FormUrlEncoded
     @POST("updatecompteur.php")
