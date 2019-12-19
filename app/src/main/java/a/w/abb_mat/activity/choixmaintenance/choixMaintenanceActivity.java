@@ -55,5 +55,14 @@ public class choixMaintenanceActivity extends AppCompatActivity {
             startActivity(intent2);
             //finish();
         });
+
+        CardView cardviewcomp = findViewById(R.id.compresseurmaint);
+
+        cardviewcomp.setOnClickListener(view -> {
+            Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
+            //Intent intent2 = new Intent(getApplicationContext(), BlocMActivity.class);
+            //startActivity(intent2);
+            //finish();
+        });
     }
 }
