@@ -11,28 +11,41 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.modifgonflage.ModifGonflageActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.creationbloc.CreerBlocActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.creationdetendeur.CreerDetendeurActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.creationstab.CreerStabActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.blocmaintenance.BlocMaintenanceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.blocm.BlocMActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.detendeurmaintenance.DetendeurMaintenanceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.detendeurm.DetendeurMActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.stabmaintenance.StabMaintenanceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.stabm.StabMActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.choixmaintenance.choixMaintenanceActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.histocomp.histoCompActivity"></activity>
+        <activity android:name=".activity.choixcompresseur.choixCompresseurActivity" />
+        <activity
+            android:name=".activity.modifgonflage.ModifGonflageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.creationbloc.CreerBlocActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.creationdetendeur.CreerDetendeurActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.creationstab.CreerStabActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.blocmaintenance.BlocMaintenanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.blocm.BlocMActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.detendeurmaintenance.DetendeurMaintenanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.detendeurm.DetendeurMActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stabmaintenance.StabMaintenanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stabm.StabMActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.choixmaintenance.choixMaintenanceActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.stats.StatsActivity"
             android:screenOrientation="portrait" />
@@ -101,8 +114,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 

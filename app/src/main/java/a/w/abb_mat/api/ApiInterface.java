@@ -7,6 +7,7 @@ import a.w.abb_mat.model.Compteur;
 import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Gonflage;
 import a.w.abb_mat.model.Gonfleur;
+import a.w.abb_mat.model.HistoComp;
 import a.w.abb_mat.model.Historique;
 import a.w.abb_mat.model.Membre;
 import a.w.abb_mat.model.Password;
@@ -35,6 +36,9 @@ public interface ApiInterface {
 
     @GET("historiques.php")
     Call<List<Historique>> gethistoriques();
+
+    @GET("histocomp.php")
+    Call<List<HistoComp>> gethistocomp();
 
     @GET("gonflages.php")
     Call<List<Gonflage>> getgonflages();

@@ -3,6 +3,7 @@ package a.w.abb_mat.activity.choixmaintenance;
 import a.w.abb_mat.R;
 import a.w.abb_mat.activity.bloc.BlocActivity;
 import a.w.abb_mat.activity.blocm.BlocMActivity;
+import a.w.abb_mat.activity.choixcompresseur.choixCompresseurActivity;
 import a.w.abb_mat.activity.detendeur.DetendeurActivity;
 import a.w.abb_mat.activity.detendeurm.DetendeurMActivity;
 import a.w.abb_mat.activity.stab.StabActivity;
@@ -59,9 +60,9 @@ public class choixMaintenanceActivity extends AppCompatActivity {
         CardView cardviewcomp = findViewById(R.id.compresseurmaint);
 
         cardviewcomp.setOnClickListener(view -> {
-            Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
-            //Intent intent2 = new Intent(getApplicationContext(), BlocMActivity.class);
-            //startActivity(intent2);
+            //Toast.makeText(this, "En cours de Dev", Toast.LENGTH_SHORT).show();
+            Intent intent2 = new Intent(getApplicationContext(), choixCompresseurActivity.class);
+            startActivity(intent2);
             //finish();
         });
     }

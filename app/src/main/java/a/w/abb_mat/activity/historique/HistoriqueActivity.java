@@ -1,24 +1,16 @@
 package a.w.abb_mat.activity.historique;
 
 import a.w.abb_mat.R;
-import a.w.abb_mat.activity.historique.HistoriqueAdapter;
-import a.w.abb_mat.activity.historique.HistoriquePresenter;
-import a.w.abb_mat.activity.historique.HistoriqueView;
 import a.w.abb_mat.model.Historique;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
 
 public class HistoriqueActivity extends AppCompatActivity implements HistoriqueView {
