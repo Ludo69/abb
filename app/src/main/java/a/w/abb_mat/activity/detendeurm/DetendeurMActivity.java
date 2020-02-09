@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -56,12 +57,14 @@ public class DetendeurMActivity extends AppCompatActivity implements DetendeurMV
             String txtcommentairedetendeur = detendeur.get(position).getCommentairedetendeur();
             int dispodetendeur = detendeur.get(position).getDispodetendeur();
             String daterevision = detendeur.get(position).getRevisiondetendeur();
+            String codeunique = detendeur.get(position).getCodeuniquedetendeur();
             Intent intent = new Intent(this, DetendeurMaintenanceActivity.class);
             intent.putExtra("iddetendeur", iddetendeur);
             intent.putExtra("numdetendeur", txtnumdetendeur);
             intent.putExtra("commentairedetendeur", txtcommentairedetendeur);
             intent.putExtra("dispodetendeur", dispodetendeur);
             intent.putExtra("daterevision", daterevision);
+            intent.putExtra("codeunique", codeunique);
             startActivityForResult(intent, INTENT_EDIT);
             finish();
 

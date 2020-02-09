@@ -5,6 +5,7 @@ import a.w.abb_mat.activity.detendeurm.DetendeurMActivity;
 import a.w.abb_mat.activity.dialog.DialogSuppD;
 import a.w.abb_mat.activity.pressionbloc.PressionBlocActivity;
 import a.w.abb_mat.activity.stabm.StabMActivity;
+import a.w.abb_mat.model.Detendeur;
 import a.w.abb_mat.model.Stab;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,6 +29,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.List;
+import java.util.UUID;
 
 public class DetendeurMaintenanceActivity extends AppCompatActivity implements DetendeurMaintenanceView{
 
@@ -44,6 +47,7 @@ public class DetendeurMaintenanceActivity extends AppCompatActivity implements D
     private int day,month,year;
 
     DetendeurMaintenancePresenter presenter;
+    List<Detendeur> detendeur;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -132,12 +136,24 @@ public class DetendeurMaintenanceActivity extends AppCompatActivity implements D
             case R.id.valider:
                 int iddetendeur = (int) getIntent().getIntExtra("iddetendeur", 0);
                 String commentairedetendeur = et_txtcommentairedetendeurM.getText().toString();
+                String nummat = et_numdetendeur.getText().toString();
+                String nommembre = "AA MATOS ENTRETIEN";
                 String daterevision = et_daterevision.getText().toString();
+                String daterestitution = "14102019";
+                String codeunique = (String) getIntent().getSerializableExtra("codeunique");
                 int dispodetendeur = 1;
                 if(radioButtonDNon.isChecked()){
                     dispodetendeur = 0;
+                    codeunique = UUID.randomUUID().toString();
                 }
-                presenter.updateDetendeurM(iddetendeur, commentairedetendeur, dispodetendeur, daterevision);
+                if(radioButtonDNon.isChecked()){
+                    presenter.updateDetendeurM(iddetendeur, commentairedetendeur, dispodetendeur, daterevision, codeunique);
+                    presenter.inserthistorique(1, nummat, "14102019", "0", nommembre, codeunique);
+                } else {
+                    presenter.restitution(codeunique, daterestitution);
+                    codeunique = "";
+                    presenter.updateDetendeurM(iddetendeur, commentairedetendeur, dispodetendeur, daterevision, codeunique);
+                }
                 Intent intent = new Intent(this, DetendeurMActivity.class);
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();

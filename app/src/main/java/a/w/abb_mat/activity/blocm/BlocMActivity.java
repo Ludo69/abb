@@ -54,12 +54,14 @@ public class BlocMActivity extends AppCompatActivity implements BlocMView {
             int idbloc = bloc.get(position).getIdbloc();
             String txtnumbloc = bloc.get(position).getNumbloc();
             String txtcommentairebloc = bloc.get(position).getCommentairebloc();
+            String codeunique = bloc.get(position).getCodeuniquebloc();
             int dispobloc = bloc.get(position).getDispobloc();
             Intent intent = new Intent(this, BlocMaintenanceActivity.class);
             intent.putExtra("idbloc", idbloc);
             intent.putExtra("numbloc", txtnumbloc);
             intent.putExtra("commentairebloc", txtcommentairebloc);
             intent.putExtra("dispobloc", dispobloc);
+            intent.putExtra("codeunique", codeunique);
             startActivityForResult(intent, INTENT_EDIT);
             finish();
         });

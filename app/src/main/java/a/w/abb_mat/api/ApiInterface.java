@@ -83,7 +83,8 @@ public interface ApiInterface {
     Call<Stab> updateStabM(
             @Field("idstab") int idstab,
             @Field("commentairestab") String commentairestab,
-            @Field("dispostab") int dispostab
+            @Field("dispostab") int dispostab,
+            @Field("codeunique") String codeunique
     );
 
     @FormUrlEncoded
@@ -100,7 +101,8 @@ public interface ApiInterface {
             @Field("iddetendeur") int iddetendeur,
             @Field("commentairedetendeur") String commentairedetendeur,
             @Field("dispodetendeur") int dispodetendeur,
-            @Field("daterevision") String daterevision
+            @Field("daterevision") String daterevision,
+            @Field("codeunique") String codeunique
     );
 
     @FormUrlEncoded
@@ -116,7 +118,8 @@ public interface ApiInterface {
     Call<Bloc> updateBlocM(
             @Field("idbloc") int idbloc,
             @Field("commentairebloc") String commentairebloc,
-            @Field("dispobloc") int dispobloc
+            @Field("dispobloc") int dispobloc,
+            @Field("codeunique") String codeunique
             );
 
     @FormUrlEncoded

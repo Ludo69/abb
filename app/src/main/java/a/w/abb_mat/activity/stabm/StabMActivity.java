@@ -54,12 +54,14 @@ public class StabMActivity extends AppCompatActivity implements StabMView {
             int idstab = stab.get(position).getIdstab();
             String txtnumstab = stab.get(position).getNumstab();
             String txtcommentairestab = stab.get(position).getCommentairestab();
+            String codeunique = stab.get(position).getCodeuniquestab();
             int dispostab = stab.get(position).getDispostab();
             Intent intent = new Intent(this, StabMaintenanceActivity.class);
             intent.putExtra("idstab", idstab);
             intent.putExtra("numstab", txtnumstab);
             intent.putExtra("commentairestab", txtcommentairestab);
             intent.putExtra("dispostab", dispostab);
+            intent.putExtra("codeunique", codeunique);
             startActivityForResult(intent, INTENT_EDIT);
             finish();
 

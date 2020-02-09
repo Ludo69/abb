@@ -19,6 +19,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.UUID;
+
 public class StabMaintenanceActivity extends AppCompatActivity implements StabMaintenanceView{
 
     private static final int INTENT_EDIT = 200;
@@ -87,11 +89,24 @@ public class StabMaintenanceActivity extends AppCompatActivity implements StabMa
             case R.id.valider:
                 int idstab = (int) getIntent().getIntExtra("idstab", 0);
                 String commentairestab = et_txtcommentairestabM.getText().toString();
+                String nummat = et_numstab.getText().toString();
+                String codeunique = (String) getIntent().getSerializableExtra("codeunique");
+                String nommembre = "AA MATOS ENTRETIEN";
+                String daterestitution = "14102019";
                 int dispostab = 1;
                 if(radioButtonNon.isChecked()){
                     dispostab = 0;
+                    codeunique = UUID.randomUUID().toString();
                 }
-                presenter.updateStabM(idstab, commentairestab, dispostab);
+                if(radioButtonNon.isChecked()){
+                    presenter.updateStabM(idstab, commentairestab, dispostab, codeunique);
+                    presenter.inserthistorique(0, nummat, "14102019", "0", nommembre, codeunique);
+                } else {
+                    presenter.restitution(codeunique, daterestitution);
+                    codeunique = "";
+                    presenter.updateStabM(idstab, commentairestab, dispostab, codeunique);;
+                }
+
                 Intent intent = new Intent(this, StabMActivity.class);
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();

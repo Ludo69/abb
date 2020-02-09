@@ -24,6 +24,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.UUID;
+
 public class BlocMaintenanceActivity extends AppCompatActivity implements BlocMaintenanceView{
 
     private static final int INTENT_EDIT = 200;
@@ -91,12 +93,24 @@ public class BlocMaintenanceActivity extends AppCompatActivity implements BlocMa
         switch (item.getItemId()) {
             case R.id.valider:
                 int idbloc = (int) getIntent().getIntExtra("idbloc", 0);
+                String nummat = et_numbloc.getText().toString();
                 String commentairebloc = et_txtcommentaireblocM.getText().toString();
+                String codeunique = (String) getIntent().getSerializableExtra("codeunique");
+                String nommembre = "AA MATOS ENTRETIEN";
+                String daterestitution = "14102019";
                 int dispobloc = 1;
                 if(radioButtonBNon.isChecked()){
                     dispobloc = 0;
+                    codeunique = UUID.randomUUID().toString();
                 }
-                presenter.updateBlocM(idbloc, commentairebloc, dispobloc);
+                if(radioButtonBNon.isChecked()){
+                    presenter.updateBlocM(idbloc, commentairebloc, dispobloc, codeunique);
+                    presenter.inserthistorique(2, nummat, "14102019", "0", nommembre, codeunique);
+                } else {
+                    presenter.restitution(codeunique, daterestitution);
+                    codeunique = "";
+                    presenter.updateBlocM(idbloc, commentairebloc, dispobloc, codeunique);;
+                }
                 Intent intent = new Intent(this, BlocMActivity.class);
                 startActivityForResult(intent, INTENT_EDIT);
                 finish();
